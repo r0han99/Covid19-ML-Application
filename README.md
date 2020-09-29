@@ -13,7 +13,7 @@ and a Predictive Model which has the ability to forecast the number of cases in 
 
 ## Abstract
 
-One might consider Nuclear Warfare and a Climatic catastrophe as the biggest failure that humanity could ever experience but, People Failed to Acknowledge that the emergence of any Novel infectious disease has the potential to wipe out a major portion of human existence within no time. As they did in the past. Despite the intense studies on the patterns of theses epidemic outbreaks, when, where and how these outbreaks trigger is out of the comprehension. Severe respiratory disease was reported in Wuhan, Hubei province, China. As of 25 January 2020, at least 1,975 cases had been reported since the first patient was hospitalised on 12 December 2019. After the phylogenetic analysis of the complete viral genome, it was found to be closely related to SARS-like virus which is related to the family Coronaviridae and initially named it as SARS-CoV-2 then later bolted down to the name Covid19. This outbreak highlights the ongoing ability of viral spill-over from animals to cause severe disease in humans.
+One might consider Nuclear Warfare and a Climatic catastrophe as the biggest failure that humanity could ever experience but, People Failed to Acknowledge that the emergence of any Novel infectious disease has the potential to wipe out a major portion of human existence within no time. As they did in the past. Despite the intense studies on the patterns of theses epidemic outbreaks, when, where and how these outbreaks trigger is out of the comprehension. Severe respiratory disease was reported in Wuhan, Hubei province, China. As of 25 January 2020, at least 1,975 cases had been reported since the first patient was hospitalised on 12 December 2019. After the phylogenetic analysis of the complete viral genome, it was found to be closely related to SARS-like virus which is related to the family Coronaviridae and initially named it as SARS-CoV-2 then later bolted down to the name **_Covid19_**. This outbreak highlights the ongoing ability of viral spill-over from animals to cause severe disease in humans.
 
 
 ## Development ⚙️
@@ -21,7 +21,7 @@ Streamlit is used to create flawless Front-End Aesthetics for Data Visualisation
 
 ## Version Control
 
-- **V 1.0** This is the Current Release, initial observations were latency issues which is not solved unless I upgrade from standard ```dynos``` to High-Level Computation housing. 
+- **V 1.0** This is the Current Release, initial observations were latency issues which is not solved unless I upgrade from standard ```dynos``` to High-Level Computational housing. 
 
   _**Future-Versions**_
     - **V 1.1** Adding Additional Python scripts to Perform ``Data-fetch`` Operations rather than the _Main_ Application Script in order to reduce Latency Issues 
