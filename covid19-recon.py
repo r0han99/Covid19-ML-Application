@@ -710,7 +710,7 @@ if st.checkbox('Show Time Series Chart',True):
 
     # st.write(country_summary)
 
-    Slider_month = st.sidebar.slider('Control the Time (Months)',1,country_summary['Months_num'].max(),key='iixx123')
+    Slider_month = st.sidebar.slider('Control the Time (Months)',1,int(country_summary['Months_num'].max()),key='iixx123')
             
 
     temp0 = []
