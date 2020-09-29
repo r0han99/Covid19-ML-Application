@@ -7,7 +7,9 @@ This repository is the stronghold for my application [covid19-recon](https://cov
 and a Predictive Model which has the ability to forecast the number of cases in the near future.
 
 
-<img width="863" alt="Screenshot 2020-09-29 at 10 00 12 PM" src="https://user-images.githubusercontent.com/45916202/94586701-2c3a3580-029f-11eb-92e3-36c41c00147b.png">
+<img width="863" alt="A Time Series Plot Visualising the Frequency of Cases" src="https://user-images.githubusercontent.com/45916202/94586701-2c3a3580-029f-11eb-92e3-36c41c00147b.png">
+
+```A Time Series Plot From the Application ```
 
 ## Abstract
 
@@ -15,8 +17,7 @@ One might consider Nuclear Warfare and a Climatic catastrophe as the biggest fai
 
 
 ## Development ⚙️
-Streamlit is used to create flawless Front-End Aesthetics for Datavisualisations and Machine Learning Implementation. The app is Deployed in Heroku. with Standard 
-```dynos``` 
+Streamlit is used to create flawless Front-End Aesthetics for Data Visualisations and Machine Learning Implementation. The app is Deployed on **Heroku**. with Standard ```dynos``` settings.
 
 ## Version Control
 
