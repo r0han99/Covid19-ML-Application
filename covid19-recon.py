@@ -422,7 +422,7 @@ if st.sidebar.checkbox('Front Page',True):
         
         summary = preprocessing0(confirmed_df, recovered_df, deaths_df)
 
-        Slider_month = st.sidebar.slider('Control the Time (Months)',1,summary['Months'].max(),key='iixx1')
+        Slider_month = st.sidebar.slider('Control the Time (Months)',1,int(summary['Months'].max()),key='iixx1')
         
         for i in range(1,Slider_month+1):
             temp.append(summary[summary['Months'] == i])
