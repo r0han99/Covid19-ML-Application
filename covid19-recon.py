@@ -627,7 +627,7 @@ if st.checkbox('Show Country Synopsis Chart','True',key='2903'):
         st.plotly_chart(fig)
 
 
-if st.checkbox('Frequency of Reported Cases Global',True,key='frequency country plot'):
+if st.checkbox('Frequency of Reported Cases in {}'.format(CountryName),True,key='frequency country plot'):
     
         y = infectionrate_timeline(confirmed_df,recovered_df,deaths_df)
         y = hikedfslice(y,'not-global')
