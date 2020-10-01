@@ -19,7 +19,7 @@ One might consider Nuclear Warfare and a Climatic catastrophe as the biggest fai
 ## Development ⚙️
 Streamlit is used to create flawless Front-End Aesthetics for Data Visualisations and Machine Learning Implementation. The app is Deployed on **Heroku**. with Standard ```dynos``` settings.
 
-## Version Control
+## Version Prophecy
 
 - **V 1.0** This is the Current Release, initial observations were latency issues which is not solved unless I upgrade from standard ```dynos``` to High-Level Computational housing. 
 
