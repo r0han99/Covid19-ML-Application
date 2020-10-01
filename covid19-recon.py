@@ -959,7 +959,7 @@ if st.checkbox('Read Me!',False):
     Note = '''
         _Disclaimer_, The _Intitial Forcast Dates_ might be in the **Past**, As I already mentioned the Data source for this application is [**Johns Hopkins Github**](https://github.com/CSSEGISandData/COVID-19) Repository which automatically updates the data and **may vary** for the **Time Zones**.
         I know that you are about to go and **_Cross validate_** these _Predictions_ to the **True Values** on prominent sources like [**worldometers**](https://www.worldometers.info/coronavirus/), So before you go, here's is what I need you to Acknowledge. 
-        The Predictions may or may not be Fairly Accurate, but will Definitely will give you a **Proper Intiution** in What _**Numerical Range a Particular Country is Considered Inclusive**_,
+        The Predictions may or may not be Fairly Accurate, but will Definitely give you a **Proper Intuition** in What _**Numerical Range a Particular Country is Considered Inclusive**_,
         - **The Value Might Overshoot**:\n
             _Reason_ - Over the Time for the Countries Included, there are instances where net increase in a Cases for a single day was an Overwhelming value, which distorts the uniform curve from which the model interprets the pattern, hence the overshooting scenario.
         
