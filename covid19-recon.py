@@ -308,7 +308,7 @@ def transform_input(days_since_1_22,numberofdays=1):
     future_forcast_dates = []
     poly = PolynomialFeatures(degree=6)
     number_of_days = numberofdays
-    Future_dates_limit = number_of_days
+    # Future_dates_limit = number_of_days
     forcast = np.array([i for i in range(len(days_since_1_22)+number_of_days)]).reshape(-1, 1)
     start = '1/22/2020'
     start_date = datetime.datetime.strptime(start, '%m/%d/%Y')
@@ -987,7 +987,10 @@ st.markdown('***')
 
 st.sidebar.subheader('**Appendix**')
 if st.sidebar.checkbox('Display',False):
-    st.image('./BlogOverview.jpg',width=700)
+    if plot_template = 'Dark Theme🌒':
+        st.image('./BlogCoverB.jpg',width=700)
+    else:
+        st.image('./BlogCoverL.jpg')
     st.markdown("Here's my blog about this project elucidating everthing in detail, I believe it to be **_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/@r0han_) If you like to read.")
 
 
