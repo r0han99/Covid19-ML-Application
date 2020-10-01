@@ -987,10 +987,10 @@ st.markdown('***')
 
 st.sidebar.subheader('**Appendix**')
 if st.sidebar.checkbox('Display',False):
-    if plot_template = 'Dark Theme🌒':
+    if plot_template == 'Dark Theme🌒':
         st.image('./BlogCoverB.jpg',width=700)
     else:
-        st.image('./BlogCoverL.jpg')
+        st.image('./BlogCoverL.jpg',widht=700)
     st.markdown("Here's my blog about this project elucidating everthing in detail, I believe it to be **_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/@r0han_) If you like to read.")
 
 
