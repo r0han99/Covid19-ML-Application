@@ -991,7 +991,7 @@ if st.sidebar.checkbox('Display',False):
         st.image('./BlogCoverB.jpg',width=700)
     else:
         st.image('./BlogCoverL.jpg',width=700)
-    st.markdown("Here's my blog about this project elucidating everthing in detail, I believe it to be **_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/@r0han_) If you like to read.")
+    st.markdown("Here's my blog about this project elucidating everthing in detail, I believe it to be **_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/swlh/covid-19-data-analysis-from-the-inception-to-predicting-the-uncertain-future-through-machine-ef4c3f0371bc) If you like to read.")
 
 
 
