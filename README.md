@@ -26,7 +26,7 @@ Streamlit is used to create flawless Front-End Aesthetics for Data Visualisation
   _**Future-Versions**_
     - **V 1.1** Adding Additional Python scripts to Perform ``Data-fetch`` Operations rather than the _Main_ Application Script in order to reduce Latency Issues 
       - Adding Prophet as an Additional Machine Learning Model
-      - Moritality and Recovery rate Time Series Plots 
+      - Mortality and Recovery rate Time Series Plots 
       - Choropleth plots for the input country 
       
 
