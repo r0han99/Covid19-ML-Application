@@ -1,6 +1,6 @@
 # Covid19 Machine Learning ``&`` Data Analytics Application
 
-[<img width="847" alt="Screenshot 2020-09-28 at 11 33 47 PM" src="https://user-images.githubusercontent.com/45916202/94586075-6f47d900-029e-11eb-8970-507b155f0ea5.png">](https://covid19-reconnaissance.herokuapp.com)
+[<img width="847" alt="Screenshot 2020-09-28 at 11 33 47 PM" src="https://user-images.githubusercontent.com/45916202/94586075-6f47d900-029e-11eb-8970-507b155f0ea5.png">](https://bit.ly/3kYHCW5)
 
 
 This repository is the stronghold for my application [covid19-recon](https://bit.ly/3kYHCW5) which consists tons of Visualisations
