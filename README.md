@@ -19,15 +19,15 @@ One might consider _Nuclear Warfare_ and a _Climatic catastrophe_ as the biggest
 
 
 ## Development ⚙️
-Streamlit is used to create flawless Front-End Aesthetics for Data Visualisations and Machine Learning Implementation. The app ~~is~~ was Deployed on ~~**Heroku** with Standard ```dynos``` settings~~.(initially) now, based on a *Invitation to test*, offered by a Streamlit community major, deployed the application on the _StreamlitTeams_ cloud platform which is now in closed BETA. 
+Streamlit is used to create flawless Front-End Aesthetics for Data Visualisations and Machine Learning Implementation. The app ~~is~~ was Deployed on ~~**Heroku** with Standard ```dynos``` settings~~(initially). now, based on a *Invitation to test*, offered by a Streamlit community major, deployed the application on the _StreamlitTeams_ cloud platform which is now in closed BETA. 
 
-## Version Tracking ```&``` Prophecy
+## Version TimeLine ```&``` Prophecy
 
 - **V 1.0** ~~This is the Current Release, initial observations were latency issues which is not solved unless I upgrade from standard ```dynos``` to High-Level Computational housing.~~ 
-    Now, with the application deployed on StreamlitTeams platform, there's no latency issues observed, cache system works accordingly. 
+    With the application deployed on StreamlitTeams platform, there's no latency issues observed, cache system works accordingly. 
   
   _**Future-Versions**_
-    - **V 1.1** Adding Additional Python scripts to Perform ``Data-fetch`` Operations rather than the _Main_ Application Script in order to reduce Latency Issues 
+    - **V 1.1** ~~Adding Additional Python scripts to Perform ``Data-fetch`` Operations rather than the _Main_ Application Script in order to reduce Latency Issues~~ (_Solved_)
       - Adding Prophet as an Additional Machine Learning Model
       - Mortality and Recovery rate Time Series Plots 
       - Choropleth plots for the input country 
