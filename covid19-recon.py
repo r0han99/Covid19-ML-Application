@@ -918,13 +918,14 @@ st.markdown('***')
 st.sidebar.markdown('***')
 
 st.sidebar.subheader('Predicting the Future')
+st.subheader('**Polynomial Regression**')
 st.markdown('{this is now out of order, predictions are wrong because of the misinterpretation, Updating the whole algorithm}')
-if st.checkbox('Under-Maintenance',True):
+if st.checkbox('Under-Maintenance',False):
    
 
 
 
-   st.subheader('**Polynomial Regression**')
+
    st.markdown('_Forcasting the Confirmed Cases for an `Input` Number of Days_')
 
    if st.checkbox('Knowledge',True):
