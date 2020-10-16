@@ -917,64 +917,67 @@ elif typeofsubplot == 'Box Plot of Summations':
 st.markdown('***')
 st.sidebar.markdown('***')
 
-
 st.sidebar.subheader('Predicting the Future')
+st.markdown('{this is now out of order, predictions are wrong because of the misinterpretation, Updating the whole algorithm}')
+st.checkbox('Under-Maintenance',True):
+   
 
 
-st.subheader('**Polynomial Regression**')
-st.markdown('_Forcasting the Confirmed Cases for an `Input` Number of Days_')
 
-if st.checkbox('Knowledge',True):
-    Knowledge = '''
-    There are 7 Models in Total, which are the `Top-7 Most Critically Hit Countries` (According to the Data) by this Contagion. The **Machine Learning** Models are typical Linear Models Trained on the Poly Transformed Number of Days from the Inception, to Fit the Number of Cases on that Paritcular Day.
-    **Polynomial Regression** is used because the Data, Particularly follows a brief **Non-Linear Trend**. For a Detailed elucidation, Read my blog post on this topic, `Redirection` link bolted down in the _Appendix Section_ of this Application.
-    
-    '''
-    st.markdown(Knowledge)
+   st.subheader('**Polynomial Regression**')
+   st.markdown('_Forcasting the Confirmed Cases for an `Input` Number of Days_')
 
-numberofdays = st.sidebar.number_input('Choose the Number of Days in the Future to Predict',1,30)
+   if st.checkbox('Knowledge',True):
+       Knowledge = '''
+       There are 7 Models in Total, which are the `Top-7 Most Critically Hit Countries` (According to the Data) by this Contagion. The **Machine Learning** Models are typical Linear Models Trained on the Poly Transformed Number of Days from the Inception, to Fit the Number of Cases on that Paritcular Day.
+       **Polynomial Regression** is used because the Data, Particularly follows a brief **Non-Linear Trend**. For a Detailed elucidation, Read my blog post on this topic, `Redirection` link bolted down in the _Appendix Section_ of this Application.
 
+       '''
+       st.markdown(Knowledge)
 
-dates = country_summary.index
-days_since_1_22 = np.array([i for i in range(len(dates))]).reshape(-1, 1)
-
-Model_select = st.multiselect('Select a Country for Machine Learning Model Implementation ( Default : India )',['India','US','Colombia','Russia','Peru','Brazil','Mexico'],default=['India'],key='Polynomial Regression Models')
-
-for model in Model_select:
-    with open('./Models/{}'.format(model),'rb') as f:
-        lm = pickle.load(f)
-
-    dates_n,forcast,dates_real = transform_input(days_since_1_22,numberofdays)
-    preds = lm.predict(dates_n)
-    preds = zip(dates_real,np.round(preds.reshape(-1,1)[-forcast:]).astype('int64'))
-    st.markdown('***')
-    st.markdown('**{}**, Predictions of Confirmed Cases Accross the Date'.format(model))
-    st.markdown('**Future Date**$~~~~~~~~~~~$**Forcast**')
-    for x,y in preds:
-       
-        st.markdown('{}$~~~~~~~~~~~$**{}**'.format(x,y[0]))
-
-st.markdown('***')
-if st.checkbox('Read Me!',False):
-    Note = '''
-        _Disclaimer_, The _Intitial Forcast Dates_ might be in the **Past**, As I already mentioned the Data source for this application is [**Johns Hopkins Github**](https://github.com/CSSEGISandData/COVID-19) Repository which automatically updates the data and **may vary** for the **Time Zones**.
-        I know that you are about to go and **_Cross validate_** these _Predictions_ to the **True Values** on prominent sources like [**worldometers**](https://www.worldometers.info/coronavirus/), So before you go, here's is what I need you to Acknowledge. 
-        The Predictions may or may not be Fairly Accurate, but will Definitely give you a **Proper Intuition** in What _**Numerical Range a Particular Country is Considered Inclusive**_,
-        - **The Value Might Overshoot**:\n
-            _Reason_ - Over the Time for the Countries Included, there are instances where net increase in a Cases for a single day was an Overwhelming value, which distorts the uniform curve from which the model interprets the pattern, hence the overshooting scenario.
-        
-        To **Summerize**, While Creating the 7 Models I chose to Keep the **Same Hyper-parameters** For every Model Created. So Fine tuning them Might result in better results, so, why not do it then?
-        I Consider this Approach as Naive, For Next updates I Will Include Some More prominent Features, New plots and Might Also Use Some Advanced Machine Learning Models for the Implemation.\n
-        Note ~ **US**,and **Colombia** Models are _Underperforming_ in this Current Release. **Mexico** is _Very Close_, and Rest of them are overshooting by _Factors of 10,000's_.
-    
-    '''
-
-    
-    st.markdown(Note)
+   numberofdays = st.sidebar.number_input('Choose the Number of Days in the Future to Predict',1,30)
 
 
-st.sidebar.markdown('***')
-st.markdown('***')
+   dates = country_summary.index
+   days_since_1_22 = np.array([i for i in range(len(dates))]).reshape(-1, 1)
+
+   Model_select = st.multiselect('Select a Country for Machine Learning Model Implementation ( Default : India )',['India','US','Colombia','Russia','Peru','Brazil','Mexico'],default=['India'],key='Polynomial Regression Models')
+
+   for model in Model_select:
+       with open('./Models/{}'.format(model),'rb') as f:
+           lm = pickle.load(f)
+
+       dates_n,forcast,dates_real = transform_input(days_since_1_22,numberofdays)
+       preds = lm.predict(dates_n)
+       preds = zip(dates_real,np.round(preds.reshape(-1,1)[-forcast:]).astype('int64'))
+       st.markdown('***')
+       st.markdown('**{}**, Predictions of Confirmed Cases Accross the Date'.format(model))
+       st.markdown('**Future Date**$~~~~~~~~~~~$**Forcast**')
+       for x,y in preds:
+
+           st.markdown('{}$~~~~~~~~~~~$**{}**'.format(x,y[0]))
+
+   st.markdown('***')
+   if st.checkbox('Read Me!',False):
+       Note = '''
+           _Disclaimer_, The _Intitial Forcast Dates_ might be in the **Past**, As I already mentioned the Data source for this application is [**Johns Hopkins Github**](https://github.com/CSSEGISandData/COVID-19) Repository which automatically updates the data and **may vary** for the **Time Zones**.
+           I know that you are about to go and **_Cross validate_** these _Predictions_ to the **True Values** on prominent sources like [**worldometers**](https://www.worldometers.info/coronavirus/), So before you go, here's is what I need you to Acknowledge. 
+           The Predictions may or may not be Fairly Accurate, but will Definitely give you a **Proper Intuition** in What _**Numerical Range a Particular Country is Considered Inclusive**_,
+           - **The Value Might Overshoot**:\n
+               _Reason_ - Over the Time for the Countries Included, there are instances where net increase in a Cases for a single day was an Overwhelming value, which distorts the uniform curve from which the model interprets the pattern, hence the overshooting scenario.
+
+           To **Summerize**, While Creating the 7 Models I chose to Keep the **Same Hyper-parameters** For every Model Created. So Fine tuning them Might result in better results, so, why not do it then?
+           I Consider this Approach as Naive, For Next updates I Will Include Some More prominent Features, New plots and Might Also Use Some Advanced Machine Learning Models for the Implemation.\n
+           Note ~ **US**,and **Colombia** Models are _Underperforming_ in this Current Release. **Mexico** is _Very Close_, and Rest of them are overshooting by _Factors of 10,000's_.
+
+       '''
+
+
+       st.markdown(Note)
+
+
+   st.sidebar.markdown('***')
+   st.markdown('***')
 
 st.subheader('$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${}$~~~~~~~~~~~~~~~~~~~~~~~~~~~$'.format('End'))
 
