@@ -919,7 +919,7 @@ st.sidebar.markdown('***')
 
 st.sidebar.subheader('Predicting the Future')
 st.markdown('{this is now out of order, predictions are wrong because of the misinterpretation, Updating the whole algorithm}')
-st.checkbox('Under-Maintenance',True):
+if st.checkbox('Under-Maintenance',True):
    
 
 
