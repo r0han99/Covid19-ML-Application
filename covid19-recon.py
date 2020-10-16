@@ -986,6 +986,7 @@ st.subheader('$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${}$~~~~~~~~~~~~~~~~~~~~
 
 
 st.subheader('$~~~~~~~~~~~~$`Developed` _and_ `Deployed` _by_ $~~$**𝚛𝟶𝚑𝚊𝚗 𝚜𝚊𝚒 𝙽**')
+st.write("<p style='text-align: center;'><strong>V1.0.1- Polynomial Version</strong></p>",unsafe_allow_html=True)
 
 st.markdown('***')
 
