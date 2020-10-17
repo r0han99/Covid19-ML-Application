@@ -1,8 +1,8 @@
 covid == 2.1.4
-pystan
-fbprophet == 0.7.1
+pystan == 2.19.1.1
 numpy == 1.18.5
 pandas == 1.0.3
 plotly == 4.10.0
 scikit_learn == 0.22.1
 streamlit == 0.69.2
+fbprophet == 0.7.1
