@@ -1,0 +1,989 @@
+
+[manager] Starting up for owner: 'r0han99', repository: 'covid19-ml-application', branch: 'master', main module: 'covid19-recon.py'
+[manager] Cloning repository ...
+[manager] Cloning into 'covid19-ml-application'...
+
+[manager] Cloned repository!
+[manager] Processing dependencies ...
+Collecting covid==2.1.4
+  Downloading covid-2.1.4.tar.gz (7.4 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+    Preparing wheel metadata: started
+    Preparing wheel metadata: finished with status 'done'
+Collecting fbprophet==0.7.1
+  Downloading fbprophet-0.7.1.tar.gz (64 kB)
+Collecting numpy==1.18.5
+  Downloading numpy-1.18.5-cp37-cp37m-manylinux1_x86_64.whl (20.1 MB)
+Collecting pandas==1.0.3
+  Downloading pandas-1.0.3-cp37-cp37m-manylinux1_x86_64.whl (10.0 MB)
+Collecting plotly==4.10.0
+  Downloading plotly-4.10.0-py2.py3-none-any.whl (13.0 MB)
+Collecting scikit_learn==0.22.1
+  Downloading scikit_learn-0.22.1-cp37-cp37m-manylinux1_x86_64.whl (7.0 MB)
+Collecting streamlit==0.69.2
+  Downloading streamlit-0.69.2-py2.py3-none-any.whl (7.4 MB)
+Collecting beautifulsoup4
+  Downloading beautifulsoup4-4.9.3-py3-none-any.whl (115 kB)
+Collecting pydantic
+  Downloading pydantic-1.6.1-cp37-cp37m-manylinux2014_x86_64.whl (8.6 MB)
+Requirement already satisfied, skipping upgrade: requests in /usr/local/lib/python3.7/site-packages (from covid==2.1.4->-r requirements.txt (line 1)) (2.24.0)
+Collecting Cython>=0.22
+  Downloading Cython-0.29.21-cp37-cp37m-manylinux1_x86_64.whl (2.0 MB)
+Collecting cmdstanpy==0.9.5
+  Downloading cmdstanpy-0.9.5-py3-none-any.whl (37 kB)
+Collecting pystan>=2.14
+  Downloading pystan-2.19.1.1-cp37-cp37m-manylinux1_x86_64.whl (67.3 MB)
+Collecting matplotlib>=2.0.0
+  Downloading matplotlib-3.3.2-cp37-cp37m-manylinux1_x86_64.whl (11.6 MB)
+Collecting LunarCalendar>=0.0.9
+  Downloading LunarCalendar-0.0.9-py2.py3-none-any.whl (18 kB)
+Collecting convertdate>=2.1.2
+  Downloading convertdate-2.2.2-py2.py3-none-any.whl (40 kB)
+Collecting holidays>=0.10.2
+  Downloading holidays-0.10.3.tar.gz (114 kB)
+Collecting setuptools-git>=1.2
+  Downloading setuptools_git-1.2-py2.py3-none-any.whl (10 kB)
+Requirement already satisfied, skipping upgrade: python-dateutil>=2.8.0 in /usr/local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 2)) (2.8.1)
+Collecting tqdm>=4.36.1
+  Downloading tqdm-4.50.2-py2.py3-none-any.whl (70 kB)
+Requirement already satisfied, skipping upgrade: pytz>=2017.2 in /usr/local/lib/python3.7/site-packages (from pandas==1.0.3->-r requirements.txt (line 4)) (2020.1)
+Collecting retrying>=1.3.3
+  Downloading retrying-1.3.3.tar.gz (10 kB)
+Requirement already satisfied, skipping upgrade: six in /usr/local/lib/python3.7/site-packages (from plotly==4.10.0->-r requirements.txt (line 5)) (1.15.0)
+Collecting joblib>=0.11
+  Downloading joblib-0.17.0-py3-none-any.whl (301 kB)
+Collecting scipy>=0.17.0
+  Downloading scipy-1.5.2-cp37-cp37m-manylinux1_x86_64.whl (25.9 MB)
+Requirement already satisfied, skipping upgrade: astor in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.8.1)
+Requirement already satisfied, skipping upgrade: packaging in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (20.4)
+Requirement already satisfied, skipping upgrade: tornado>=5.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (6.0.4)
+Requirement already satisfied, skipping upgrade: tzlocal in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (2.1)
+Requirement already satisfied, skipping upgrade: blinker in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.4)
+Requirement already satisfied, skipping upgrade: validators in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.18.1)
+Requirement already satisfied, skipping upgrade: altair>=3.2.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (4.1.0)
+Requirement already satisfied, skipping upgrade: protobuf>=3.6.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (3.13.0)
+Requirement already satisfied, skipping upgrade: click>=7.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (7.1.2)
+Requirement already satisfied, skipping upgrade: base58 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (2.0.1)
+Collecting gitpython
+  Downloading GitPython-3.1.9-py3-none-any.whl (159 kB)
+Requirement already satisfied, skipping upgrade: boto3 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.15.4)
+Requirement already satisfied, skipping upgrade: watchdog in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.10.3)
+Requirement already satisfied, skipping upgrade: pillow>=6.2.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (7.2.0)
+Requirement already satisfied, skipping upgrade: botocore>=1.13.44 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.18.4)
+Requirement already satisfied, skipping upgrade: pydeck>=0.1.dev5 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.5.0b1)
+Requirement already satisfied, skipping upgrade: pyarrow in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.0.1)
+Requirement already satisfied, skipping upgrade: enum-compat in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.0.3)
+Requirement already satisfied, skipping upgrade: toml in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.10.1)
+Requirement already satisfied, skipping upgrade: cachetools>=4.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (4.1.1)
+Collecting soupsieve>1.2; python_version >= "3.0"
+  Downloading soupsieve-2.0.1-py3-none-any.whl (32 kB)
+Requirement already satisfied, skipping upgrade: certifi>=2017.4.17 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (2020.6.20)
+Requirement already satisfied, skipping upgrade: chardet<4,>=3.0.2 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (3.0.4)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (1.25.10)
+Requirement already satisfied, skipping upgrade: idna<3,>=2.5 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (2.10)
+Collecting cycler>=0.10
+  Downloading cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
+Requirement already satisfied, skipping upgrade: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.3 in /usr/local/lib/python3.7/site-packages (from matplotlib>=2.0.0->fbprophet==0.7.1->-r requirements.txt (line 2)) (2.4.7)
+Collecting kiwisolver>=1.0.1
+  Downloading kiwisolver-1.2.0-cp37-cp37m-manylinux1_x86_64.whl (88 kB)
+Collecting ephem>=3.7.5.3
+  Downloading ephem-3.7.7.1-cp37-cp37m-manylinux2010_x86_64.whl (1.2 MB)
+Collecting pymeeus<=1,>=0.3.6
+  Downloading PyMeeus-0.3.7.tar.gz (732 kB)
+Collecting korean_lunar_calendar
+  Downloading korean_lunar_calendar-0.2.1-py3-none-any.whl (8.0 kB)
+Requirement already satisfied, skipping upgrade: decorator>=3.4.0 in /usr/local/lib/python3.7/site-packages (from validators->streamlit==0.69.2->-r requirements.txt (line 7)) (4.4.2)
+Requirement already satisfied, skipping upgrade: jinja2 in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (2.11.2)
+Requirement already satisfied, skipping upgrade: entrypoints in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (0.3)
+Requirement already satisfied, skipping upgrade: toolz in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (0.11.0)
+Requirement already satisfied, skipping upgrade: jsonschema in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (3.2.0)
+Requirement already satisfied, skipping upgrade: setuptools in /usr/local/lib/python3.7/site-packages (from protobuf>=3.6.0->streamlit==0.69.2->-r requirements.txt (line 7)) (50.3.0)
+Collecting gitdb<5,>=4.0.1
+  Downloading gitdb-4.0.5-py3-none-any.whl (63 kB)
+Requirement already satisfied, skipping upgrade: jmespath<1.0.0,>=0.7.1 in /usr/local/lib/python3.7/site-packages (from boto3->streamlit==0.69.2->-r requirements.txt (line 7)) (0.10.0)
+Requirement already satisfied, skipping upgrade: s3transfer<0.4.0,>=0.3.0 in /usr/local/lib/python3.7/site-packages (from boto3->streamlit==0.69.2->-r requirements.txt (line 7)) (0.3.3)
+Requirement already satisfied, skipping upgrade: pathtools>=0.1.1 in /usr/local/lib/python3.7/site-packages (from watchdog->streamlit==0.69.2->-r requirements.txt (line 7)) (0.1.2)
+Requirement already satisfied, skipping upgrade: traitlets>=4.3.2 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (5.0.4)
+Requirement already satisfied, skipping upgrade: ipywidgets>=7.0.0 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (7.5.1)
+Requirement already satisfied, skipping upgrade: ipykernel>=5.1.2; python_version >= "3.4" in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (5.3.4)
+Requirement already satisfied, skipping upgrade: MarkupSafe>=0.23 in /usr/local/lib/python3.7/site-packages (from jinja2->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (1.1.1)
+Requirement already satisfied, skipping upgrade: pyrsistent>=0.14.0 in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (0.17.3)
+Requirement already satisfied, skipping upgrade: attrs>=17.4.0 in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (20.2.0)
+Requirement already satisfied, skipping upgrade: importlib-metadata; python_version < "3.8" in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (2.0.0)
+Collecting smmap<4,>=3.0.1
+  Downloading smmap-3.0.4-py2.py3-none-any.whl (25 kB)
+Requirement already satisfied, skipping upgrade: ipython-genutils in /usr/local/lib/python3.7/site-packages (from traitlets>=4.3.2->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.2.0)
+Requirement already satisfied, skipping upgrade: nbformat>=4.2.0 in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (5.0.7)
+Requirement already satisfied, skipping upgrade: widgetsnbextension~=3.5.0 in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (3.5.1)
+Requirement already satisfied, skipping upgrade: ipython>=4.0.0; python_version >= "3.3" in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (7.18.1)
+Requirement already satisfied, skipping upgrade: jupyter-client in /usr/local/lib/python3.7/site-packages (from ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (6.1.7)
+Requirement already satisfied, skipping upgrade: zipp>=0.5 in /usr/local/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (3.2.0)
+Requirement already satisfied, skipping upgrade: jupyter-core in /usr/local/lib/python3.7/site-packages (from nbformat>=4.2.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (4.6.3)
+Requirement already satisfied, skipping upgrade: notebook>=4.4.1 in /usr/local/lib/python3.7/site-packages (from widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (6.1.4)
+Requirement already satisfied, skipping upgrade: pickleshare in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.7.5)
+Requirement already satisfied, skipping upgrade: prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0 in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (3.0.7)
+Requirement already satisfied, skipping upgrade: pygments in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (2.7.1)
+Requirement already satisfied, skipping upgrade: pexpect>4.3; sys_platform != "win32" in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (4.8.0)
+Requirement already satisfied, skipping upgrade: backcall in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.2.0)
+Requirement already satisfied, skipping upgrade: jedi>=0.10 in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.17.2)
+Requirement already satisfied, skipping upgrade: pyzmq>=13 in /usr/local/lib/python3.7/site-packages (from jupyter-client->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (19.0.2)
+Requirement already satisfied, skipping upgrade: nbconvert in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (6.0.6)
+Requirement already satisfied, skipping upgrade: Send2Trash in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.5.0)
+Requirement already satisfied, skipping upgrade: prometheus-client in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.8.0)
+Requirement already satisfied, skipping upgrade: terminado>=0.8.3 in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.9.1)
+Requirement already satisfied, skipping upgrade: argon2-cffi in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (20.1.0)
+Requirement already satisfied, skipping upgrade: wcwidth in /usr/local/lib/python3.7/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0->ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.2.5)
+Requirement already satisfied, skipping upgrade: ptyprocess>=0.5 in /usr/local/lib/python3.7/site-packages (from pexpect>4.3; sys_platform != "win32"->ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.6.0)
+Requirement already satisfied, skipping upgrade: parso<0.8.0,>=0.7.0 in /usr/local/lib/python3.7/site-packages (from jedi>=0.10->ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.7.1)
+Requirement already satisfied, skipping upgrade: pandocfilters>=1.4.1 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.4.2)
+Requirement already satisfied, skipping upgrade: testpath in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.4.4)
+Requirement already satisfied, skipping upgrade: mistune<2,>=0.8.1 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.8.4)
+Requirement already satisfied, skipping upgrade: bleach in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (3.2.1)
+Requirement already satisfied, skipping upgrade: nbclient<0.6.0,>=0.5.0 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.5.0)
+Requirement already satisfied, skipping upgrade: defusedxml in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.6.0)
+Requirement already satisfied, skipping upgrade: jupyterlab-pygments in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.1.1)
+Requirement already satisfied, skipping upgrade: cffi>=1.0.0 in /usr/local/lib/python3.7/site-packages (from argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.14.3)
+Requirement already satisfied, skipping upgrade: webencodings in /usr/local/lib/python3.7/site-packages (from bleach->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.5.1)
+Requirement already satisfied, skipping upgrade: nest-asyncio in /usr/local/lib/python3.7/site-packages (from nbclient<0.6.0,>=0.5.0->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.4.0)
+Requirement already satisfied, skipping upgrade: async-generator in /usr/local/lib/python3.7/site-packages (from nbclient<0.6.0,>=0.5.0->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.10)
+Requirement already satisfied, skipping upgrade: pycparser in /usr/local/lib/python3.7/site-packages (from cffi>=1.0.0->argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (2.20)
+Building wheels for collected packages: covid, fbprophet, holidays, retrying, pymeeus
+  Building wheel for covid (PEP 517): started
+  Building wheel for covid (PEP 517): finished with status 'done'
+  Created wheel for covid: filename=covid-2.1.4-py3-none-any.whl size=8138 sha256=334d6dd771177c5a063e74d0c1d849e86eca2c048410ee68333fef4855c85090
+  Stored in directory: /home/appuser/.cache/pip/wheels/42/7d/71/0d550cffe0335baffd245614cfb88ef18ac60e76f9bbec28b9
+  Building wheel for fbprophet (setup.py): started
+  Building wheel for fbprophet (setup.py): finished with status 'error'
+  ERROR: Command errored out with exit status 1:
+   command: /usr/local/bin/python -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-xhp8nkg8/fbprophet/setup.py'"'"'; __file__='"'"'/tmp/pip-install-xhp8nkg8/fbprophet/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' bdist_wheel -d /tmp/pip-wheel-_elrk_47
+       cwd: /tmp/pip-install-xhp8nkg8/fbprophet/
+  Complete output (44 lines):
+  running bdist_wheel
+  running build
+  running build_py
+  creating build
+  creating build/lib
+  creating build/lib/fbprophet
+  creating build/lib/fbprophet/stan_model
+  Traceback (most recent call last):
+    File "<string>", line 1, in <module>
+    File "/tmp/pip-install-xhp8nkg8/fbprophet/setup.py", line 149, in <module>
+      long_description_content_type='text/markdown',
+    File "/usr/local/lib/python3.7/site-packages/setuptools/__init__.py", line 153, in setup
+      return distutils.core.setup(**attrs)
+    File "/usr/local/lib/python3.7/distutils/core.py", line 148, in setup
+      dist.run_commands()
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 966, in run_commands
+      self.run_command(cmd)
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 985, in run_command
+      cmd_obj.run()
+    File "/usr/local/lib/python3.7/site-packages/wheel/bdist_wheel.py", line 290, in run
+      self.run_command('build')
+    File "/usr/local/lib/python3.7/distutils/cmd.py", line 313, in run_command
+      self.distribution.run_command(command)
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 985, in run_command
+      cmd_obj.run()
+    File "/usr/local/lib/python3.7/distutils/command/build.py", line 135, in run
+      self.run_command(cmd_name)
+    File "/usr/local/lib/python3.7/distutils/cmd.py", line 313, in run_command
+      self.distribution.run_command(command)
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 985, in run_command
+      cmd_obj.run()
+    File "/tmp/pip-install-xhp8nkg8/fbprophet/setup.py", line 48, in run
+      build_models(target_dir)
+    File "/tmp/pip-install-xhp8nkg8/fbprophet/setup.py", line 36, in build_models
+      from fbprophet.models import StanBackendEnum
+    File "/tmp/pip-install-xhp8nkg8/fbprophet/fbprophet/__init__.py", line 8, in <module>
+      from fbprophet.forecaster import Prophet
+    File "/tmp/pip-install-xhp8nkg8/fbprophet/fbprophet/forecaster.py", line 17, in <module>
+      from fbprophet.make_holidays import get_holiday_names, make_holidays_df
+    File "/tmp/pip-install-xhp8nkg8/fbprophet/fbprophet/make_holidays.py", line 14, in <module>
+      import fbprophet.hdays as hdays_part2
+    File "/tmp/pip-install-xhp8nkg8/fbprophet/fbprophet/hdays.py", line 13, in <module>
+      from convertdate.islamic import from_gregorian, to_gregorian
+  ModuleNotFoundError: No module named 'convertdate'
+  ----------------------------------------
+  ERROR: Failed building wheel for fbprophet
+  Running setup.py clean for fbprophet
+  Building wheel for holidays (setup.py): started
+  Building wheel for holidays (setup.py): finished with status 'done'
+  Created wheel for holidays: filename=holidays-0.10.3-py3-none-any.whl size=115855 sha256=f2c3fc58c4f6a35b0c070083eeb4553271c76c75533f2f18f372f9a0aa587e33
+  Stored in directory: /home/appuser/.cache/pip/wheels/d0/67/01/18308fa32fabcd0af569b9f52934b2118c9b30bcf7b4b378f8
+  Building wheel for retrying (setup.py): started
+  Building wheel for retrying (setup.py): finished with status 'done'
+  Created wheel for retrying: filename=retrying-1.3.3-py3-none-any.whl size=11429 sha256=981885aab08cabfca20c9b48af6c81ae454c689669ee3a7b0241baebb6c4214e
+  Stored in directory: /home/appuser/.cache/pip/wheels/f9/8d/8d/f6af3f7f9eea3553bc2fe6d53e4b287dad18b06a861ac56ddf
+  Building wheel for pymeeus (setup.py): started
+  Building wheel for pymeeus (setup.py): finished with status 'done'
+  Created wheel for pymeeus: filename=PyMeeus-0.3.7-py3-none-any.whl size=702877 sha256=68fd429de835495d8024010e126db0cdb21c83e3404e6bfe2948f4879973e1cb
+  Stored in directory: /home/appuser/.cache/pip/wheels/80/32/5f/2a67880d4ce584b9cf99146f9945e46942dfb010a9382c6ff5
+Successfully built covid holidays retrying pymeeus
+Failed to build fbprophet
+Installing collected packages: soupsieve, beautifulsoup4, pydantic, covid, Cython, numpy, pandas, cmdstanpy, pystan, cycler, kiwisolver, matplotlib, ephem, LunarCalendar, pymeeus, convertdate, korean-lunar-calendar, holidays, setuptools-git, tqdm, fbprophet, retrying, plotly, joblib, scipy, scikit-learn, smmap, gitdb, gitpython, streamlit
+    Running setup.py install for fbprophet: started
+    Running setup.py install for fbprophet: still running...
+    Running setup.py install for fbprophet: finished with status 'done'
+  DEPRECATION: fbprophet was installed using the legacy 'setup.py install' method, because a wheel could not be built for it. pip 21.0 will remove support for this functionality. A possible replacement is to fix the wheel build issue reported above. You can find discussion regarding this at https://github.com/pypa/pip/issues/8368.
+ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
+
+We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
+
+fbprophet 0.7.1 requires pandas>=1.0.4, but you'll have pandas 1.0.3 which is incompatible.
+Successfully installed Cython-0.29.21 LunarCalendar-0.0.9 beautifulsoup4-4.9.3 cmdstanpy-0.9.5 convertdate-2.2.2 covid-2.1.4 cycler-0.10.0 ephem-3.7.7.1 fbprophet-0.7.1 gitdb-4.0.5 gitpython-3.1.9 holidays-0.10.3 joblib-0.17.0 kiwisolver-1.2.0 korean-lunar-calendar-0.2.1 matplotlib-3.3.2 numpy-1.18.5 pandas-1.0.3 plotly-4.10.0 pydantic-1.6.1 pymeeus-0.3.7 pystan-2.19.1.1 retrying-1.3.3 scikit-learn-0.22.1 scipy-1.5.2 setuptools-git-1.2 smmap-3.0.4 soupsieve-2.0.1 streamlit-0.69.2 tqdm-4.50.2
+[manager] Processed dependencies!
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.12.110.7:8501
+  External URL: http://34.83.178.61:8501
+
+2020-10-17 12:30:33.750 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:30:33.750 Something went wrong while unpickling the StanModel. Consider recompiling.
+2020-10-17 12:30:33.758 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:30:33.758 Something went wrong while unpickling the StanModel. Consider recompiling.
+2020-10-17 12:30:33.766 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:30:33.766 Something went wrong while unpickling the StanModel. Consider recompiling.
+Requirement already up-to-date: covid==2.1.4 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 1)) (2.1.4)
+Requirement already up-to-date: pystan in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 2)) (2.19.1.1)
+Requirement already up-to-date: fbprophet==0.7.1 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 3)) (0.7.1)
+Requirement already up-to-date: numpy==1.18.5 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 4)) (1.18.5)
+Requirement already up-to-date: pandas==1.0.3 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 5)) (1.0.3)
+Requirement already up-to-date: plotly==4.10.0 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 6)) (4.10.0)
+Requirement already up-to-date: scikit_learn==0.22.1 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 7)) (0.22.1)
+Requirement already up-to-date: streamlit==0.69.2 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 8)) (0.69.2)
+Requirement already satisfied, skipping upgrade: requests in /usr/local/lib/python3.7/site-packages (from covid==2.1.4->-r requirements.txt (line 1)) (2.24.0)
+Requirement already satisfied, skipping upgrade: pydantic in /home/appuser/.local/lib/python3.7/site-packages (from covid==2.1.4->-r requirements.txt (line 1)) (1.6.1)
+Requirement already satisfied, skipping upgrade: beautifulsoup4 in /home/appuser/.local/lib/python3.7/site-packages (from covid==2.1.4->-r requirements.txt (line 1)) (4.9.3)
+Requirement already satisfied, skipping upgrade: Cython!=0.25.1,>=0.22 in /home/appuser/.local/lib/python3.7/site-packages (from pystan->-r requirements.txt (line 2)) (0.29.21)
+Requirement already satisfied, skipping upgrade: cmdstanpy==0.9.5 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 3)) (0.9.5)
+Requirement already satisfied, skipping upgrade: matplotlib>=2.0.0 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 3)) (3.3.2)
+Requirement already satisfied, skipping upgrade: LunarCalendar>=0.0.9 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 3)) (0.0.9)
+Requirement already satisfied, skipping upgrade: convertdate>=2.1.2 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 3)) (2.2.2)
+Requirement already satisfied, skipping upgrade: holidays>=0.10.2 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 3)) (0.10.3)
+Requirement already satisfied, skipping upgrade: setuptools-git>=1.2 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 3)) (1.2)
+Requirement already satisfied, skipping upgrade: python-dateutil>=2.8.0 in /usr/local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 3)) (2.8.1)
+Requirement already satisfied, skipping upgrade: tqdm>=4.36.1 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 3)) (4.50.2)
+Requirement already satisfied, skipping upgrade: pytz>=2017.2 in /usr/local/lib/python3.7/site-packages (from pandas==1.0.3->-r requirements.txt (line 5)) (2020.1)
+Requirement already satisfied, skipping upgrade: retrying>=1.3.3 in /home/appuser/.local/lib/python3.7/site-packages (from plotly==4.10.0->-r requirements.txt (line 6)) (1.3.3)
+Requirement already satisfied, skipping upgrade: six in /usr/local/lib/python3.7/site-packages (from plotly==4.10.0->-r requirements.txt (line 6)) (1.15.0)
+Requirement already satisfied, skipping upgrade: joblib>=0.11 in /home/appuser/.local/lib/python3.7/site-packages (from scikit_learn==0.22.1->-r requirements.txt (line 7)) (0.17.0)
+Requirement already satisfied, skipping upgrade: scipy>=0.17.0 in /home/appuser/.local/lib/python3.7/site-packages (from scikit_learn==0.22.1->-r requirements.txt (line 7)) (1.5.2)
+Requirement already satisfied, skipping upgrade: boto3 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (1.15.4)
+Requirement already satisfied, skipping upgrade: protobuf>=3.6.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (3.13.0)
+Requirement already satisfied, skipping upgrade: base58 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (2.0.1)
+Requirement already satisfied, skipping upgrade: cachetools>=4.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (4.1.1)
+Requirement already satisfied, skipping upgrade: packaging in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (20.4)
+Requirement already satisfied, skipping upgrade: tornado>=5.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (6.0.4)
+Requirement already satisfied, skipping upgrade: toml in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.10.1)
+Requirement already satisfied, skipping upgrade: enum-compat in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.0.3)
+Requirement already satisfied, skipping upgrade: pydeck>=0.1.dev5 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.5.0b1)
+Requirement already satisfied, skipping upgrade: validators in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.18.1)
+Requirement already satisfied, skipping upgrade: watchdog in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.10.3)
+Requirement already satisfied, skipping upgrade: pyarrow in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (1.0.1)
+Requirement already satisfied, skipping upgrade: botocore>=1.13.44 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (1.18.4)
+Requirement already satisfied, skipping upgrade: gitpython in /home/appuser/.local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (3.1.9)
+Requirement already satisfied, skipping upgrade: altair>=3.2.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (4.1.0)
+Requirement already satisfied, skipping upgrade: blinker in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (1.4)
+Requirement already satisfied, skipping upgrade: tzlocal in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (2.1)
+Requirement already satisfied, skipping upgrade: astor in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.8.1)
+Requirement already satisfied, skipping upgrade: pillow>=6.2.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (7.2.0)
+Requirement already satisfied, skipping upgrade: click>=7.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (7.1.2)
+Requirement already satisfied, skipping upgrade: idna<3,>=2.5 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (2.10)
+Requirement already satisfied, skipping upgrade: chardet<4,>=3.0.2 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (3.0.4)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (1.25.10)
+Requirement already satisfied, skipping upgrade: certifi>=2017.4.17 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (2020.6.20)
+Requirement already satisfied, skipping upgrade: soupsieve>1.2; python_version >= "3.0" in /home/appuser/.local/lib/python3.7/site-packages (from beautifulsoup4->covid==2.1.4->-r requirements.txt (line 1)) (2.0.1)
+Requirement already satisfied, skipping upgrade: kiwisolver>=1.0.1 in /home/appuser/.local/lib/python3.7/site-packages (from matplotlib>=2.0.0->fbprophet==0.7.1->-r requirements.txt (line 3)) (1.2.0)
+Requirement already satisfied, skipping upgrade: cycler>=0.10 in /home/appuser/.local/lib/python3.7/site-packages (from matplotlib>=2.0.0->fbprophet==0.7.1->-r requirements.txt (line 3)) (0.10.0)
+Requirement already satisfied, skipping upgrade: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.3 in /usr/local/lib/python3.7/site-packages (from matplotlib>=2.0.0->fbprophet==0.7.1->-r requirements.txt (line 3)) (2.4.7)
+Requirement already satisfied, skipping upgrade: ephem>=3.7.5.3 in /home/appuser/.local/lib/python3.7/site-packages (from LunarCalendar>=0.0.9->fbprophet==0.7.1->-r requirements.txt (line 3)) (3.7.7.1)
+Requirement already satisfied, skipping upgrade: pymeeus<=1,>=0.3.6 in /home/appuser/.local/lib/python3.7/site-packages (from convertdate>=2.1.2->fbprophet==0.7.1->-r requirements.txt (line 3)) (0.3.7)
+Requirement already satisfied, skipping upgrade: korean-lunar-calendar in /home/appuser/.local/lib/python3.7/site-packages (from holidays>=0.10.2->fbprophet==0.7.1->-r requirements.txt (line 3)) (0.2.1)
+Requirement already satisfied, skipping upgrade: s3transfer<0.4.0,>=0.3.0 in /usr/local/lib/python3.7/site-packages (from boto3->streamlit==0.69.2->-r requirements.txt (line 8)) (0.3.3)
+Requirement already satisfied, skipping upgrade: jmespath<1.0.0,>=0.7.1 in /usr/local/lib/python3.7/site-packages (from boto3->streamlit==0.69.2->-r requirements.txt (line 8)) (0.10.0)
+Requirement already satisfied, skipping upgrade: setuptools in /usr/local/lib/python3.7/site-packages (from protobuf>=3.6.0->streamlit==0.69.2->-r requirements.txt (line 8)) (50.3.0)
+Requirement already satisfied, skipping upgrade: ipywidgets>=7.0.0 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (7.5.1)
+Requirement already satisfied, skipping upgrade: traitlets>=4.3.2 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (5.0.4)
+Requirement already satisfied, skipping upgrade: jinja2>=2.10.1 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (2.11.2)
+Requirement already satisfied, skipping upgrade: ipykernel>=5.1.2; python_version >= "3.4" in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (5.3.4)
+Requirement already satisfied, skipping upgrade: decorator>=3.4.0 in /usr/local/lib/python3.7/site-packages (from validators->streamlit==0.69.2->-r requirements.txt (line 8)) (4.4.2)
+Requirement already satisfied, skipping upgrade: pathtools>=0.1.1 in /usr/local/lib/python3.7/site-packages (from watchdog->streamlit==0.69.2->-r requirements.txt (line 8)) (0.1.2)
+Requirement already satisfied, skipping upgrade: gitdb<5,>=4.0.1 in /home/appuser/.local/lib/python3.7/site-packages (from gitpython->streamlit==0.69.2->-r requirements.txt (line 8)) (4.0.5)
+Requirement already satisfied, skipping upgrade: toolz in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (0.11.0)
+Requirement already satisfied, skipping upgrade: entrypoints in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (0.3)
+Requirement already satisfied, skipping upgrade: jsonschema in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (3.2.0)
+Requirement already satisfied, skipping upgrade: widgetsnbextension~=3.5.0 in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (3.5.1)
+Requirement already satisfied, skipping upgrade: ipython>=4.0.0; python_version >= "3.3" in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (7.18.1)
+Requirement already satisfied, skipping upgrade: nbformat>=4.2.0 in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (5.0.7)
+Requirement already satisfied, skipping upgrade: ipython-genutils in /usr/local/lib/python3.7/site-packages (from traitlets>=4.3.2->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.2.0)
+Requirement already satisfied, skipping upgrade: MarkupSafe>=0.23 in /usr/local/lib/python3.7/site-packages (from jinja2>=2.10.1->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.1.1)
+Requirement already satisfied, skipping upgrade: jupyter-client in /usr/local/lib/python3.7/site-packages (from ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (6.1.7)
+Requirement already satisfied, skipping upgrade: smmap<4,>=3.0.1 in /home/appuser/.local/lib/python3.7/site-packages (from gitdb<5,>=4.0.1->gitpython->streamlit==0.69.2->-r requirements.txt (line 8)) (3.0.4)
+Requirement already satisfied, skipping upgrade: pyrsistent>=0.14.0 in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (0.17.3)
+Requirement already satisfied, skipping upgrade: attrs>=17.4.0 in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (20.2.0)
+Requirement already satisfied, skipping upgrade: importlib-metadata; python_version < "3.8" in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (2.0.0)
+Requirement already satisfied, skipping upgrade: notebook>=4.4.1 in /usr/local/lib/python3.7/site-packages (from widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (6.1.4)
+Requirement already satisfied, skipping upgrade: backcall in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.2.0)
+Requirement already satisfied, skipping upgrade: jedi>=0.10 in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.17.2)
+Requirement already satisfied, skipping upgrade: prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0 in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (3.0.7)
+Requirement already satisfied, skipping upgrade: pexpect>4.3; sys_platform != "win32" in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (4.8.0)
+Requirement already satisfied, skipping upgrade: pickleshare in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.7.5)
+Requirement already satisfied, skipping upgrade: pygments in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (2.7.1)
+Requirement already satisfied, skipping upgrade: jupyter-core in /usr/local/lib/python3.7/site-packages (from nbformat>=4.2.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (4.6.3)
+Requirement already satisfied, skipping upgrade: pyzmq>=13 in /usr/local/lib/python3.7/site-packages (from jupyter-client->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (19.0.2)
+Requirement already satisfied, skipping upgrade: zipp>=0.5 in /usr/local/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (3.2.0)
+Requirement already satisfied, skipping upgrade: argon2-cffi in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (20.1.0)
+Requirement already satisfied, skipping upgrade: nbconvert in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (6.0.6)
+Requirement already satisfied, skipping upgrade: Send2Trash in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.5.0)
+Requirement already satisfied, skipping upgrade: prometheus-client in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.8.0)
+Requirement already satisfied, skipping upgrade: terminado>=0.8.3 in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.9.1)
+Requirement already satisfied, skipping upgrade: parso<0.8.0,>=0.7.0 in /usr/local/lib/python3.7/site-packages (from jedi>=0.10->ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.7.1)
+Requirement already satisfied, skipping upgrade: wcwidth in /usr/local/lib/python3.7/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0->ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.2.5)
+Requirement already satisfied, skipping upgrade: ptyprocess>=0.5 in /usr/local/lib/python3.7/site-packages (from pexpect>4.3; sys_platform != "win32"->ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.6.0)
+Requirement already satisfied, skipping upgrade: cffi>=1.0.0 in /usr/local/lib/python3.7/site-packages (from argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.14.3)
+Requirement already satisfied, skipping upgrade: defusedxml in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.6.0)
+Requirement already satisfied, skipping upgrade: bleach in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (3.2.1)
+Requirement already satisfied, skipping upgrade: pandocfilters>=1.4.1 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.4.2)
+Requirement already satisfied, skipping upgrade: jupyterlab-pygments in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.1.1)
+Requirement already satisfied, skipping upgrade: nbclient<0.6.0,>=0.5.0 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.5.0)
+Requirement already satisfied, skipping upgrade: mistune<2,>=0.8.1 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.8.4)
+Requirement already satisfied, skipping upgrade: testpath in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.4.4)
+Requirement already satisfied, skipping upgrade: pycparser in /usr/local/lib/python3.7/site-packages (from cffi>=1.0.0->argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (2.20)
+Requirement already satisfied, skipping upgrade: webencodings in /usr/local/lib/python3.7/site-packages (from bleach->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.5.1)
+Requirement already satisfied, skipping upgrade: nest-asyncio in /usr/local/lib/python3.7/site-packages (from nbclient<0.6.0,>=0.5.0->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.4.0)
+Requirement already satisfied, skipping upgrade: async-generator in /usr/local/lib/python3.7/site-packages (from nbclient<0.6.0,>=0.5.0->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.10)
+  Stopping...
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.12.110.7:8501
+  External URL: http://34.83.178.61:8501
+
+2020-10-17 12:31:34.512 Task exception was never retrieved
+future: <Task finished coro=<WebSocketProtocol13.write_message.<locals>.wrapper() done, defined at /usr/local/lib/python3.7/site-packages/tornado/websocket.py:1102> exception=WebSocketClosedError()>
+Traceback (most recent call last):
+tornado.iostream.StreamClosedError: Stream is closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+tornado.websocket.WebSocketClosedError
+[manager] Starting up for owner: 'r0han99', repository: 'covid19-ml-application', branch: 'master', main module: 'covid19-recon.py'
+[manager] Cloning repository ...
+[manager] Cloning into 'covid19-ml-application'...
+
+[manager] Cloned repository!
+[manager] Processing dependencies ...
+Collecting covid==2.1.4
+  Downloading covid-2.1.4.tar.gz (7.4 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+    Preparing wheel metadata: started
+    Preparing wheel metadata: finished with status 'done'
+Collecting pystan
+  Downloading pystan-2.19.1.1-cp37-cp37m-manylinux1_x86_64.whl (67.3 MB)
+Collecting fbprophet==0.7.1
+  Downloading fbprophet-0.7.1.tar.gz (64 kB)
+Collecting numpy==1.18.5
+  Downloading numpy-1.18.5-cp37-cp37m-manylinux1_x86_64.whl (20.1 MB)
+Collecting pandas==1.0.3
+  Downloading pandas-1.0.3-cp37-cp37m-manylinux1_x86_64.whl (10.0 MB)
+Collecting plotly==4.10.0
+  Downloading plotly-4.10.0-py2.py3-none-any.whl (13.0 MB)
+Collecting scikit_learn==0.22.1
+  Downloading scikit_learn-0.22.1-cp37-cp37m-manylinux1_x86_64.whl (7.0 MB)
+Collecting streamlit==0.69.2
+  Downloading streamlit-0.69.2-py2.py3-none-any.whl (7.4 MB)
+Collecting beautifulsoup4
+  Downloading beautifulsoup4-4.9.3-py3-none-any.whl (115 kB)
+Collecting pydantic
+  Downloading pydantic-1.6.1-cp37-cp37m-manylinux2014_x86_64.whl (8.6 MB)
+Requirement already satisfied, skipping upgrade: requests in /usr/local/lib/python3.7/site-packages (from covid==2.1.4->-r requirements.txt (line 1)) (2.24.0)
+Collecting Cython!=0.25.1,>=0.22
+  Downloading Cython-0.29.21-cp37-cp37m-manylinux1_x86_64.whl (2.0 MB)
+Collecting cmdstanpy==0.9.5
+  Downloading cmdstanpy-0.9.5-py3-none-any.whl (37 kB)
+Collecting matplotlib>=2.0.0
+  Downloading matplotlib-3.3.2-cp37-cp37m-manylinux1_x86_64.whl (11.6 MB)
+Collecting LunarCalendar>=0.0.9
+  Downloading LunarCalendar-0.0.9-py2.py3-none-any.whl (18 kB)
+Collecting convertdate>=2.1.2
+  Downloading convertdate-2.2.2-py2.py3-none-any.whl (40 kB)
+Collecting holidays>=0.10.2
+  Downloading holidays-0.10.3.tar.gz (114 kB)
+Collecting setuptools-git>=1.2
+  Downloading setuptools_git-1.2-py2.py3-none-any.whl (10 kB)
+Requirement already satisfied, skipping upgrade: python-dateutil>=2.8.0 in /usr/local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 3)) (2.8.1)
+Collecting tqdm>=4.36.1
+  Downloading tqdm-4.50.2-py2.py3-none-any.whl (70 kB)
+Requirement already satisfied, skipping upgrade: pytz>=2017.2 in /usr/local/lib/python3.7/site-packages (from pandas==1.0.3->-r requirements.txt (line 5)) (2020.1)
+Requirement already satisfied, skipping upgrade: six in /usr/local/lib/python3.7/site-packages (from plotly==4.10.0->-r requirements.txt (line 6)) (1.15.0)
+Collecting retrying>=1.3.3
+  Downloading retrying-1.3.3.tar.gz (10 kB)
+Collecting scipy>=0.17.0
+  Downloading scipy-1.5.2-cp37-cp37m-manylinux1_x86_64.whl (25.9 MB)
+Collecting joblib>=0.11
+  Downloading joblib-0.17.0-py3-none-any.whl (301 kB)
+Requirement already satisfied, skipping upgrade: cachetools>=4.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (4.1.1)
+Collecting gitpython
+  Downloading GitPython-3.1.9-py3-none-any.whl (159 kB)
+Requirement already satisfied, skipping upgrade: boto3 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (1.15.4)
+Requirement already satisfied, skipping upgrade: botocore>=1.13.44 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (1.18.4)
+Requirement already satisfied, skipping upgrade: packaging in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (20.4)
+Requirement already satisfied, skipping upgrade: protobuf>=3.6.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (3.13.0)
+Requirement already satisfied, skipping upgrade: blinker in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (1.4)
+Requirement already satisfied, skipping upgrade: tornado>=5.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (6.0.4)
+Requirement already satisfied, skipping upgrade: tzlocal in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (2.1)
+Requirement already satisfied, skipping upgrade: base58 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (2.0.1)
+Requirement already satisfied, skipping upgrade: enum-compat in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.0.3)
+Requirement already satisfied, skipping upgrade: watchdog in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.10.3)
+Requirement already satisfied, skipping upgrade: toml in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.10.1)
+Requirement already satisfied, skipping upgrade: click>=7.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (7.1.2)
+Requirement already satisfied, skipping upgrade: validators in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.18.1)
+Requirement already satisfied, skipping upgrade: pydeck>=0.1.dev5 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.5.0b1)
+Requirement already satisfied, skipping upgrade: pyarrow in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (1.0.1)
+Requirement already satisfied, skipping upgrade: altair>=3.2.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (4.1.0)
+Requirement already satisfied, skipping upgrade: pillow>=6.2.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (7.2.0)
+Requirement already satisfied, skipping upgrade: astor in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 8)) (0.8.1)
+Collecting soupsieve>1.2; python_version >= "3.0"
+  Downloading soupsieve-2.0.1-py3-none-any.whl (32 kB)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (1.25.10)
+Requirement already satisfied, skipping upgrade: idna<3,>=2.5 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (2.10)
+Requirement already satisfied, skipping upgrade: certifi>=2017.4.17 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (2020.6.20)
+Requirement already satisfied, skipping upgrade: chardet<4,>=3.0.2 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (3.0.4)
+Requirement already satisfied, skipping upgrade: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.3 in /usr/local/lib/python3.7/site-packages (from matplotlib>=2.0.0->fbprophet==0.7.1->-r requirements.txt (line 3)) (2.4.7)
+Collecting cycler>=0.10
+  Downloading cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
+Collecting kiwisolver>=1.0.1
+  Downloading kiwisolver-1.2.0-cp37-cp37m-manylinux1_x86_64.whl (88 kB)
+Collecting ephem>=3.7.5.3
+  Downloading ephem-3.7.7.1-cp37-cp37m-manylinux2010_x86_64.whl (1.2 MB)
+Collecting pymeeus<=1,>=0.3.6
+  Downloading PyMeeus-0.3.7.tar.gz (732 kB)
+Collecting korean_lunar_calendar
+  Downloading korean_lunar_calendar-0.2.1-py3-none-any.whl (8.0 kB)
+Collecting gitdb<5,>=4.0.1
+  Downloading gitdb-4.0.5-py3-none-any.whl (63 kB)
+Requirement already satisfied, skipping upgrade: jmespath<1.0.0,>=0.7.1 in /usr/local/lib/python3.7/site-packages (from boto3->streamlit==0.69.2->-r requirements.txt (line 8)) (0.10.0)
+Requirement already satisfied, skipping upgrade: s3transfer<0.4.0,>=0.3.0 in /usr/local/lib/python3.7/site-packages (from boto3->streamlit==0.69.2->-r requirements.txt (line 8)) (0.3.3)
+Requirement already satisfied, skipping upgrade: setuptools in /usr/local/lib/python3.7/site-packages (from protobuf>=3.6.0->streamlit==0.69.2->-r requirements.txt (line 8)) (50.3.0)
+Requirement already satisfied, skipping upgrade: pathtools>=0.1.1 in /usr/local/lib/python3.7/site-packages (from watchdog->streamlit==0.69.2->-r requirements.txt (line 8)) (0.1.2)
+Requirement already satisfied, skipping upgrade: decorator>=3.4.0 in /usr/local/lib/python3.7/site-packages (from validators->streamlit==0.69.2->-r requirements.txt (line 8)) (4.4.2)
+Requirement already satisfied, skipping upgrade: traitlets>=4.3.2 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (5.0.4)
+Requirement already satisfied, skipping upgrade: ipywidgets>=7.0.0 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (7.5.1)
+Requirement already satisfied, skipping upgrade: ipykernel>=5.1.2; python_version >= "3.4" in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (5.3.4)
+Requirement already satisfied, skipping upgrade: jinja2>=2.10.1 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (2.11.2)
+Requirement already satisfied, skipping upgrade: toolz in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (0.11.0)
+Requirement already satisfied, skipping upgrade: entrypoints in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (0.3)
+Requirement already satisfied, skipping upgrade: jsonschema in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (3.2.0)
+Collecting smmap<4,>=3.0.1
+  Downloading smmap-3.0.4-py2.py3-none-any.whl (25 kB)
+Requirement already satisfied, skipping upgrade: ipython-genutils in /usr/local/lib/python3.7/site-packages (from traitlets>=4.3.2->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.2.0)
+Requirement already satisfied, skipping upgrade: ipython>=4.0.0; python_version >= "3.3" in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (7.18.1)
+Requirement already satisfied, skipping upgrade: widgetsnbextension~=3.5.0 in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (3.5.1)
+Requirement already satisfied, skipping upgrade: nbformat>=4.2.0 in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (5.0.7)
+Requirement already satisfied, skipping upgrade: jupyter-client in /usr/local/lib/python3.7/site-packages (from ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (6.1.7)
+Requirement already satisfied, skipping upgrade: MarkupSafe>=0.23 in /usr/local/lib/python3.7/site-packages (from jinja2>=2.10.1->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.1.1)
+Requirement already satisfied, skipping upgrade: importlib-metadata; python_version < "3.8" in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (2.0.0)
+Requirement already satisfied, skipping upgrade: pyrsistent>=0.14.0 in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (0.17.3)
+Requirement already satisfied, skipping upgrade: attrs>=17.4.0 in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (20.2.0)
+Requirement already satisfied, skipping upgrade: pexpect>4.3; sys_platform != "win32" in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (4.8.0)
+Requirement already satisfied, skipping upgrade: pickleshare in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.7.5)
+Requirement already satisfied, skipping upgrade: backcall in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.2.0)
+Requirement already satisfied, skipping upgrade: jedi>=0.10 in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.17.2)
+Requirement already satisfied, skipping upgrade: prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0 in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (3.0.7)
+Requirement already satisfied, skipping upgrade: pygments in /usr/local/lib/python3.7/site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (2.7.1)
+Requirement already satisfied, skipping upgrade: notebook>=4.4.1 in /usr/local/lib/python3.7/site-packages (from widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (6.1.4)
+Requirement already satisfied, skipping upgrade: jupyter-core in /usr/local/lib/python3.7/site-packages (from nbformat>=4.2.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (4.6.3)
+Requirement already satisfied, skipping upgrade: pyzmq>=13 in /usr/local/lib/python3.7/site-packages (from jupyter-client->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (19.0.2)
+Requirement already satisfied, skipping upgrade: zipp>=0.5 in /usr/local/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 8)) (3.2.0)
+Requirement already satisfied, skipping upgrade: ptyprocess>=0.5 in /usr/local/lib/python3.7/site-packages (from pexpect>4.3; sys_platform != "win32"->ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.6.0)
+Requirement already satisfied, skipping upgrade: parso<0.8.0,>=0.7.0 in /usr/local/lib/python3.7/site-packages (from jedi>=0.10->ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.7.1)
+Requirement already satisfied, skipping upgrade: wcwidth in /usr/local/lib/python3.7/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0->ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.2.5)
+Requirement already satisfied, skipping upgrade: terminado>=0.8.3 in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.9.1)
+Requirement already satisfied, skipping upgrade: nbconvert in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (6.0.6)
+Requirement already satisfied, skipping upgrade: prometheus-client in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.8.0)
+Requirement already satisfied, skipping upgrade: Send2Trash in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.5.0)
+Requirement already satisfied, skipping upgrade: argon2-cffi in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (20.1.0)
+Requirement already satisfied, skipping upgrade: pandocfilters>=1.4.1 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.4.2)
+Requirement already satisfied, skipping upgrade: mistune<2,>=0.8.1 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.8.4)
+Requirement already satisfied, skipping upgrade: bleach in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (3.2.1)
+Requirement already satisfied, skipping upgrade: jupyterlab-pygments in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.1.1)
+Requirement already satisfied, skipping upgrade: nbclient<0.6.0,>=0.5.0 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.5.0)
+Requirement already satisfied, skipping upgrade: testpath in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.4.4)
+Requirement already satisfied, skipping upgrade: defusedxml in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.6.0)
+Requirement already satisfied, skipping upgrade: cffi>=1.0.0 in /usr/local/lib/python3.7/site-packages (from argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.14.3)
+Requirement already satisfied, skipping upgrade: webencodings in /usr/local/lib/python3.7/site-packages (from bleach->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (0.5.1)
+Requirement already satisfied, skipping upgrade: async-generator in /usr/local/lib/python3.7/site-packages (from nbclient<0.6.0,>=0.5.0->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.10)
+Requirement already satisfied, skipping upgrade: nest-asyncio in /usr/local/lib/python3.7/site-packages (from nbclient<0.6.0,>=0.5.0->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (1.4.0)
+Requirement already satisfied, skipping upgrade: pycparser in /usr/local/lib/python3.7/site-packages (from cffi>=1.0.0->argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 8)) (2.20)
+Building wheels for collected packages: covid, fbprophet, holidays, retrying, pymeeus
+  Building wheel for covid (PEP 517): started
+  Building wheel for covid (PEP 517): finished with status 'done'
+  Created wheel for covid: filename=covid-2.1.4-py3-none-any.whl size=8138 sha256=85c88069174c8a2dee3a82561c8b9a5a0f1de08c5495b69d87299f00c6eedd94
+  Stored in directory: /home/appuser/.cache/pip/wheels/42/7d/71/0d550cffe0335baffd245614cfb88ef18ac60e76f9bbec28b9
+  Building wheel for fbprophet (setup.py): started
+  Building wheel for fbprophet (setup.py): finished with status 'error'
+  ERROR: Command errored out with exit status 1:
+   command: /usr/local/bin/python -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-sgu_z8xj/fbprophet/setup.py'"'"'; __file__='"'"'/tmp/pip-install-sgu_z8xj/fbprophet/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' bdist_wheel -d /tmp/pip-wheel-epv0qhv5
+       cwd: /tmp/pip-install-sgu_z8xj/fbprophet/
+  Complete output (44 lines):
+  running bdist_wheel
+  running build
+  running build_py
+  creating build
+  creating build/lib
+  creating build/lib/fbprophet
+  creating build/lib/fbprophet/stan_model
+  Traceback (most recent call last):
+    File "<string>", line 1, in <module>
+    File "/tmp/pip-install-sgu_z8xj/fbprophet/setup.py", line 149, in <module>
+      long_description_content_type='text/markdown',
+    File "/usr/local/lib/python3.7/site-packages/setuptools/__init__.py", line 153, in setup
+      return distutils.core.setup(**attrs)
+    File "/usr/local/lib/python3.7/distutils/core.py", line 148, in setup
+      dist.run_commands()
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 966, in run_commands
+      self.run_command(cmd)
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 985, in run_command
+      cmd_obj.run()
+    File "/usr/local/lib/python3.7/site-packages/wheel/bdist_wheel.py", line 290, in run
+      self.run_command('build')
+    File "/usr/local/lib/python3.7/distutils/cmd.py", line 313, in run_command
+      self.distribution.run_command(command)
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 985, in run_command
+      cmd_obj.run()
+    File "/usr/local/lib/python3.7/distutils/command/build.py", line 135, in run
+      self.run_command(cmd_name)
+    File "/usr/local/lib/python3.7/distutils/cmd.py", line 313, in run_command
+      self.distribution.run_command(command)
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 985, in run_command
+      cmd_obj.run()
+    File "/tmp/pip-install-sgu_z8xj/fbprophet/setup.py", line 48, in run
+      build_models(target_dir)
+    File "/tmp/pip-install-sgu_z8xj/fbprophet/setup.py", line 36, in build_models
+      from fbprophet.models import StanBackendEnum
+    File "/tmp/pip-install-sgu_z8xj/fbprophet/fbprophet/__init__.py", line 8, in <module>
+      from fbprophet.forecaster import Prophet
+    File "/tmp/pip-install-sgu_z8xj/fbprophet/fbprophet/forecaster.py", line 17, in <module>
+      from fbprophet.make_holidays import get_holiday_names, make_holidays_df
+    File "/tmp/pip-install-sgu_z8xj/fbprophet/fbprophet/make_holidays.py", line 14, in <module>
+      import fbprophet.hdays as hdays_part2
+    File "/tmp/pip-install-sgu_z8xj/fbprophet/fbprophet/hdays.py", line 13, in <module>
+      from convertdate.islamic import from_gregorian, to_gregorian
+  ModuleNotFoundError: No module named 'convertdate'
+  ----------------------------------------
+  ERROR: Failed building wheel for fbprophet
+  Running setup.py clean for fbprophet
+  Building wheel for holidays (setup.py): started
+  Building wheel for holidays (setup.py): finished with status 'done'
+  Created wheel for holidays: filename=holidays-0.10.3-py3-none-any.whl size=115855 sha256=bc7515a065da158ba1a95b1b9cc8af2470cf43399833cff07be33c3ac9790bd7
+  Stored in directory: /home/appuser/.cache/pip/wheels/d0/67/01/18308fa32fabcd0af569b9f52934b2118c9b30bcf7b4b378f8
+  Building wheel for retrying (setup.py): started
+  Building wheel for retrying (setup.py): finished with status 'done'
+  Created wheel for retrying: filename=retrying-1.3.3-py3-none-any.whl size=11429 sha256=8ec697c25bec0d5067175bba0dfff5d6f5f91a341e3c069a3c7521bbd08c370b
+  Stored in directory: /home/appuser/.cache/pip/wheels/f9/8d/8d/f6af3f7f9eea3553bc2fe6d53e4b287dad18b06a861ac56ddf
+  Building wheel for pymeeus (setup.py): started
+  Building wheel for pymeeus (setup.py): finished with status 'done'
+  Created wheel for pymeeus: filename=PyMeeus-0.3.7-py3-none-any.whl size=702877 sha256=e985fa2cc3dcbcf8b9ee8e5974da088dacb47dc3dae2a11c4c66d8b140eb9a84
+  Stored in directory: /home/appuser/.cache/pip/wheels/80/32/5f/2a67880d4ce584b9cf99146f9945e46942dfb010a9382c6ff5
+Successfully built covid holidays retrying pymeeus
+Failed to build fbprophet
+Installing collected packages: soupsieve, beautifulsoup4, pydantic, covid, numpy, Cython, pystan, pandas, cmdstanpy, cycler, kiwisolver, matplotlib, ephem, LunarCalendar, pymeeus, convertdate, korean-lunar-calendar, holidays, setuptools-git, tqdm, fbprophet, retrying, plotly, scipy, joblib, scikit-learn, smmap, gitdb, gitpython, streamlit
+    Running setup.py install for fbprophet: started
+    Running setup.py install for fbprophet: still running...
+    Running setup.py install for fbprophet: finished with status 'done'
+  DEPRECATION: fbprophet was installed using the legacy 'setup.py install' method, because a wheel could not be built for it. pip 21.0 will remove support for this functionality. A possible replacement is to fix the wheel build issue reported above. You can find discussion regarding this at https://github.com/pypa/pip/issues/8368.
+ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
+
+We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
+
+fbprophet 0.7.1 requires pandas>=1.0.4, but you'll have pandas 1.0.3 which is incompatible.
+Successfully installed Cython-0.29.21 LunarCalendar-0.0.9 beautifulsoup4-4.9.3 cmdstanpy-0.9.5 convertdate-2.2.2 covid-2.1.4 cycler-0.10.0 ephem-3.7.7.1 fbprophet-0.7.1 gitdb-4.0.5 gitpython-3.1.9 holidays-0.10.3 joblib-0.17.0 kiwisolver-1.2.0 korean-lunar-calendar-0.2.1 matplotlib-3.3.2 numpy-1.18.5 pandas-1.0.3 plotly-4.10.0 pydantic-1.6.1 pymeeus-0.3.7 pystan-2.19.1.1 retrying-1.3.3 scikit-learn-0.22.1 scipy-1.5.2 setuptools-git-1.2 smmap-3.0.4 soupsieve-2.0.1 streamlit-0.69.2 tqdm-4.50.2
+[manager] Processed dependencies!
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.12.73.12:8501
+  External URL: http://35.203.180.63:8501
+
+2020-10-17 12:33:58.987 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:33:58.987 Something went wrong while unpickling the StanModel. Consider recompiling.
+2020-10-17 12:33:58.996 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:33:58.996 Something went wrong while unpickling the StanModel. Consider recompiling.
+2020-10-17 12:33:59.004 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:33:59.004 Something went wrong while unpickling the StanModel. Consider recompiling.
+Requirement already up-to-date: covid==2.1.4 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 1)) (2.1.4)
+Requirement already up-to-date: pystan==2.19.1.1 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 2)) (2.19.1.1)
+Requirement already up-to-date: numpy==1.18.5 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 3)) (1.18.5)
+Requirement already up-to-date: pandas==1.0.3 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 4)) (1.0.3)
+Requirement already up-to-date: plotly==4.10.0 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 5)) (4.10.0)
+Requirement already up-to-date: scikit_learn==0.22.1 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 6)) (0.22.1)
+Requirement already up-to-date: streamlit==0.69.2 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 7)) (0.69.2)
+Requirement already up-to-date: fbprophet==0.7.1 in /home/appuser/.local/lib/python3.7/site-packages (from -r requirements.txt (line 8)) (0.7.1)
+Requirement already satisfied, skipping upgrade: pydantic in /home/appuser/.local/lib/python3.7/site-packages (from covid==2.1.4->-r requirements.txt (line 1)) (1.6.1)
+Requirement already satisfied, skipping upgrade: beautifulsoup4 in /home/appuser/.local/lib/python3.7/site-packages (from covid==2.1.4->-r requirements.txt (line 1)) (4.9.3)
+Requirement already satisfied, skipping upgrade: requests in /usr/local/lib/python3.7/site-packages (from covid==2.1.4->-r requirements.txt (line 1)) (2.24.0)
+Requirement already satisfied, skipping upgrade: Cython!=0.25.1,>=0.22 in /home/appuser/.local/lib/python3.7/site-packages (from pystan==2.19.1.1->-r requirements.txt (line 2)) (0.29.21)
+Requirement already satisfied, skipping upgrade: pytz>=2017.2 in /usr/local/lib/python3.7/site-packages (from pandas==1.0.3->-r requirements.txt (line 4)) (2020.1)
+Requirement already satisfied, skipping upgrade: python-dateutil>=2.6.1 in /usr/local/lib/python3.7/site-packages (from pandas==1.0.3->-r requirements.txt (line 4)) (2.8.1)
+Requirement already satisfied, skipping upgrade: six in /usr/local/lib/python3.7/site-packages (from plotly==4.10.0->-r requirements.txt (line 5)) (1.15.0)
+Requirement already satisfied, skipping upgrade: retrying>=1.3.3 in /home/appuser/.local/lib/python3.7/site-packages (from plotly==4.10.0->-r requirements.txt (line 5)) (1.3.3)
+Requirement already satisfied, skipping upgrade: joblib>=0.11 in /home/appuser/.local/lib/python3.7/site-packages (from scikit_learn==0.22.1->-r requirements.txt (line 6)) (0.17.0)
+Requirement already satisfied, skipping upgrade: scipy>=0.17.0 in /home/appuser/.local/lib/python3.7/site-packages (from scikit_learn==0.22.1->-r requirements.txt (line 6)) (1.5.2)
+Requirement already satisfied, skipping upgrade: pydeck>=0.1.dev5 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.5.0b1)
+Requirement already satisfied, skipping upgrade: toml in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.10.1)
+Requirement already satisfied, skipping upgrade: botocore>=1.13.44 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.18.4)
+Requirement already satisfied, skipping upgrade: pillow>=6.2.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (7.2.0)
+Requirement already satisfied, skipping upgrade: altair>=3.2.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (4.1.0)
+Requirement already satisfied, skipping upgrade: boto3 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.15.4)
+Requirement already satisfied, skipping upgrade: watchdog in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.10.3)
+Requirement already satisfied, skipping upgrade: base58 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (2.0.1)
+Requirement already satisfied, skipping upgrade: tzlocal in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (2.1)
+Requirement already satisfied, skipping upgrade: tornado>=5.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (6.0.4)
+Requirement already satisfied, skipping upgrade: astor in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.8.1)
+Requirement already satisfied, skipping upgrade: click>=7.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (7.1.2)
+Requirement already satisfied, skipping upgrade: packaging in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (20.4)
+Requirement already satisfied, skipping upgrade: cachetools>=4.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (4.1.1)
+Requirement already satisfied, skipping upgrade: enum-compat in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.0.3)
+Requirement already satisfied, skipping upgrade: validators in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.18.1)
+Requirement already satisfied, skipping upgrade: gitpython in /home/appuser/.local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (3.1.9)
+Requirement already satisfied, skipping upgrade: blinker in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.4)
+Requirement already satisfied, skipping upgrade: protobuf>=3.6.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (3.13.0)
+Requirement already satisfied, skipping upgrade: pyarrow in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.0.1)
+Requirement already satisfied, skipping upgrade: cmdstanpy==0.9.5 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 8)) (0.9.5)
+Requirement already satisfied, skipping upgrade: matplotlib>=2.0.0 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 8)) (3.3.2)
+Requirement already satisfied, skipping upgrade: LunarCalendar>=0.0.9 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 8)) (0.0.9)
+Requirement already satisfied, skipping upgrade: convertdate>=2.1.2 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 8)) (2.2.2)
+Requirement already satisfied, skipping upgrade: holidays>=0.10.2 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 8)) (0.10.3)
+Requirement already satisfied, skipping upgrade: setuptools-git>=1.2 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 8)) (1.2)
+Requirement already satisfied, skipping upgrade: tqdm>=4.36.1 in /home/appuser/.local/lib/python3.7/site-packages (from fbprophet==0.7.1->-r requirements.txt (line 8)) (4.50.2)
+Requirement already satisfied, skipping upgrade: soupsieve>1.2; python_version >= "3.0" in /home/appuser/.local/lib/python3.7/site-packages (from beautifulsoup4->covid==2.1.4->-r requirements.txt (line 1)) (2.0.1)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (1.25.10)
+Requirement already satisfied, skipping upgrade: idna<3,>=2.5 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (2.10)
+Requirement already satisfied, skipping upgrade: chardet<4,>=3.0.2 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (3.0.4)
+Requirement already satisfied, skipping upgrade: certifi>=2017.4.17 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (2020.6.20)
+Requirement already satisfied, skipping upgrade: ipykernel>=5.1.2; python_version >= "3.4" in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (5.3.4)
+Requirement already satisfied, skipping upgrade: traitlets>=4.3.2 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (5.0.4)
+Requirement already satisfied, skipping upgrade: jinja2>=2.10.1 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (2.11.2)
+Requirement already satisfied, skipping upgrade: ipywidgets>=7.0.0 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (7.5.1)
+Requirement already satisfied, skipping upgrade: jmespath<1.0.0,>=0.7.1 in /usr/local/lib/python3.7/site-packages (from botocore>=1.13.44->streamlit==0.69.2->-r requirements.txt (line 7)) (0.10.0)
+Requirement already satisfied, skipping upgrade: toolz in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (0.11.0)
+Requirement already satisfied, skipping upgrade: jsonschema in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (3.2.0)
+Requirement already satisfied, skipping upgrade: entrypoints in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (0.3)
+Requirement already satisfied, skipping upgrade: s3transfer<0.4.0,>=0.3.0 in /usr/local/lib/python3.7/site-packages (from boto3->streamlit==0.69.2->-r requirements.txt (line 7)) (0.3.3)
+Requirement already satisfied, skipping upgrade: pathtools>=0.1.1 in /usr/local/lib/python3.7/site-packages (from watchdog->streamlit==0.69.2->-r requirements.txt (line 7)) (0.1.2)
+Requirement already satisfied, skipping upgrade: pyparsing>=2.0.2 in /usr/local/lib/python3.7/site-packages (from packaging->streamlit==0.69.2->-r requirements.txt (line 7)) (2.4.7)
+Requirement already satisfied, skipping upgrade: decorator>=3.4.0 in /usr/local/lib/python3.7/site-packages (from validators->streamlit==0.69.2->-r requirements.txt (line 7)) (4.4.2)
+Requirement already satisfied, skipping upgrade: gitdb<5,>=4.0.1 in /home/appuser/.local/lib/python3.7/site-packages (from gitpython->streamlit==0.69.2->-r requirements.txt (line 7)) (4.0.5)
+Requirement already satisfied, skipping upgrade: setuptools in /usr/local/lib/python3.7/site-packages (from protobuf>=3.6.0->streamlit==0.69.2->-r requirements.txt (line 7)) (50.3.0)
+Requirement already satisfied, skipping upgrade: kiwisolver>=1.0.1 in /home/appuser/.local/lib/python3.7/site-packages (from matplotlib>=2.0.0->fbprophet==0.7.1->-r requirements.txt (line 8)) (1.2.0)
+Requirement already satisfied, skipping upgrade: cycler>=0.10 in /home/appuser/.local/lib/python3.7/site-packages (from matplotlib>=2.0.0->fbprophet==0.7.1->-r requirements.txt (line 8)) (0.10.0)
+Requirement already satisfied, skipping upgrade: ephem>=3.7.5.3 in /home/appuser/.local/lib/python3.7/site-packages (from LunarCalendar>=0.0.9->fbprophet==0.7.1->-r requirements.txt (line 8)) (3.7.7.1)
+Requirement already satisfied, skipping upgrade: pymeeus<=1,>=0.3.6 in /home/appuser/.local/lib/python3.7/site-packages (from convertdate>=2.1.2->fbprophet==0.7.1->-r requirements.txt (line 8)) (0.3.7)
+Requirement already satisfied, skipping upgrade: korean-lunar-calendar in /home/appuser/.local/lib/python3.7/site-packages (from holidays>=0.10.2->fbprophet==0.7.1->-r requirements.txt (line 8)) (0.2.1)
+Requirement already satisfied, skipping upgrade: ipython>=5.0.0 in /usr/local/lib/python3.7/site-packages (from ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (7.18.1)
+Requirement already satisfied, skipping upgrade: jupyter-client in /usr/local/lib/python3.7/site-packages (from ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (6.1.7)
+Requirement already satisfied, skipping upgrade: ipython-genutils in /usr/local/lib/python3.7/site-packages (from traitlets>=4.3.2->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.2.0)
+Requirement already satisfied, skipping upgrade: MarkupSafe>=0.23 in /usr/local/lib/python3.7/site-packages (from jinja2>=2.10.1->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.1.1)
+Requirement already satisfied, skipping upgrade: widgetsnbextension~=3.5.0 in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (3.5.1)
+Requirement already satisfied, skipping upgrade: nbformat>=4.2.0 in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (5.0.7)
+Requirement already satisfied, skipping upgrade: importlib-metadata; python_version < "3.8" in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (2.0.0)
+Requirement already satisfied, skipping upgrade: pyrsistent>=0.14.0 in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (0.17.3)
+Requirement already satisfied, skipping upgrade: attrs>=17.4.0 in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (20.2.0)
+Requirement already satisfied, skipping upgrade: smmap<4,>=3.0.1 in /home/appuser/.local/lib/python3.7/site-packages (from gitdb<5,>=4.0.1->gitpython->streamlit==0.69.2->-r requirements.txt (line 7)) (3.0.4)
+Requirement already satisfied, skipping upgrade: pexpect>4.3; sys_platform != "win32" in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (4.8.0)
+Requirement already satisfied, skipping upgrade: pygments in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (2.7.1)
+Requirement already satisfied, skipping upgrade: pickleshare in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.7.5)
+Requirement already satisfied, skipping upgrade: jedi>=0.10 in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.17.2)
+Requirement already satisfied, skipping upgrade: backcall in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.2.0)
+Requirement already satisfied, skipping upgrade: prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0 in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (3.0.7)
+Requirement already satisfied, skipping upgrade: jupyter-core>=4.6.0 in /usr/local/lib/python3.7/site-packages (from jupyter-client->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (4.6.3)
+Requirement already satisfied, skipping upgrade: pyzmq>=13 in /usr/local/lib/python3.7/site-packages (from jupyter-client->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (19.0.2)
+Requirement already satisfied, skipping upgrade: notebook>=4.4.1 in /usr/local/lib/python3.7/site-packages (from widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (6.1.4)
+Requirement already satisfied, skipping upgrade: zipp>=0.5 in /usr/local/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (3.2.0)
+Requirement already satisfied, skipping upgrade: ptyprocess>=0.5 in /usr/local/lib/python3.7/site-packages (from pexpect>4.3; sys_platform != "win32"->ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.6.0)
+Requirement already satisfied, skipping upgrade: parso<0.8.0,>=0.7.0 in /usr/local/lib/python3.7/site-packages (from jedi>=0.10->ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.7.1)
+Requirement already satisfied, skipping upgrade: wcwidth in /usr/local/lib/python3.7/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0->ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.2.5)
+Requirement already satisfied, skipping upgrade: Send2Trash in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.5.0)
+Requirement already satisfied, skipping upgrade: terminado>=0.8.3 in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.9.1)
+Requirement already satisfied, skipping upgrade: argon2-cffi in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (20.1.0)
+Requirement already satisfied, skipping upgrade: nbconvert in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (6.0.6)
+Requirement already satisfied, skipping upgrade: prometheus-client in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.8.0)
+Requirement already satisfied, skipping upgrade: cffi>=1.0.0 in /usr/local/lib/python3.7/site-packages (from argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.14.3)
+Requirement already satisfied, skipping upgrade: jupyterlab-pygments in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.1.1)
+Requirement already satisfied, skipping upgrade: pandocfilters>=1.4.1 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.4.2)
+Requirement already satisfied, skipping upgrade: mistune<2,>=0.8.1 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.8.4)
+Requirement already satisfied, skipping upgrade: bleach in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (3.2.1)
+Requirement already satisfied, skipping upgrade: nbclient<0.6.0,>=0.5.0 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.5.0)
+Requirement already satisfied, skipping upgrade: defusedxml in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.6.0)
+Requirement already satisfied, skipping upgrade: testpath in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.4.4)
+Requirement already satisfied, skipping upgrade: pycparser in /usr/local/lib/python3.7/site-packages (from cffi>=1.0.0->argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (2.20)
+Requirement already satisfied, skipping upgrade: webencodings in /usr/local/lib/python3.7/site-packages (from bleach->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.5.1)
+Requirement already satisfied, skipping upgrade: async-generator in /usr/local/lib/python3.7/site-packages (from nbclient<0.6.0,>=0.5.0->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.10)
+Requirement already satisfied, skipping upgrade: nest-asyncio in /usr/local/lib/python3.7/site-packages (from nbclient<0.6.0,>=0.5.0->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.4.0)
+  Stopping...
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.12.73.12:8501
+  External URL: http://35.203.180.63:8501
+
+2020-10-17 12:36:07.503 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:36:07.503 Something went wrong while unpickling the StanModel. Consider recompiling.
+2020-10-17 12:36:07.512 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:36:07.512 Something went wrong while unpickling the StanModel. Consider recompiling.
+2020-10-17 12:36:07.520 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:36:07.520 Something went wrong while unpickling the StanModel. Consider recompiling.
+[manager] Starting up for owner: 'r0han99', repository: 'covid19-ml-application', branch: 'master', main module: 'covid19-recon.py'
+[manager] Cloning repository ...
+[manager] Cloning into 'covid19-ml-application'...
+
+[manager] Cloned repository!
+[manager] Processing dependencies ...
+Collecting covid==2.1.4
+  Downloading covid-2.1.4.tar.gz (7.4 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+    Preparing wheel metadata: started
+    Preparing wheel metadata: finished with status 'done'
+Collecting pystan==2.19.1.1
+  Downloading pystan-2.19.1.1-cp37-cp37m-manylinux1_x86_64.whl (67.3 MB)
+Collecting numpy==1.18.5
+  Downloading numpy-1.18.5-cp37-cp37m-manylinux1_x86_64.whl (20.1 MB)
+Collecting pandas==1.0.3
+  Downloading pandas-1.0.3-cp37-cp37m-manylinux1_x86_64.whl (10.0 MB)
+Collecting plotly==4.10.0
+  Downloading plotly-4.10.0-py2.py3-none-any.whl (13.0 MB)
+Collecting scikit_learn==0.22.1
+  Downloading scikit_learn-0.22.1-cp37-cp37m-manylinux1_x86_64.whl (7.0 MB)
+Collecting streamlit==0.69.2
+  Downloading streamlit-0.69.2-py2.py3-none-any.whl (7.4 MB)
+Collecting fbprophet==0.7.1
+  Downloading fbprophet-0.7.1.tar.gz (64 kB)
+Requirement already satisfied, skipping upgrade: requests in /usr/local/lib/python3.7/site-packages (from covid==2.1.4->-r requirements.txt (line 1)) (2.24.0)
+Collecting pydantic
+  Downloading pydantic-1.6.1-cp37-cp37m-manylinux2014_x86_64.whl (8.6 MB)
+Collecting beautifulsoup4
+  Downloading beautifulsoup4-4.9.3-py3-none-any.whl (115 kB)
+Collecting Cython!=0.25.1,>=0.22
+  Downloading Cython-0.29.21-cp37-cp37m-manylinux1_x86_64.whl (2.0 MB)
+Requirement already satisfied, skipping upgrade: pytz>=2017.2 in /usr/local/lib/python3.7/site-packages (from pandas==1.0.3->-r requirements.txt (line 4)) (2020.1)
+Requirement already satisfied, skipping upgrade: python-dateutil>=2.6.1 in /usr/local/lib/python3.7/site-packages (from pandas==1.0.3->-r requirements.txt (line 4)) (2.8.1)
+Collecting retrying>=1.3.3
+  Downloading retrying-1.3.3.tar.gz (10 kB)
+Requirement already satisfied, skipping upgrade: six in /usr/local/lib/python3.7/site-packages (from plotly==4.10.0->-r requirements.txt (line 5)) (1.15.0)
+Collecting scipy>=0.17.0
+  Downloading scipy-1.5.2-cp37-cp37m-manylinux1_x86_64.whl (25.9 MB)
+Collecting joblib>=0.11
+  Downloading joblib-0.17.0-py3-none-any.whl (301 kB)
+Collecting gitpython
+  Downloading GitPython-3.1.9-py3-none-any.whl (159 kB)
+Requirement already satisfied, skipping upgrade: protobuf>=3.6.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (3.13.0)
+Requirement already satisfied, skipping upgrade: cachetools>=4.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (4.1.1)
+Requirement already satisfied, skipping upgrade: botocore>=1.13.44 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.18.4)
+Requirement already satisfied, skipping upgrade: pyarrow in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.0.1)
+Requirement already satisfied, skipping upgrade: packaging in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (20.4)
+Requirement already satisfied, skipping upgrade: boto3 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.15.4)
+Requirement already satisfied, skipping upgrade: toml in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.10.1)
+Requirement already satisfied, skipping upgrade: blinker in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (1.4)
+Requirement already satisfied, skipping upgrade: watchdog in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.10.3)
+Requirement already satisfied, skipping upgrade: validators in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.18.1)
+Requirement already satisfied, skipping upgrade: pillow>=6.2.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (7.2.0)
+Requirement already satisfied, skipping upgrade: astor in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.8.1)
+Requirement already satisfied, skipping upgrade: click>=7.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (7.1.2)
+Requirement already satisfied, skipping upgrade: tzlocal in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (2.1)
+Requirement already satisfied, skipping upgrade: base58 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (2.0.1)
+Requirement already satisfied, skipping upgrade: altair>=3.2.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (4.1.0)
+Requirement already satisfied, skipping upgrade: enum-compat in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.0.3)
+Requirement already satisfied, skipping upgrade: pydeck>=0.1.dev5 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (0.5.0b1)
+Requirement already satisfied, skipping upgrade: tornado>=5.0 in /usr/local/lib/python3.7/site-packages (from streamlit==0.69.2->-r requirements.txt (line 7)) (6.0.4)
+Collecting cmdstanpy==0.9.5
+  Downloading cmdstanpy-0.9.5-py3-none-any.whl (37 kB)
+Collecting matplotlib>=2.0.0
+  Downloading matplotlib-3.3.2-cp37-cp37m-manylinux1_x86_64.whl (11.6 MB)
+Collecting LunarCalendar>=0.0.9
+  Downloading LunarCalendar-0.0.9-py2.py3-none-any.whl (18 kB)
+Collecting convertdate>=2.1.2
+  Downloading convertdate-2.2.2-py2.py3-none-any.whl (40 kB)
+Collecting holidays>=0.10.2
+  Downloading holidays-0.10.3.tar.gz (114 kB)
+Collecting setuptools-git>=1.2
+  Downloading setuptools_git-1.2-py2.py3-none-any.whl (10 kB)
+Collecting tqdm>=4.36.1
+  Downloading tqdm-4.50.2-py2.py3-none-any.whl (70 kB)
+Requirement already satisfied, skipping upgrade: certifi>=2017.4.17 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (2020.6.20)
+Requirement already satisfied, skipping upgrade: chardet<4,>=3.0.2 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (3.0.4)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (1.25.10)
+Requirement already satisfied, skipping upgrade: idna<3,>=2.5 in /usr/local/lib/python3.7/site-packages (from requests->covid==2.1.4->-r requirements.txt (line 1)) (2.10)
+Collecting soupsieve>1.2; python_version >= "3.0"
+  Downloading soupsieve-2.0.1-py3-none-any.whl (32 kB)
+Collecting gitdb<5,>=4.0.1
+  Downloading gitdb-4.0.5-py3-none-any.whl (63 kB)
+Requirement already satisfied, skipping upgrade: setuptools in /usr/local/lib/python3.7/site-packages (from protobuf>=3.6.0->streamlit==0.69.2->-r requirements.txt (line 7)) (50.3.0)
+Requirement already satisfied, skipping upgrade: jmespath<1.0.0,>=0.7.1 in /usr/local/lib/python3.7/site-packages (from botocore>=1.13.44->streamlit==0.69.2->-r requirements.txt (line 7)) (0.10.0)
+Requirement already satisfied, skipping upgrade: pyparsing>=2.0.2 in /usr/local/lib/python3.7/site-packages (from packaging->streamlit==0.69.2->-r requirements.txt (line 7)) (2.4.7)
+Requirement already satisfied, skipping upgrade: s3transfer<0.4.0,>=0.3.0 in /usr/local/lib/python3.7/site-packages (from boto3->streamlit==0.69.2->-r requirements.txt (line 7)) (0.3.3)
+Requirement already satisfied, skipping upgrade: pathtools>=0.1.1 in /usr/local/lib/python3.7/site-packages (from watchdog->streamlit==0.69.2->-r requirements.txt (line 7)) (0.1.2)
+Requirement already satisfied, skipping upgrade: decorator>=3.4.0 in /usr/local/lib/python3.7/site-packages (from validators->streamlit==0.69.2->-r requirements.txt (line 7)) (4.4.2)
+Requirement already satisfied, skipping upgrade: toolz in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (0.11.0)
+Requirement already satisfied, skipping upgrade: jsonschema in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (3.2.0)
+Requirement already satisfied, skipping upgrade: entrypoints in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (0.3)
+Requirement already satisfied, skipping upgrade: jinja2 in /usr/local/lib/python3.7/site-packages (from altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (2.11.2)
+Requirement already satisfied, skipping upgrade: ipykernel>=5.1.2; python_version >= "3.4" in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (5.3.4)
+Requirement already satisfied, skipping upgrade: ipywidgets>=7.0.0 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (7.5.1)
+Requirement already satisfied, skipping upgrade: traitlets>=4.3.2 in /usr/local/lib/python3.7/site-packages (from pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (5.0.4)
+Collecting cycler>=0.10
+  Downloading cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
+Collecting kiwisolver>=1.0.1
+  Downloading kiwisolver-1.2.0-cp37-cp37m-manylinux1_x86_64.whl (88 kB)
+Collecting ephem>=3.7.5.3
+  Downloading ephem-3.7.7.1-cp37-cp37m-manylinux2010_x86_64.whl (1.2 MB)
+Collecting pymeeus<=1,>=0.3.6
+  Downloading PyMeeus-0.3.7.tar.gz (732 kB)
+Collecting korean_lunar_calendar
+  Downloading korean_lunar_calendar-0.2.1-py3-none-any.whl (8.0 kB)
+Collecting smmap<4,>=3.0.1
+  Downloading smmap-3.0.4-py2.py3-none-any.whl (25 kB)
+Requirement already satisfied, skipping upgrade: importlib-metadata; python_version < "3.8" in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (2.0.0)
+Requirement already satisfied, skipping upgrade: attrs>=17.4.0 in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (20.2.0)
+Requirement already satisfied, skipping upgrade: pyrsistent>=0.14.0 in /usr/local/lib/python3.7/site-packages (from jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (0.17.3)
+Requirement already satisfied, skipping upgrade: MarkupSafe>=0.23 in /usr/local/lib/python3.7/site-packages (from jinja2->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (1.1.1)
+Requirement already satisfied, skipping upgrade: jupyter-client in /usr/local/lib/python3.7/site-packages (from ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (6.1.7)
+Requirement already satisfied, skipping upgrade: ipython>=5.0.0 in /usr/local/lib/python3.7/site-packages (from ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (7.18.1)
+Requirement already satisfied, skipping upgrade: nbformat>=4.2.0 in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (5.0.7)
+Requirement already satisfied, skipping upgrade: widgetsnbextension~=3.5.0 in /usr/local/lib/python3.7/site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (3.5.1)
+Requirement already satisfied, skipping upgrade: ipython-genutils in /usr/local/lib/python3.7/site-packages (from traitlets>=4.3.2->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.2.0)
+Requirement already satisfied, skipping upgrade: zipp>=0.5 in /usr/local/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->jsonschema->altair>=3.2.0->streamlit==0.69.2->-r requirements.txt (line 7)) (3.2.0)
+Requirement already satisfied, skipping upgrade: jupyter-core>=4.6.0 in /usr/local/lib/python3.7/site-packages (from jupyter-client->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (4.6.3)
+Requirement already satisfied, skipping upgrade: pyzmq>=13 in /usr/local/lib/python3.7/site-packages (from jupyter-client->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (19.0.2)
+Requirement already satisfied, skipping upgrade: pickleshare in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.7.5)
+Requirement already satisfied, skipping upgrade: jedi>=0.10 in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.17.2)
+Requirement already satisfied, skipping upgrade: prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0 in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (3.0.7)
+Requirement already satisfied, skipping upgrade: pygments in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (2.7.1)
+Requirement already satisfied, skipping upgrade: backcall in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.2.0)
+Requirement already satisfied, skipping upgrade: pexpect>4.3; sys_platform != "win32" in /usr/local/lib/python3.7/site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (4.8.0)
+Requirement already satisfied, skipping upgrade: notebook>=4.4.1 in /usr/local/lib/python3.7/site-packages (from widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (6.1.4)
+Requirement already satisfied, skipping upgrade: parso<0.8.0,>=0.7.0 in /usr/local/lib/python3.7/site-packages (from jedi>=0.10->ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.7.1)
+Requirement already satisfied, skipping upgrade: wcwidth in /usr/local/lib/python3.7/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0->ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.2.5)
+Requirement already satisfied, skipping upgrade: ptyprocess>=0.5 in /usr/local/lib/python3.7/site-packages (from pexpect>4.3; sys_platform != "win32"->ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.6.0)
+Requirement already satisfied, skipping upgrade: prometheus-client in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.8.0)
+Requirement already satisfied, skipping upgrade: nbconvert in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (6.0.6)
+Requirement already satisfied, skipping upgrade: Send2Trash in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.5.0)
+Requirement already satisfied, skipping upgrade: terminado>=0.8.3 in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.9.1)
+Requirement already satisfied, skipping upgrade: argon2-cffi in /usr/local/lib/python3.7/site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (20.1.0)
+Requirement already satisfied, skipping upgrade: nbclient<0.6.0,>=0.5.0 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.5.0)
+Requirement already satisfied, skipping upgrade: mistune<2,>=0.8.1 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.8.4)
+Requirement already satisfied, skipping upgrade: jupyterlab-pygments in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.1.1)
+Requirement already satisfied, skipping upgrade: bleach in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (3.2.1)
+Requirement already satisfied, skipping upgrade: pandocfilters>=1.4.1 in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.4.2)
+Requirement already satisfied, skipping upgrade: defusedxml in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.6.0)
+Requirement already satisfied, skipping upgrade: testpath in /usr/local/lib/python3.7/site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.4.4)
+Requirement already satisfied, skipping upgrade: cffi>=1.0.0 in /usr/local/lib/python3.7/site-packages (from argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.14.3)
+Requirement already satisfied, skipping upgrade: async-generator in /usr/local/lib/python3.7/site-packages (from nbclient<0.6.0,>=0.5.0->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.10)
+Requirement already satisfied, skipping upgrade: nest-asyncio in /usr/local/lib/python3.7/site-packages (from nbclient<0.6.0,>=0.5.0->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (1.4.0)
+Requirement already satisfied, skipping upgrade: webencodings in /usr/local/lib/python3.7/site-packages (from bleach->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (0.5.1)
+Requirement already satisfied, skipping upgrade: pycparser in /usr/local/lib/python3.7/site-packages (from cffi>=1.0.0->argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit==0.69.2->-r requirements.txt (line 7)) (2.20)
+Building wheels for collected packages: covid, fbprophet, retrying, holidays, pymeeus
+  Building wheel for covid (PEP 517): started
+  Building wheel for covid (PEP 517): finished with status 'done'
+  Created wheel for covid: filename=covid-2.1.4-py3-none-any.whl size=8138 sha256=1c4e6209a10f2f539b4e684fe8ad5539390e1ed3960d1b54ad74fc073b2e6844
+  Stored in directory: /home/appuser/.cache/pip/wheels/42/7d/71/0d550cffe0335baffd245614cfb88ef18ac60e76f9bbec28b9
+  Building wheel for fbprophet (setup.py): started
+  Building wheel for fbprophet (setup.py): finished with status 'error'
+  ERROR: Command errored out with exit status 1:
+   command: /usr/local/bin/python -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-x4r1okx9/fbprophet/setup.py'"'"'; __file__='"'"'/tmp/pip-install-x4r1okx9/fbprophet/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' bdist_wheel -d /tmp/pip-wheel-ktw50s8l
+       cwd: /tmp/pip-install-x4r1okx9/fbprophet/
+  Complete output (44 lines):
+  running bdist_wheel
+  running build
+  running build_py
+  creating build
+  creating build/lib
+  creating build/lib/fbprophet
+  creating build/lib/fbprophet/stan_model
+  Traceback (most recent call last):
+    File "<string>", line 1, in <module>
+    File "/tmp/pip-install-x4r1okx9/fbprophet/setup.py", line 149, in <module>
+      long_description_content_type='text/markdown',
+    File "/usr/local/lib/python3.7/site-packages/setuptools/__init__.py", line 153, in setup
+      return distutils.core.setup(**attrs)
+    File "/usr/local/lib/python3.7/distutils/core.py", line 148, in setup
+      dist.run_commands()
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 966, in run_commands
+      self.run_command(cmd)
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 985, in run_command
+      cmd_obj.run()
+    File "/usr/local/lib/python3.7/site-packages/wheel/bdist_wheel.py", line 290, in run
+      self.run_command('build')
+    File "/usr/local/lib/python3.7/distutils/cmd.py", line 313, in run_command
+      self.distribution.run_command(command)
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 985, in run_command
+      cmd_obj.run()
+    File "/usr/local/lib/python3.7/distutils/command/build.py", line 135, in run
+      self.run_command(cmd_name)
+    File "/usr/local/lib/python3.7/distutils/cmd.py", line 313, in run_command
+      self.distribution.run_command(command)
+    File "/usr/local/lib/python3.7/distutils/dist.py", line 985, in run_command
+      cmd_obj.run()
+    File "/tmp/pip-install-x4r1okx9/fbprophet/setup.py", line 48, in run
+      build_models(target_dir)
+    File "/tmp/pip-install-x4r1okx9/fbprophet/setup.py", line 36, in build_models
+      from fbprophet.models import StanBackendEnum
+    File "/tmp/pip-install-x4r1okx9/fbprophet/fbprophet/__init__.py", line 8, in <module>
+      from fbprophet.forecaster import Prophet
+    File "/tmp/pip-install-x4r1okx9/fbprophet/fbprophet/forecaster.py", line 17, in <module>
+      from fbprophet.make_holidays import get_holiday_names, make_holidays_df
+    File "/tmp/pip-install-x4r1okx9/fbprophet/fbprophet/make_holidays.py", line 14, in <module>
+      import fbprophet.hdays as hdays_part2
+    File "/tmp/pip-install-x4r1okx9/fbprophet/fbprophet/hdays.py", line 13, in <module>
+      from convertdate.islamic import from_gregorian, to_gregorian
+  ModuleNotFoundError: No module named 'convertdate'
+  ----------------------------------------
+  ERROR: Failed building wheel for fbprophet
+  Running setup.py clean for fbprophet
+  Building wheel for retrying (setup.py): started
+  Building wheel for retrying (setup.py): finished with status 'done'
+  Created wheel for retrying: filename=retrying-1.3.3-py3-none-any.whl size=11429 sha256=a7ea085badb55a744ad395c1c3d544f500023ebd0f804b44bfe9180659047f68
+  Stored in directory: /home/appuser/.cache/pip/wheels/f9/8d/8d/f6af3f7f9eea3553bc2fe6d53e4b287dad18b06a861ac56ddf
+  Building wheel for holidays (setup.py): started
+  Building wheel for holidays (setup.py): finished with status 'done'
+  Created wheel for holidays: filename=holidays-0.10.3-py3-none-any.whl size=115855 sha256=3e61b562e17fe02640f3353f8c8f0e2316f44bfe6de0a9b7127d960ad0903696
+  Stored in directory: /home/appuser/.cache/pip/wheels/d0/67/01/18308fa32fabcd0af569b9f52934b2118c9b30bcf7b4b378f8
+  Building wheel for pymeeus (setup.py): started
+  Building wheel for pymeeus (setup.py): finished with status 'done'
+  Created wheel for pymeeus: filename=PyMeeus-0.3.7-py3-none-any.whl size=702877 sha256=07f302a67363d2220b806b5e0ecb529fef24de49e99964724df4ab436c86356e
+  Stored in directory: /home/appuser/.cache/pip/wheels/80/32/5f/2a67880d4ce584b9cf99146f9945e46942dfb010a9382c6ff5
+Successfully built covid retrying holidays pymeeus
+Failed to build fbprophet
+Installing collected packages: pydantic, soupsieve, beautifulsoup4, covid, numpy, Cython, pystan, pandas, retrying, plotly, scipy, joblib, scikit-learn, smmap, gitdb, gitpython, streamlit, cmdstanpy, cycler, kiwisolver, matplotlib, ephem, LunarCalendar, pymeeus, convertdate, korean-lunar-calendar, holidays, setuptools-git, tqdm, fbprophet
+    Running setup.py install for fbprophet: started
+    Running setup.py install for fbprophet: still running...
+    Running setup.py install for fbprophet: finished with status 'done'
+  DEPRECATION: fbprophet was installed using the legacy 'setup.py install' method, because a wheel could not be built for it. pip 21.0 will remove support for this functionality. A possible replacement is to fix the wheel build issue reported above. You can find discussion regarding this at https://github.com/pypa/pip/issues/8368.
+ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
+
+We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
+
+fbprophet 0.7.1 requires pandas>=1.0.4, but you'll have pandas 1.0.3 which is incompatible.
+Successfully installed Cython-0.29.21 LunarCalendar-0.0.9 beautifulsoup4-4.9.3 cmdstanpy-0.9.5 convertdate-2.2.2 covid-2.1.4 cycler-0.10.0 ephem-3.7.7.1 fbprophet-0.7.1 gitdb-4.0.5 gitpython-3.1.9 holidays-0.10.3 joblib-0.17.0 kiwisolver-1.2.0 korean-lunar-calendar-0.2.1 matplotlib-3.3.2 numpy-1.18.5 pandas-1.0.3 plotly-4.10.0 pydantic-1.6.1 pymeeus-0.3.7 pystan-2.19.1.1 retrying-1.3.3 scikit-learn-0.22.1 scipy-1.5.2 setuptools-git-1.2 smmap-3.0.4 soupsieve-2.0.1 streamlit-0.69.2 tqdm-4.50.2
+[manager] Processed dependencies!
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.12.151.8:8501
+  External URL: http://34.83.178.61:8501
+
+2020-10-17 12:38:56.224 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:38:56.224 Something went wrong while unpickling the StanModel. Consider recompiling.
+2020-10-17 12:38:56.234 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:38:56.234 Something went wrong while unpickling the StanModel. Consider recompiling.
+2020-10-17 12:38:56.242 No module named 'stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_7734558486350351847'
+2020-10-17 12:38:56.242 Something went wrong while unpickling the StanModel. Consider recompiling.
