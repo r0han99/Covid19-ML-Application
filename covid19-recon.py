@@ -507,8 +507,21 @@ def prophet_subplots(pred_conf,pred_recov,pred_ded):
 
 
 
-# @st.cache(hash_funcs={pystan.model.StanModel: my_hash_func})
-def prophet_prediction_engine(daysinfuture,model_conf,model_rec,model_ded):
+@st.cache(persist=True)
+def prophet_prediction_engine(daysinfuture,Model_select):
+
+    # Model Selection
+    with open('./Model-Confirmed/{}.pkl'.format(Model_select), 'rb') as f:
+        model_conf = pickle.load(f)
+
+    with open('./Model-Recovered/{}.pkl'.format(Model_select), 'rb') as f:
+        model_rec = pickle.load(f)
+
+    with open('./Model-Deaths/{}.pkl'.format(Model_select), 'rb') as f:
+        model_ded = pickle.load(f)
+
+
+
     # Genertor, Future dates in ds
     future_conf = model_conf.make_future_dataframe(periods=daysinfuture)
     future_recov = model_rec.make_future_dataframe(periods=daysinfuture)
@@ -1107,19 +1120,9 @@ daysinfuture = st.sidebar.number_input('Enter Number of Periods(days) in the Fut
 
 # Model_select = st.multiselect('Select a Country for Machine Learning Model Implementation ( Default : India )',['US', 'India', 'Brazil', 'Russia', 'Argentina', 'Colombia', 'Spain'],default=['India'],key='Prophet-Models')
 
-# Loading the Models 
-with open('./Model-Confirmed/{}.pkl'.format(Model_select), 'rb') as f:
-    model_conf = pickle.load(f)
-
-with open('./Model-Recovered/{}.pkl'.format(Model_select), 'rb') as f:
-    model_rec = pickle.load(f)
-
-with open('./Model-Deaths/{}.pkl'.format(Model_select), 'rb') as f:
-    model_ded = pickle.load(f)
-
 
 #prophet-prediction-engine
-pred_conf,pred_recov,pred_ded = prophet_prediction_engine(daysinfuture,model_conf,model_rec,model_ded)
+pred_conf,pred_recov,pred_ded = prophet_prediction_engine(daysinfuture,Model_select)
 
 # current
 current_date = trans_conf[trans_conf['Country/Region'] == Model_select].iloc[:,-1:].columns[0]
