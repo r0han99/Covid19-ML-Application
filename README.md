@@ -38,7 +38,7 @@ One might consider _Nuclear Warfare_ and a _Climatic catastrophe_ as the biggest
 
 ## Version TimeLine( Changelog)
 
-- **[30/9/2020] ~ V 1.0.1** 
+- **[30/9/2020] ~ V 1.0.1** _The Polynomial version_ 
     - Global statistics, Time Series visualisation & pie-chart of percentiles 
     - Frequency of Cases Reported Globally, Time Series Plot
     - Country Mortality and Recovery Rates
@@ -47,7 +47,7 @@ One might consider _Nuclear Warfare_ and a _Climatic catastrophe_ as the biggest
     - Constrasting Subplots for the Selected Countries 
     - Polynomial Regression to Predict the Confirmed Cases of any of the Selected 7 Countries ( top7 critically hit countries ) 
 
-- **[17/10/2020] ~ V 1.0.2**
+- **[17/10/2020] ~ V 1.0.2** _The Prophet Version_
     - Everything From V 1.0.1,Except
     - Polynomial Regression Models are Swapped with Facebook's Prophet Model
     - Predicts all the Three Attributes (Confirmed, Recovered, Deaths)
