@@ -507,7 +507,7 @@ def prophet_subplots(pred_conf,pred_recov,pred_ded):
 
 
 
-@st.cache(hash_funcs={pystan.model.StanModel: my_hash_func})
+# @st.cache(hash_funcs={pystan.model.StanModel: my_hash_func})
 def prophet_prediction_engine(daysinfuture,model_conf,model_rec,model_ded):
     # Genertor, Future dates in ds
     future_conf = model_conf.make_future_dataframe(periods=daysinfuture)
