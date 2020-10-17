@@ -11,6 +11,19 @@ and a Predictive Model which has the ability to forecast the number of cases in 
 
 ```A Time Series Plot From the Application ```
 
+## V1.0.2 - The Prophet Version
+
+<img width="1440" alt="ProphetPred" src="https://user-images.githubusercontent.com/45916202/96338478-0341df00-10ac-11eb-871f-5edbf0dbbb47.png">
+<img width="1440" alt="ProphetViz" src="https://user-images.githubusercontent.com/45916202/96338481-04730c00-10ac-11eb-8bef-c91491140dbd.png">
+
+- Swapped Facebook's Prophet Model for the Naive Polynomial Regression 
+- Added Summarized Global Stats on the sidebar
+- Changed Plot color schemes 
+
+
+
+
+
 ## Abstract
 
 One might consider _Nuclear Warfare_ and a _Climatic catastrophe_ as the biggest failure that humanity could ever experience but, People Failed to Acknowledge that the emergence of any _Novel infectious disease_ has the potential to wipe out a major portion of human existence within no time. As they did in the past. Despite the intense studies on the patterns of theses epidemic outbreaks, when, where and how these outbreaks trigger is out of the comprehension. Severe respiratory disease was reported in Wuhan, Hubei province, China. As of 25 January 2020, at least 1,975 cases had been reported since the first patient was hospitalised on 12 December 2019. After the phylogenetic analysis of the complete viral genome, it was found to be closely related to _SARS-like_ virus which is related to the family **Coronaviridae** and initially named it as SARS-CoV-2 then later bolted down to the name **_Covid19_**. This outbreak highlights the ongoing ability of viral spill-over from animals to cause severe disease in humans.
@@ -28,7 +41,7 @@ Streamlit is used to create flawless Front-End Aesthetics for Data Visualisation
   
   _**Future-Versions**_
     - **V 1.1** ~~Adding Additional Python scripts to Perform ``Data-fetch`` Operations rather than the _Main_ Application Script in order to reduce Latency Issues~~ (_Solved_)
-      - Adding Prophet as an Additional Machine Learning Model
+      ~~- Adding Prophet as an Additional Machine Learning Model~~
       - Mortality and Recovery rate Time Series Plots 
       - Choropleth plots for the input country 
       
