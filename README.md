@@ -31,18 +31,31 @@ One might consider _Nuclear Warfare_ and a _Climatic catastrophe_ as the biggest
 [(Continuation ...)](https://medium.com/swlh/covid-19-data-analysis-from-the-inception-to-predicting-the-uncertain-future-through-machine-ef4c3f0371bc)
 
 
-## Development ⚙️
-Streamlit is used to create flawless Front-End Aesthetics for Data Visualisations and Machine Learning Implementation. The app ~~is~~ was Deployed on ~~**Heroku** with Standard ```dynos``` settings~~(initially). now, based on a *Invitation to test*, offered by a Streamlit community major, deployed the application on the _StreamlitTeams_ cloud platform which is now in closed BETA. 
-
-## Version TimeLine ```&``` Prophecy
-
-- **V 1.0** ~~This is the Current Release, initial observations were latency issues which is not solved unless I upgrade from standard ```dynos``` to High-Level Computational housing.~~ 
-    With the application deployed on StreamlitTeams platform, there's no latency issues observed, cache system works accordingly. 
+## Development⚙️
   
-  _**Future-Versions**_
-    - **V 1.1** ~~Adding Additional Python scripts to Perform ``Data-fetch`` Operations rather than the _Main_ Application Script in order to reduce Latency Issues~~ (_Solved_)
-      - Mortality and Recovery rate Time Series Plots 
-      - Choropleth plots for the input country 
+- **[30/9/2020]**
+    Streamlit is used to create flawless Front-End Aesthetics and to hold all the front-end Integrated Data Visualisations and Machine Learning Implementation. The app is Deployed on Streamlit Share, because of an *Invitation to test*, offered by a Streamlit community major, A cloud platform which is now in closed BETA. 
+
+## Version TimeLine( Changelog)
+
+- **[30/9/2020] ~ V 1.0.1** 
+    - Global statistics, Time Series visualisation & pie-chart of percentiles 
+    - Frequency of Cases Reported Globally, Time Series Plot
+    - Country Mortality and Recovery Rates
+    - Country-wise Time Series Visualisation and Bar chart of Summations
+    - Country-wise Frequency of Cases Reported, Time Series Plot 
+    - Constrasting Subplots for the Selected Countries 
+    - Polynomial Regression to Predict the Confirmed Cases of any of the Selected 7 Countries ( top7 critically hit countries ) 
+
+- **[17/10/2020] ~ V 1.0.2**
+    - Everything From V 1.0.1,Except
+    - Polynomial Regression Models are Swapped with Facebook's Prophet Model
+    - Predicts all the Three Attributes (Confirmed, Recovered, Deaths)
+    - Visualisation of the Reported Cases Tred along with the Predictions Trend
+    - Added Global Statistical Summaries (numerical) on the Sidebar at the top 
+    - All the Numerical's are well formatted in an International System
+     
+
       
 
 
