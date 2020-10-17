@@ -11,11 +11,9 @@ from plotly.subplots import make_subplots
 import plotly.express as px
 import re
 from datetime import date
-from datetime import datetime
 import sys
 import time
 import pickle
-from fbprophet import Prophet
 sys.tracebacklimit = 0
 
 
@@ -306,20 +304,20 @@ def Make_contrast_Box_plots(figobj,df_list,choice):
     return fig
 
 
-# def transform_input(days_since_1_22,numberofdays=1):
-#     future_forcast_dates = []
-#     poly = PolynomialFeatures(degree=6)
-#     number_of_days = numberofdays
-#     # Future_dates_limit = number_of_days
-#     forcast = np.array([i for i in range(len(days_since_1_22)+number_of_days)]).reshape(-1, 1)
-#     start = '1/22/2020'
-#     start_date = datetime.datetime.strptime(start, '%m/%d/%Y')
-#     future_forcast_dates = []
-#     for i in range(len(forcast)):
-#         future_forcast_dates.append((start_date + datetime.timedelta(days=i)).strftime('%m/%d/%Y'))
-#     poly_future_forcast = poly.fit_transform(forcast)
+def transform_input(days_since_1_22,numberofdays=1):
+    future_forcast_dates = []
+    poly = PolynomialFeatures(degree=6)
+    number_of_days = numberofdays
+    # Future_dates_limit = number_of_days
+    forcast = np.array([i for i in range(len(days_since_1_22)+number_of_days)]).reshape(-1, 1)
+    start = '1/22/2020'
+    start_date = datetime.datetime.strptime(start, '%m/%d/%Y')
+    future_forcast_dates = []
+    for i in range(len(forcast)):
+        future_forcast_dates.append((start_date + datetime.timedelta(days=i)).strftime('%m/%d/%Y'))
+    poly_future_forcast = poly.fit_transform(forcast)
     
-#     return poly_future_forcast,number_of_days,future_forcast_dates[-number_of_days:]
+    return poly_future_forcast,number_of_days,future_forcast_dates[-number_of_days:]
 
 
 @st.cache(persist=True)
@@ -375,160 +373,6 @@ def hikedfslice(y_list,typename):
         
         return transformed_y
 
-def prophet_subplots(pred_conf,pred_recov,pred_ded):
-    fig = make_subplots(rows=1, cols=3)
-
-    fig.add_trace(go.Scatter(x=pred_conf['ds'],
-                    y=pred_conf['yhat'][:-daysinfuture],
-                    name='Confirmed',
-                    mode='lines',
-                    legendgroup="group0",
-                    marker_color='magenta',
-                    fill='tozeroy',
-                    
-                ),row=1, col=1)
-
-    fig.add_trace(go.Scatter(x=pred_conf['ds'][-daysinfuture:],
-                    y=pred_conf['yhat'][-daysinfuture:],
-                    name='Predicted',
-                    legendgroup="group0",
-                    marker_color='royalblue',
-                            mode='lines',
-                            fill='tozeroy',
-                        
-                    ),row=1, col=1)
-
-    fig.add_trace(go.Scatter(x=pred_conf['ds'][-daysinfuture:],
-                    y=pred_conf['yhat_upper'][-daysinfuture:],
-                    name='Upper-Threshold',
-                    legendgroup="group0",
-                    mode='lines',
-                    marker_color='crimson',
-                        
-
-                    ),row=1, col=1)
-    fig.add_trace(go.Scatter(x=pred_conf['ds'],
-                    y=pred_conf['yhat_lower'],
-                    name='Lower-Threshold',
-                    legendgroup="group0",
-                    marker_color='Gold',
-                        
-
-                    ),row=1, col=1)
-
-    # -------------------------------------------
-
-    fig.add_trace(go.Scatter(x=pred_recov['ds'],
-                    y=pred_recov['yhat'][:-daysinfuture],
-                    name='Recovered',
-                    mode='lines',
-                    legendgroup="group1",
-                    marker_color='magenta',
-                    fill='tozeroy',
-                        
-                ),row=1, col=2)
-
-    fig.add_trace(go.Scatter(x=pred_recov['ds'][-daysinfuture:],
-                    y=pred_recov['yhat'][-daysinfuture:],
-                    name='Predicted',
-                    marker_color='royalblue',
-                            mode='lines',
-                            legendgroup="group1",
-                            fill='tozeroy',
-                        
-                    ),row=1, col=2)
-
-    fig.add_trace(go.Scatter(x=pred_recov['ds'][-daysinfuture:],
-                    y=pred_recov['yhat_upper'][-daysinfuture:],
-                    name='Upper-Threshold',
-                    legendgroup="group1",
-                    mode='lines',
-                    marker_color='crimson',
-                        
-                    ),row=1, col=2)
-
-    fig.add_trace(go.Scatter(x=pred_recov['ds'],
-                    y=pred_recov['yhat_lower'],
-                    name='Lower-Threshold',
-                    legendgroup="group1",
-                    marker_color='Gold',
-                        
-                    ),row=1, col=2)
-
-    # -------------------------------------------
-    fig.add_trace(go.Scatter(x=pred_ded['ds'],
-                    y=pred_ded['yhat'][:-daysinfuture],
-                    name='Deaths',
-                    mode='lines',
-                    legendgroup="group2",
-                    marker_color='magenta',
-                    fill='tozeroy',
-                        
-                ),row=1, col=3)
-
-    fig.add_trace(go.Scatter(x=pred_ded['ds'][-daysinfuture:],
-                    y=pred_ded['yhat'][-daysinfuture:],
-                    name='Predicted',
-                    marker_color='royalblue',
-                            mode='lines',
-                            legendgroup="group2",
-                            fill='tozeroy',
-                        
-                    ),row=1, col=3)
-
-    fig.add_trace(go.Scatter(x=pred_ded['ds'][-daysinfuture:],
-                    y=pred_ded['yhat_upper'][-daysinfuture:],
-                    name='Upper-Threshold',
-                    legendgroup="group2",
-                    mode='lines',
-                    marker_color='crimson',
-                        
-                    ),row=1, col=3)
-
-    fig.add_trace(go.Scatter(x=pred_ded['ds'],
-                    y=pred_ded['yhat_lower'],
-                    name='Lower-Threshold',
-                    legendgroup="group2",
-                    marker_color='Gold',
-                        
-                    ),row=1, col=3)
-
-    # -------------------------------------------
-
-    fig.update_xaxes(title_text="Confirmed", row=1, col=1)
-    fig.update_xaxes(title_text="Recovered", row=1, col=2)
-    fig.update_xaxes(title_text="Deaths", row=1, col=3)
-
-    
-            
-        
-    return fig
-
-
-
-
-@st.cache(persist=True)
-def prophet_prediction_engine(daysinfuture,model_conf,model_rec,model_ded):
-    # Genertor, Future dates in ds
-    future_conf = model_conf.make_future_dataframe(periods=daysinfuture)
-    future_recov = model_rec.make_future_dataframe(periods=daysinfuture)
-    future_ded = model_ded.make_future_dataframe(periods=daysinfuture)
-
-    # predictions
-    modelslist = [model_conf,model_rec,model_ded]
-    futuredateslist = [future_conf,future_recov,future_ded]
-    records = []
-    for model,future_dates in zip(modelslist,futuredateslist):
-
-        pred = model.predict(future_dates)
-        records.append(pred)
-    
-
-    return records[0],records[1],records[2]
-
-
-
-
 
 
     
@@ -544,47 +388,32 @@ st.markdown('_A Statistical look through the data, from the **Inception of this 
 st.sidebar.title('The  Shelf of Control')
 
 # st.sidebar.markdown('**Brief Overview**')
-st.sidebar.markdown('_Defaults are preset_')
+st.sidebar.markdown('_Uncheck to Clear the Defaults_')
+
 
 
 total_numericals = covidAPI_data_total()
 confirmed_df, deaths_df, recovered_df, _ = Data_load(confirmed_url,deaths_url,recovered_url,aggregate_url)
-plot_template = st.sidebar.selectbox('Default Plot Theme',['Light Theme☀️','Dark Theme🌑'],key='VizThemeTemplate')
+plot_template = st.sidebar.selectbox('Default Plot Theme',['Light Theme☀️','Dark Theme🌒'],key='VizThemeTemplate')
 
-if plot_template == 'Dark Theme🌑':
+if plot_template == 'Dark Theme🌒':
     theme = 'plotly_dark'
 else:
     theme = 'plotly_white'
 
-st.sidebar.markdown('***')
 
 
-if st.sidebar.checkbox('Global-Stats',True):
+if st.sidebar.checkbox('Front Page',True):
     
-    table='''
-
-        **Confirmed** -  ```{:,}```\n
-        **Recovered** -  ```{:,}```\n
-        **Deaths**$~~~~~$ - ```{:,}```\n
-        **Active**$~~~~~$ - ```{:,}```\n
-
-
-
-
-    '''.format(total_numericals['Total Confirmmed'],total_numericals['Total Active'],total_numericals['Total Deaths'],total_numericals['Total Recovered'])
-
-
-    st.sidebar.write(table)
     st.sidebar.markdown('***')
     
- 
     st.image('./Illustration.jpg','source ~ discovermagazine')
 
     st.markdown('***')
     
 
 
-    st.sidebar.header('Global Statistics📈')
+    st.sidebar.header('Global Statistics')
     Global_Chart_radio = st.sidebar.selectbox('Visualization type', ['Pie chart', 'Time Series'], key='3')
    
 
@@ -609,10 +438,10 @@ if st.sidebar.checkbox('Global-Stats',True):
         labels = list(total_numericals.keys())
         values = list(total_numericals.values())
         st.markdown('**Covid19 Situation, decomposed into Percentiles (Global).**')
-        colors = ['lime', 'royalblue', 'crimson', 'blueviolet']
+        colors = ['gold', 'royalblue', 'red', 'lightgreen']
         fig = go.Figure(data=[go.Pie(labels=labels,values=values,pull=[0, 0.2, 0, 0], hole=.3)])
         fig.update_traces(hoverinfo='label+percent+value', textfont_size=20,
-                        marker=dict(colors=colors, line=dict(color='#000000', width=2.5)))
+                        marker=dict(colors=colors, line=dict(color='#000000', width=1)))
 
         st.plotly_chart(fig)
 
@@ -631,12 +460,11 @@ if st.sidebar.checkbox('Global-Stats',True):
                         y=y[0],
                         name='Confirmed',
                         marker_color='red'
-                        
                         ))
         fig.add_trace(go.Bar(x=Months,
                         y=y[1],
                         name='Recovered',
-                        marker_color='dodgerblue'
+                        marker_color='steelblue'
                         ))
         fig.add_trace(go.Scatter(x=Months,
                         y=y[2],
@@ -646,7 +474,7 @@ if st.sidebar.checkbox('Global-Stats',True):
                         ))
 
         fig.update_layout(
-            title='Monthwise, Daily Hike in Cases reported Globally',
+            title='Monthwise, Daily Hike in Cases reported {Global}',
             xaxis_tickfont_size=14,
             template = theme,
             yaxis=dict(
@@ -668,11 +496,11 @@ if st.sidebar.checkbox('Global-Stats',True):
         st.plotly_chart(fig)
 
     net_increase,last2dates,_ = RAISE_in_Cases(confirmed_df)
-    info0 = '''
-                The Net Hike in Cases Between _Last Two Days_ 
-                **{}** `&` **{}** is : **{:,}**
-    '''.format(last2dates[0],last2dates[1],net_increase)
-    st.info(info0)
+    st.info('The Net Hike in Cases Between _Last Two Days_ **{}** `&` **{}** is : **{}**'.format(last2dates[0],last2dates[1],net_increase))
+
+        
+    
+
 
 
 
@@ -775,10 +603,10 @@ if st.checkbox('Show Country Synopsis Chart','True',key='2903'):
         labels = list(country_dict.keys())
         values = list(country_dict.values())
 
-        colors = ['dodgerblue', 'crimson', 'lime', 'magenta']
+        colors = ['royalblue', 'crimson', 'slategray', 'aquamarine']
         fig = go.Figure(data=[go.Pie(labels=labels,title='Covid19 Situation decomposed into Percentiles ({})'.format(CountryName),titleposition='top left',values=values,pull=[0, 0.2,0, 0],hole=0.3)])
         fig.update_traces(hoverinfo='label+percent+value', textfont_size=20,
-                        marker=dict(colors=colors, line=dict(color='#000000', width=2.5)))
+                        marker=dict(colors=colors, line=dict(color='#000000', width=1.5)))
         st.plotly_chart(fig)
 
 
@@ -824,7 +652,7 @@ if st.checkbox('Frequency of Reported Cases in {}'.format(CountryName),True,key=
         fig.add_trace(go.Bar(x=Months,
                         y=trans_df[1],
                         name='Recovered',
-                        marker_color='dodgerblue'
+                        marker_color='steelblue'
                         ))
         fig.add_trace(go.Scatter(x=Months,
                         y=trans_df[2],
@@ -1089,116 +917,86 @@ elif typeofsubplot == 'Box Plot of Summations':
 st.markdown('***')
 st.sidebar.markdown('***')
 
-st.sidebar.subheader('Predicting the Future - _Prophet_')
-st.subheader("Learning the Time-Series Data-Trend Using **Prophet** ")
-
-if st.checkbox('Knowledge',False):
-    Knowledge = '''
-    There are 7 Models in Total, which are the `Top-7 Most Critically Hit Countries` (According to the Data) because of _Covid19_. The **Machine Learning** Models are Generated with Help of a Script By iterating it over 7 Countries which are programatically selected and fitting the **Prophet Model** to each Country.
-    Prophet is a prominent within choices when it comes to predicting a Vector of values which is based on a Time Series Data. It's robust to Outliers, which is mostly observed in this Data as well. For a Detailed Elucidation, I'm also writing a blog which explains everything employed and observed in this application during
-    the making, A `Redirection` to the Blog is Added Under the Appendix Section.
-    
-    '''
-    st.markdown(Knowledge)
-
-
-Model_select = st.sidebar.selectbox('Select a Country for Machine Learning Model Implementation ( Default : India )',['India','US', 'Brazil', 'Russia', 'Argentina', 'Colombia', 'Spain'],key='Prophet-Models')
-daysinfuture = st.sidebar.number_input('Enter Number of Periods(days) in the Future',10,100)
-
-# Model_select = st.multiselect('Select a Country for Machine Learning Model Implementation ( Default : India )',['US', 'India', 'Brazil', 'Russia', 'Argentina', 'Colombia', 'Spain'],default=['India'],key='Prophet-Models')
-
-# Loading the Models 
-with open('./Model-Confirmed/{}.pkl'.format(Model_select), 'rb') as f:
-    model_conf = pickle.load(f)
-
-with open('./Model-Recovered/{}.pkl'.format(Model_select), 'rb') as f:
-    model_rec = pickle.load(f)
-
-with open('./Model-Deaths/{}.pkl'.format(Model_select), 'rb') as f:
-    model_ded = pickle.load(f)
-
-
-#prophet-prediction-engine
-pred_conf,pred_recov,pred_ded = prophet_prediction_engine(daysinfuture,model_conf,model_rec,model_ded)
-
-# current
-current_date = trans_conf[trans_conf['Country/Region'] == Model_select].iloc[:,-1:].columns[0]
-current_conf = trans_conf[trans_conf['Country/Region'] == Model_select].iloc[:,-1:].values[0][0]
-current_recov = trans_recov[trans_recov['Country/Region'] == Model_select].iloc[:,-1:].values[0][0]
-current_death = trans_deaths[trans_deaths['Country/Region'] == Model_select].iloc[:,-1:].values[0][0]
-
-st.subheader("Prophet-Predictions for **{}**".format(Model_select))
-st.markdown("**Last Reported Status - **{} :-".format(datetime.strptime(current_date, '%m/%d/%y').strftime('%d, %B')))
-st.markdown('```{:,} Confirmed```, ```{:,} Recovered```, ```{:,} Deaths```'.format(current_conf,current_recov,current_death))
-st.markdown('***')
-date_conf = pred_conf['ds']
-futuredates = date_conf[-daysinfuture:]
-yhat_conf = pred_conf['yhat'][-daysinfuture:].astype('int64')
-yhat_recov = pred_recov['yhat'][-daysinfuture:].astype('int64')
-yhat_ded = pred_ded['yhat'][-daysinfuture:].astype('int64')
-if daysinfuture < 20:
-    attr = st.beta_columns(4)
-    attr[0].markdown('**Future**')
-    attr[1].markdown('**Confirmed**')
-    attr[2].markdown('**Recovered**')
-    attr[3].markdown('**Deaths**')
-    for w,x,y,z in zip(futuredates,yhat_conf,yhat_recov,yhat_ded):
-        cols = st.beta_columns(4)
-        cols[0].write('```{}```'.format(w.strftime('%d, %B')))
-        cols[1].write('```{:,}```'.format(x))
-        cols[2].write('```{:,}```'.format(y))
-        cols[3].write('```{:,}```'.format(z))
-
-else:
-    st.markdown('This Section Can Hold Only ```20``` Calculated Prediction Records, Please View the **Interactive-Visualisation** to cross-validated your Date-choice. ')
-    
-
-st.markdown('***')
-
-# Plotly Subplot-fucntion call
-figobj = prophet_subplots(pred_conf,pred_recov,pred_ded)
-figobj.update_layout(height=500, width=750,template=theme, title_text="Prophet-Predictions in Blue - {}".format(Model_select))
+st.sidebar.subheader('Predicting the Future')
+st.subheader('**Polynomial Regression**')
+st.markdown('{this is now out of order, predictions are wrong because of the misinterpretation, Updating the whole algorithm}')
+if st.checkbox('Under-Maintenance',False):
+   
 
 
 
-if st.checkbox('Visual-Representation',True):
-    st.plotly_chart(figobj)
+
+   st.markdown('_Forcasting the Confirmed Cases for an `Input` Number of Days_')
+
+   if st.checkbox('Knowledge',True):
+       Knowledge = '''
+       There are 7 Models in Total, which are the `Top-7 Most Critically Hit Countries` (According to the Data) by this Contagion. The **Machine Learning** Models are typical Linear Models Trained on the Poly Transformed Number of Days from the Inception, to Fit the Number of Cases on that Paritcular Day.
+       **Polynomial Regression** is used because the Data, Particularly follows a brief **Non-Linear Trend**. For a Detailed elucidation, Read my blog post on this topic, `Redirection` link bolted down in the _Appendix Section_ of this Application.
+
+       '''
+       st.markdown(Knowledge)
+
+   numberofdays = st.sidebar.number_input('Choose the Number of Days in the Future to Predict',1,30)
 
 
+   dates = country_summary.index
+   days_since_1_22 = np.array([i for i in range(len(dates))]).reshape(-1, 1)
 
-if st.checkbox('Info',False):
+   Model_select = st.multiselect('Select a Country for Machine Learning Model Implementation ( Default : India )',['India','US','Colombia','Russia','Peru','Brazil','Mexico'],default=['India'],key='Polynomial Regression Models')
 
-    vizinfo = '''
+   for model in Model_select:
+       with open('./Models/{}'.format(model),'rb') as f:
+           lm = pickle.load(f)
 
-    Following is the Visual Representation of the General-Statistical Trend of each attribute ( confirmed, recovered, deaths ) along with the Trend forecasted for the Future by Prophet.
-    The predictions made by Prophet are based off of a **Confidence** percentange which was initially parameterized during the model creation, the choosen percentile was _90%_ which means there's a scope 
-    of 10% error in the Predictions. The Generated DataFrame Consists the Trends, yhat(predictions), yhat-lower, yhat-upper and many more attributes. Where yhat-lower (Lower-Threshold) and yhat-upper (Upper-Threshold) are
-    the possibilities of the predicted value getting to lowest and highest respectively
-    
-    '''
-    st.markdown(vizinfo)
+       dates_n,forcast,dates_real = transform_input(days_since_1_22,numberofdays)
+       preds = lm.predict(dates_n)
+       preds = zip(dates_real,np.round(preds.reshape(-1,1)[-forcast:]).astype('int64'))
+       st.markdown('***')
+       st.markdown('**{}**, Predictions of Confirmed Cases Accross the Date'.format(model))
+       st.markdown('**Future Date**$~~~~~~~~~~~$**Forcast**')
+       for x,y in preds:
+
+           st.markdown('{}$~~~~~~~~~~~$**{}**'.format(x,y[0]))
+
+   st.markdown('***')
+   if st.checkbox('Read Me!',False):
+       Note = '''
+           _Disclaimer_, The _Intitial Forcast Dates_ might be in the **Past**, As I already mentioned the Data source for this application is [**Johns Hopkins Github**](https://github.com/CSSEGISandData/COVID-19) Repository which automatically updates the data and **may vary** for the **Time Zones**.
+           I know that you are about to go and **_Cross validate_** these _Predictions_ to the **True Values** on prominent sources like [**worldometers**](https://www.worldometers.info/coronavirus/), So before you go, here's is what I need you to Acknowledge. 
+           The Predictions may or may not be Fairly Accurate, but will Definitely give you a **Proper Intuition** in What _**Numerical Range a Particular Country is Considered Inclusive**_,
+           - **The Value Might Overshoot**:\n
+               _Reason_ - Over the Time for the Countries Included, there are instances where net increase in a Cases for a single day was an Overwhelming value, which distorts the uniform curve from which the model interprets the pattern, hence the overshooting scenario.
+
+           To **Summerize**, While Creating the 7 Models I chose to Keep the **Same Hyper-parameters** For every Model Created. So Fine tuning them Might result in better results, so, why not do it then?
+           I Consider this Approach as Naive, For Next updates I Will Include Some More prominent Features, New plots and Might Also Use Some Advanced Machine Learning Models for the Implemation.\n
+           Note ~ **US**,and **Colombia** Models are _Underperforming_ in this Current Release. **Mexico** is _Very Close_, and Rest of them are overshooting by _Factors of 10,000's_.
+
+       '''
 
 
-st.sidebar.markdown('***')
-st.markdown('***')
+       st.markdown(Note)
+
+
+   st.sidebar.markdown('***')
+   st.markdown('***')
+
 st.subheader('$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${}$~~~~~~~~~~~~~~~~~~~~~~~~~~~$'.format('End'))
 
 
 
 
 st.subheader('$~~~~~~~~~~~~$`Developed` _and_ `Deployed` _by_ $~~$**𝚛𝟶𝚑𝚊𝚗 𝚜𝚊𝚒 𝙽**')
-st.write("<p style='text-align: center;'><strong>V1.0.2- The Prophet Version</strong></p>",unsafe_allow_html=True)
-
+st.write("<p style='text-align: center;'><strong>V1.0.1- Polynomial Version</strong></p>",unsafe_allow_html=True)
 
 st.markdown('***')
 
-expander_appendix = st.sidebar.beta_expander(label='Appendix')
-if expander_appendix.checkbox('Display',False):
-    if plot_template == 'Dark Theme🌑':
+st.sidebar.subheader('**Appendix**')
+if st.sidebar.checkbox('Display',False):
+    if plot_template == 'Dark Theme🌒':
         st.image('./BlogCoverB.jpg',width=700)
     else:
         st.image('./BlogCoverL.jpg',width=700)
-    st.markdown("Here's my blog about this project elucidating everthing, I believe it to be  \n**_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/swlh/covid-19-data-analysis-from-the-inception-to-predicting-the-uncertain-future-through-machine-ef4c3f0371bc) If you like to read.")
+    st.markdown("Here's my blog about this project elucidating everthing in detail, I believe it to be **_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/swlh/covid-19-data-analysis-from-the-inception-to-predicting-the-uncertain-future-through-machine-ef4c3f0371bc) If you like to read.")
 
 
 
@@ -1207,14 +1005,8 @@ if expander_appendix.checkbox('Display',False):
 
 st.sidebar.markdown('***')
 
-
-expander0 = st.sidebar.beta_expander(label='GitHub')
-expander0.image('./GitHub.png',width=None)
-expander0.markdown('[GitHub](https://github.com/r0han99/Covid19-PredictiveAnalysis) for Source Code')
-
-
-
-
+st.sidebar.image('./GitHub.png',width=None)
+st.sidebar.markdown('[GitHub](https://github.com/r0han99/Covid19-PredictiveAnalysis) for Source Code')
 st.sidebar.markdown('***')
 
 
