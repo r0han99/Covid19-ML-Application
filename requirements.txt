@@ -1,4 +1,5 @@
 covid == 2.1.4
+pystan
 fbprophet == 0.7.1
 numpy == 1.18.5
 pandas == 1.0.3
