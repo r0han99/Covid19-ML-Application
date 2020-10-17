@@ -1173,10 +1173,10 @@ if st.checkbox('Info',False):
 
     vizinfo = '''
 
-    Following is the Visual Representation of the General-Statistical Trend of each attribute ( confirmed, recovered, deaths ) along with the Trend forecasted for the Future by Prophet.
-    The predictions made by Prophet are based off of a **Confidence** percentange which was initially parameterized during the model creation, the choosen percentile was _90%_ which means there's a scope 
-    of 10% error in the Predictions. The Generated DataFrame Consists the Trends, yhat(predictions), yhat-lower, yhat-upper and many more attributes. Where yhat-lower (Lower-Threshold) and yhat-upper (Upper-Threshold) are
-    the possibilities of the predicted value getting to lowest and highest respectively
+    Above is the Visual Representation of the General-Statistical Trend of each attribute ( confirmed, recovered, deaths ) along with the Future Trend forecasted by Prophet.
+    The predictions made by Prophet are based off of a **Confidence Percentange** (interval-width) which was initially parameterized during the model creation, the choosen percentile was _90%_ which means there's a scope 
+    of 10% error in the Predictions. The Generated DataFrame Consists the Trends, yhat(predictions), yhat-lower, yhat-upper and many other attributes. Where yhat-lower (Lower-Threshold) and yhat-upper (Upper-Threshold) are
+    the possibilities of the predicted value getting to lowest and highest point, respectively. 
     
     '''
     st.markdown(vizinfo)
