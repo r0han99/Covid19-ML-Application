@@ -39,21 +39,21 @@ One might consider _Nuclear Warfare_ and a _Climatic catastrophe_ as the biggest
 ## Version TimeLine( Changelog)
 
 - **[30/9/2020] ~ V 1.0.1** _The Polynomial version_ 
-    - Global statistics, Time Series visualisation & pie-chart of percentiles 
-    - Frequency of Cases Reported Globally, Time Series Plot
-    - Country Mortality and Recovery Rates
-    - Country-wise Time Series Visualisation and Bar chart of Summations
-    - Country-wise Frequency of Cases Reported, Time Series Plot 
-    - Constrasting Subplots for the Selected Countries 
-    - Polynomial Regression to Predict the Confirmed Cases of any of the Selected 7 Countries ( top7 critically hit countries ) 
+    - Global statistics, Time Series visualisation & pie-chart of percentiles ,
+    - Frequency of Cases Reported Globally, Time Series Plot,
+    - Country Mortality and Recovery Rates,
+    - Country-wise Time Series Visualisation and Bar chart of Summations,
+    - Country-wise Frequency of Cases Reported, Time Series Plot,
+    - Constrasting Subplots for the Selected Countries,
+    - Polynomial Regression to Predict the Confirmed Cases of any of the Selected 7 Countries ( top7 critically hit countries ). 
 
 - **[17/10/2020] ~ V 1.0.2** _The Prophet Version_
     - Everything From V 1.0.1,Except
-    - Polynomial Regression Models are Swapped with Facebook's Prophet Model
-    - Predicts all the Three Attributes (Confirmed, Recovered, Deaths)
-    - Visualisation of the Reported Cases Tred along with the Predictions Trend
-    - Added Global Statistical Summaries (numerical) on the Sidebar at the top 
-    - All the Numerical's are well formatted in an International System
+    - Polynomial Regression Models are Swapped with Facebook's Prophet Model,
+    - Predicts all the Three Attributes (Confirmed, Recovered, Deaths),
+    - Conjunctive Time Series Visualisation of Both General Statistical Trend of the Selected Country along with the Trend of Predictions on the Same Graph,
+    - Added Global Statistical Summaries (numerical) on the Sidebar at the top,
+    - All the Numerical's are well formatted in an International System.
      
 
       
