@@ -1108,7 +1108,7 @@ st.subheader("Learning the Time-Series Data-Trend Using **Prophet** ")
 if st.checkbox('Knowledge',False):
     Knowledge = '''
     There are 7 Models in Total, which are the `Top-7 Most Critically Hit Countries` (According to the Data) because of _Covid19_. The **Machine Learning** Models are Generated with Help of a Script By iterating it over 7 Countries which are programatically selected and fitting the **Prophet Model** to each Country.
-    Prophet is a prominent within choices when it comes to predicting a Vector of values which is based on a Time Series Data. It's robust to Outliers, which is mostly observed in this Data as well. For a Detailed Elucidation, I'm also writing a blog which explains everything employed and observed in this application during
+    Prophet is a prominent Machine Learning within choices when it comes to predicting a Vector of values which is based on a **Time Series Data**. It's robust to Outliers, which is mostly observed in this Data as well. For a Detailed Elucidation, I'm also wrote a blog which explains everything employed and observed in this application during
     the making, A `Redirection` to the Blog is Added Under the Appendix Section.
     
     '''
