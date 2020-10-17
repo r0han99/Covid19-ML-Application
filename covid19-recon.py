@@ -870,7 +870,7 @@ if st.checkbox('Frequency of Reported Cases in {}'.format(CountryName),True,key=
 
 
 net_increase,last2dates, country_raise = RAISE_in_Cases(confirmed_df,CountryName)
-st.info('The Net Hike in Cases Between _Last Two Days_ in **{}** `&` **{}** in {} is : **{}**'.format(last2dates[0],last2dates[1],CountryName,country_raise))
+st.info('The Net Hike in Cases Between _Last Two Days_ in **{}** `&` **{}** in {} is : **{:,}**'.format(last2dates[0],last2dates[1],CountryName,country_raise))
 if st.checkbox('If Zero',(country_raise==0)):
     st.markdown('If this Value is ever `zero`, that means there are same number of cases reported in the last two dates, So, there is no Net Increase in Cases. However, I feel the Value `Zero` is very unlikely, So I believe it to be either **Artificiality** in the Dataset or The Data is **Not Updated** yet.')
 
