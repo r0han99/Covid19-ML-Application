@@ -926,7 +926,7 @@ if st.sidebar.checkbox('Help',False):
 if st.sidebar.checkbox('intriguing?',False):
     st.sidebar.info('_I felt, the following list of countries had some **Intriguing patterns** in Time Series Plot, While the application was in the testing Phase.Why Intriguing you might ask, from the plot you can clearly see the contrast between people of different regions, reacting to the same contagion.Up Next in the Subplots Section you are enabled to choose any other 3 countries to contrast with the initial one._')
     # st.sidebar.markdown
-    intriguing_countries = ['Ecuador','Brazil','US','China','Canada']
+    intriguing_countries = ['Ecuador','Brazil','US','China','Canada','Spain']
     st.sidebar.code(intriguing_countries)
 
 st.sidebar.markdown('***')
@@ -1108,7 +1108,7 @@ st.subheader("Learning the Time-Series Data-Trend Using **Prophet** ")
 if st.checkbox('Knowledge',False):
     Knowledge = '''
     There are 7 Models in Total, which are the `Top-7 Most Critically Hit Countries` (According to the Data) because of _Covid19_. The **Machine Learning** Models are Generated with Help of a Script By iterating it over 7 Countries which are programatically selected and fitting the **Prophet Model** to each Country.
-    Prophet is a prominent Machine Learning within choices when it comes to predicting a Vector of values which is based on a **Time Series Data**. It's robust to Outliers, which is mostly observed in this Data as well. For a Detailed Elucidation, I'm also wrote a blog which explains everything employed and observed in this application during
+    _Prophet_ is a efficient Machine Learning Algorithm within choices when it comes to predicting a Vector of values learning from a **Time Series Data**. It's robust to Outliers, which is mostly observed in this Data as well. For a Detailed Elucidation, I'm also wrote a blog which explains everything employed and observed in this application during
     the making, A `Redirection` to the Blog is Added Under the Appendix Section.
     
     '''
