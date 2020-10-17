@@ -1089,94 +1089,94 @@ elif typeofsubplot == 'Box Plot of Summations':
 st.markdown('***')
 st.sidebar.markdown('***')
 
-# st.sidebar.subheader('Predicting the Future - _Prophet_')
-# st.subheader("Learning the Time-Series Data-Trend Using **Prophet** ")
+st.sidebar.subheader('Predicting the Future - _Prophet_')
+st.subheader("Learning the Time-Series Data-Trend Using **Prophet** ")
 
-# if st.checkbox('Knowledge',False):
-#     Knowledge = '''
-#     There are 7 Models in Total, which are the `Top-7 Most Critically Hit Countries` (According to the Data) because of _Covid19_. The **Machine Learning** Models are Generated with Help of a Script By iterating it over 7 Countries which are programatically selected and fitting the **Prophet Model** to each Country.
-#     Prophet is a prominent within choices when it comes to predicting a Vector of values which is based on a Time Series Data. It's robust to Outliers, which is mostly observed in this Data as well. For a Detailed Elucidation, I'm also writing a blog which explains everything employed and observed in this application during
-#     the making, A `Redirection` to the Blog is Added Under the Appendix Section.
+if st.checkbox('Knowledge',False):
+    Knowledge = '''
+    There are 7 Models in Total, which are the `Top-7 Most Critically Hit Countries` (According to the Data) because of _Covid19_. The **Machine Learning** Models are Generated with Help of a Script By iterating it over 7 Countries which are programatically selected and fitting the **Prophet Model** to each Country.
+    Prophet is a prominent within choices when it comes to predicting a Vector of values which is based on a Time Series Data. It's robust to Outliers, which is mostly observed in this Data as well. For a Detailed Elucidation, I'm also writing a blog which explains everything employed and observed in this application during
+    the making, A `Redirection` to the Blog is Added Under the Appendix Section.
     
-#     '''
-#     st.markdown(Knowledge)
+    '''
+    st.markdown(Knowledge)
 
 
-# Model_select = st.sidebar.selectbox('Select a Country for Machine Learning Model Implementation ( Default : India )',['India','US', 'Brazil', 'Russia', 'Argentina', 'Colombia', 'Spain'],key='Prophet-Models')
-# daysinfuture = st.sidebar.number_input('Enter Number of Periods(days) in the Future',10,100)
+Model_select = st.sidebar.selectbox('Select a Country for Machine Learning Model Implementation ( Default : India )',['India','US', 'Brazil', 'Russia', 'Argentina', 'Colombia', 'Spain'],key='Prophet-Models')
+daysinfuture = st.sidebar.number_input('Enter Number of Periods(days) in the Future',10,100)
 
-# # Model_select = st.multiselect('Select a Country for Machine Learning Model Implementation ( Default : India )',['US', 'India', 'Brazil', 'Russia', 'Argentina', 'Colombia', 'Spain'],default=['India'],key='Prophet-Models')
+# Model_select = st.multiselect('Select a Country for Machine Learning Model Implementation ( Default : India )',['US', 'India', 'Brazil', 'Russia', 'Argentina', 'Colombia', 'Spain'],default=['India'],key='Prophet-Models')
 
-# # Loading the Models 
-# with open('./Model-Confirmed/{}.pkl'.format(Model_select), 'rb') as f:
-#     model_conf = pickle.load(f)
+# Loading the Models 
+with open('./Model-Confirmed/{}.pkl'.format(Model_select), 'rb') as f:
+    model_conf = pickle.load(f)
 
-# with open('./Model-Recovered/{}.pkl'.format(Model_select), 'rb') as f:
-#     model_rec = pickle.load(f)
+with open('./Model-Recovered/{}.pkl'.format(Model_select), 'rb') as f:
+    model_rec = pickle.load(f)
 
-# with open('./Model-Deaths/{}.pkl'.format(Model_select), 'rb') as f:
-#     model_ded = pickle.load(f)
+with open('./Model-Deaths/{}.pkl'.format(Model_select), 'rb') as f:
+    model_ded = pickle.load(f)
 
 
-# #prophet-prediction-engine
-# pred_conf,pred_recov,pred_ded = prophet_prediction_engine(daysinfuture,model_conf,model_rec,model_ded)
+#prophet-prediction-engine
+pred_conf,pred_recov,pred_ded = prophet_prediction_engine(daysinfuture,model_conf,model_rec,model_ded)
 
-# # current
-# current_date = trans_conf[trans_conf['Country/Region'] == Model_select].iloc[:,-1:].columns[0]
-# current_conf = trans_conf[trans_conf['Country/Region'] == Model_select].iloc[:,-1:].values[0][0]
-# current_recov = trans_recov[trans_recov['Country/Region'] == Model_select].iloc[:,-1:].values[0][0]
-# current_death = trans_deaths[trans_deaths['Country/Region'] == Model_select].iloc[:,-1:].values[0][0]
+# current
+current_date = trans_conf[trans_conf['Country/Region'] == Model_select].iloc[:,-1:].columns[0]
+current_conf = trans_conf[trans_conf['Country/Region'] == Model_select].iloc[:,-1:].values[0][0]
+current_recov = trans_recov[trans_recov['Country/Region'] == Model_select].iloc[:,-1:].values[0][0]
+current_death = trans_deaths[trans_deaths['Country/Region'] == Model_select].iloc[:,-1:].values[0][0]
 
-# st.subheader("Prophet-Predictions for **{}**".format(Model_select))
-# st.markdown("**Last Reported Status - **{} :-".format(datetime.strptime(current_date, '%m/%d/%y').strftime('%d, %B')))
-# st.markdown('```{:,} Confirmed```, ```{:,} Recovered```, ```{:,} Deaths```'.format(current_conf,current_recov,current_death))
-# st.markdown('***')
-# date_conf = pred_conf['ds']
-# futuredates = date_conf[-daysinfuture:]
-# yhat_conf = pred_conf['yhat'][-daysinfuture:].astype('int64')
-# yhat_recov = pred_recov['yhat'][-daysinfuture:].astype('int64')
-# yhat_ded = pred_ded['yhat'][-daysinfuture:].astype('int64')
-# if daysinfuture < 20:
-#     attr = st.beta_columns(4)
-#     attr[0].markdown('**Future**')
-#     attr[1].markdown('**Confirmed**')
-#     attr[2].markdown('**Recovered**')
-#     attr[3].markdown('**Deaths**')
-#     for w,x,y,z in zip(futuredates,yhat_conf,yhat_recov,yhat_ded):
-#         cols = st.beta_columns(4)
-#         cols[0].write('```{}```'.format(w.strftime('%d, %B')))
-#         cols[1].write('```{:,}```'.format(x))
-#         cols[2].write('```{:,}```'.format(y))
-#         cols[3].write('```{:,}```'.format(z))
+st.subheader("Prophet-Predictions for **{}**".format(Model_select))
+st.markdown("**Last Reported Status - **{} :-".format(datetime.strptime(current_date, '%m/%d/%y').strftime('%d, %B')))
+st.markdown('```{:,} Confirmed```, ```{:,} Recovered```, ```{:,} Deaths```'.format(current_conf,current_recov,current_death))
+st.markdown('***')
+date_conf = pred_conf['ds']
+futuredates = date_conf[-daysinfuture:]
+yhat_conf = pred_conf['yhat'][-daysinfuture:].astype('int64')
+yhat_recov = pred_recov['yhat'][-daysinfuture:].astype('int64')
+yhat_ded = pred_ded['yhat'][-daysinfuture:].astype('int64')
+if daysinfuture < 20:
+    attr = st.beta_columns(4)
+    attr[0].markdown('**Future**')
+    attr[1].markdown('**Confirmed**')
+    attr[2].markdown('**Recovered**')
+    attr[3].markdown('**Deaths**')
+    for w,x,y,z in zip(futuredates,yhat_conf,yhat_recov,yhat_ded):
+        cols = st.beta_columns(4)
+        cols[0].write('```{}```'.format(w.strftime('%d, %B')))
+        cols[1].write('```{:,}```'.format(x))
+        cols[2].write('```{:,}```'.format(y))
+        cols[3].write('```{:,}```'.format(z))
 
-# else:
-#     st.markdown('This Section Can Hold Only ```20``` Calculated Prediction Records, Please View the **Interactive-Visualisation** to cross-validated your Date-choice. ')
+else:
+    st.markdown('This Section Can Hold Only ```20``` Calculated Prediction Records, Please View the **Interactive-Visualisation** to cross-validated your Date-choice. ')
     
 
-# st.markdown('***')
+st.markdown('***')
 
-# # Plotly Subplot-fucntion call
-# figobj = prophet_subplots(pred_conf,pred_recov,pred_ded)
-# figobj.update_layout(height=500, width=750,template=theme, title_text="Prophet-Predictions in Blue - {}".format(Model_select))
-
-
-
-# if st.checkbox('Visual-Representation',True):
-#     st.plotly_chart(figobj)
+# Plotly Subplot-fucntion call
+figobj = prophet_subplots(pred_conf,pred_recov,pred_ded)
+figobj.update_layout(height=500, width=750,template=theme, title_text="Prophet-Predictions in Blue - {}".format(Model_select))
 
 
 
-# if st.checkbox('Info',False):
+if st.checkbox('Visual-Representation',True):
+    st.plotly_chart(figobj)
 
-#     vizinfo = '''
 
-#     Following is the Visual Representation of the General-Statistical Trend of each attribute ( confirmed, recovered, deaths ) along with the Trend forecasted for the Future by Prophet.
-#     The predictions made by Prophet are based off of a **Confidence** percentange which was initially parameterized during the model creation, the choosen percentile was _90%_ which means there's a scope 
-#     of 10% error in the Predictions. The Generated DataFrame Consists the Trends, yhat(predictions), yhat-lower, yhat-upper and many more attributes. Where yhat-lower (Lower-Threshold) and yhat-upper (Upper-Threshold) are
-#     the possibilities of the predicted value getting to lowest and highest respectively
+
+if st.checkbox('Info',False):
+
+    vizinfo = '''
+
+    Following is the Visual Representation of the General-Statistical Trend of each attribute ( confirmed, recovered, deaths ) along with the Trend forecasted for the Future by Prophet.
+    The predictions made by Prophet are based off of a **Confidence** percentange which was initially parameterized during the model creation, the choosen percentile was _90%_ which means there's a scope 
+    of 10% error in the Predictions. The Generated DataFrame Consists the Trends, yhat(predictions), yhat-lower, yhat-upper and many more attributes. Where yhat-lower (Lower-Threshold) and yhat-upper (Upper-Threshold) are
+    the possibilities of the predicted value getting to lowest and highest respectively
     
-#     '''
-#     st.markdown(vizinfo)
+    '''
+    st.markdown(vizinfo)
 
 
 st.sidebar.markdown('***')
