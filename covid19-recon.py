@@ -15,6 +15,8 @@ from datetime import datetime
 import sys
 import time
 import pickle
+from pathlib import Path
+import base64
 # from fbprophet import Prophet
 sys.tracebacklimit = 0
 
@@ -29,6 +31,11 @@ deaths_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/c
 aggregate_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/web-data/data/cases_country.csv'
 
 
+
+def img_to_bytes(img_path):
+    img_bytes = Path(img_path).read_bytes()
+    encoded = base64.b64encode(img_bytes).decode()
+    return encoded
 
 
 @st.cache(persist=True)
@@ -1213,8 +1220,8 @@ st.sidebar.markdown('***')
 
 expander0 = st.sidebar.beta_expander(label='GitHub')
 expander0.image('./GitHub.png',width=None)
-expander0.markdown('[GitHub](https://github.com/r0han99/Covid19-PredictiveAnalysis) for Source Code')
-
+# expander0.markdown('[GitHub](https://github.com/r0han99/Covid19-PredictiveAnalysis) for Source Code')
+expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/Covid19-PredictiveAnalysis) <small>StrongHold for the Application | Oct 2020</small>'''.format(img_to_bytes("GitHub.png")), unsafe_allow_html=True)
 
 
 
