@@ -7,7 +7,8 @@ This repository is the stronghold for [**Covid19-Reconnaissance and Forcasting A
 and a Predictive Model which has the ability to forecast the number of cases in the near future.
 
 
-<img width="863" alt="A Time Series Plot Visualising the Frequency of Cases" src="https://user-images.githubusercontent.com/45916202/94586701-2c3a3580-029f-11eb-92e3-36c41c00147b.png">
+<img width="1440" alt="Screenshot 2020-10-18 at 12 11 00 PM" src="https://user-images.githubusercontent.com/45916202/96360447-06d07700-113b-11eb-8077-b019dea25543.png">
+
 
 ```A Time Series Plot From the Application ```
 
@@ -52,7 +53,7 @@ Note, Deployment on Heroku is taken-down as in it's `Under-maintenance` but it s
     - Polynomial Regression to Predict the Confirmed Cases of any of the Selected 7 Countries ( top7 critically hit countries ). 
 
 - **[17/10/2020] ~ V 1.0.2** _The Prophet Version_
-    - Everything From V 1.0.1,Except
+    - Everything From V 1.0.1, Except
     - Polynomial Regression Models are Swapped with Facebook's Prophet Model,
     - Predicts all the Three Attributes (Confirmed, Recovered, Deaths),
     - Conjunctive Time Series Visualisation of Both General Statistical Trend of the Selected Country along with the Trend of Predictions on the Same Graph,
