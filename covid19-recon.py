@@ -1219,7 +1219,6 @@ st.sidebar.markdown('***')
 
 
 expander0 = st.sidebar.beta_expander(label='GitHub')
-expander0.image('./GitHub.png',width=None)
 # expander0.markdown('[GitHub](https://github.com/r0han99/Covid19-PredictiveAnalysis) for Source Code')
 expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/Covid19-PredictiveAnalysis) <small>StrongHold for the Application | Oct 2020</small>'''.format(img_to_bytes("GitHub.png")), unsafe_allow_html=True)
 
