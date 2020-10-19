@@ -698,7 +698,7 @@ if st.sidebar.checkbox('Global-Stats',True):
 
 
     if st.checkbox('Note!',False):
-        st.markdown('_Numericals shown in the plot might not be Comparatively accurate with the prominent sources like [**worldometers**](https://www.worldometers.info/coronavirus/) but will be close enough to get an intiution. Also the last date (present day),might not be the day you are using this Application, Since this data is heavyly relied on [**Johns Hopkins Github**](https://github.com/CSSEGISandData/COVID-19) Repository, its auto-update schema is delayed accordingly with the time zones. One thing you can try, in order to update the graph is, go to the `Hamburger icon` and select `clear cache`._')
+        st.markdown('_Numericals shown in the plot might not be Comparatively accurate with the prominent sources like [**worldometers**](https://www.worldometers.info/coronavirus/) but will be close enough to get an intuition. Also the last date (present day), might not be the day you are using this Application, Since this data is heavyly relied on [**Johns Hopkins Github**](https://github.com/CSSEGISandData/COVID-19) Repository, its auto-update schema is delayed accordingly with the time zones. One thing you can try, in order to update the data is to press `C` on your keyboard and select `clear cache`, then `Reload` the page. Now all the **Data-Fetch** Operations are performed keeping the data upto date with the Johns Hopkins Data._')
         
 
 
