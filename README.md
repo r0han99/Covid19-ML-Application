@@ -34,10 +34,10 @@ One might consider _Nuclear Warfare_ and a _Climatic catastrophe_ as the biggest
 
 ## Development Log ⚙️
 - **[29/9/2020]**
-  Intially Application was Deployed on Heroku. Reported a few Observations, it had high-latency and also Did not use the Performance Abilities of streamlit's Cache system which was intentionally used, aiming at low reponse time in serving results. Found out the Standard ``dynos`` Setting is alloted for a standard deployments which is not sufficient for a Heavy Application. Deployment was based off of this repository ( GitHub Connection and Integration ).
+  Intially Application was Deployed on Heroku. Reported a few Observations, Application had high-latency in rendering Visualisations and also Did not use the Performance Abilities of streamlit's Cache system which was intentionally used, aiming at low reponse time in serving results. Found out the Standard ``dynos`` Setting is alloted for a standard deployments which is not sufficient for a Heavy Application. Deployment was based off of this repository ( GitHub Connection and Integration ).
   
 - **[30/9/2020]**
-    Streamlit is used to create flawless Front-End Aesthetics and to hold all the front-end Integrated Data Visualisations and Machine Learning Implementation. The app is Deployed on Streamlit Share, because of an *Invitation to test*, offered by a Streamlit community major, A cloud platform which is now in closed BETA.
+    Streamlit is used to create flawless Front-End Aesthetics and to hold all the front-end Integrated Data Visualisations and Machine Learning Implementation. The app is Deployed on Streamlit Share, because of an *Invitation to test*, offered by a Streamlit's community major, A cloud platform which is now in closed BETA.
     
 Note, Deployment on Heroku is taken-down as in it's `Under-maintenance` but it still shows up Under Environments Section of this repository please ignore that. The Only Actively Maintained Deployment is the later. 
 
@@ -60,8 +60,10 @@ Note, Deployment on Heroku is taken-down as in it's `Under-maintenance` but it s
     - Added Global Statistical Summaries (numerical) on the Sidebar at the top,
     - All the Numerical's are well formatted in an International System.
      
-
       
+***
+
+<img width="1432" alt="Screenshot 2020-10-19 at 8 07 57 PM" src="https://user-images.githubusercontent.com/45916202/96466058-556b3780-1247-11eb-9798-c555db266ad0.png">
 
 
 
