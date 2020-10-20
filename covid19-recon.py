@@ -134,7 +134,7 @@ def TimeSeriesPlot(Slider_month,summary,theme,region='Global'):
     fig.add_trace(go.Bar(x=Months,
                     y=summary.Recovered,
                     name='Recovered',
-                    marker_color='steelblue'
+                    marker_color='dodgerblue'
                     ))
     fig.add_trace(go.Scatter(x=Months,
                     y=summary.Deaths,
