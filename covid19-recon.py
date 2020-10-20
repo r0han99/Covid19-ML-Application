@@ -30,6 +30,7 @@ recovered_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/maste
 deaths_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
 aggregate_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/web-data/data/cases_country.csv'
 
+st.beta_set_page_config(page_title="Covid19-Recon-App",page_icon="./tablogo.png",layout="centered",initial_sidebar_state="auto",)
 
 
 def img_to_bytes(img_path):
@@ -313,21 +314,6 @@ def Make_contrast_Box_plots(figobj,df_list,choice):
     return fig
 
 
-# def transform_input(days_since_1_22,numberofdays=1):
-#     future_forcast_dates = []
-#     poly = PolynomialFeatures(degree=6)
-#     number_of_days = numberofdays
-#     # Future_dates_limit = number_of_days
-#     forcast = np.array([i for i in range(len(days_since_1_22)+number_of_days)]).reshape(-1, 1)
-#     start = '1/22/2020'
-#     start_date = datetime.datetime.strptime(start, '%m/%d/%Y')
-#     future_forcast_dates = []
-#     for i in range(len(forcast)):
-#         future_forcast_dates.append((start_date + datetime.timedelta(days=i)).strftime('%m/%d/%Y'))
-#     poly_future_forcast = poly.fit_transform(forcast)
-    
-#     return poly_future_forcast,number_of_days,future_forcast_dates[-number_of_days:]
-
 
 @st.cache(persist=True)
 def infectionrate_timeline(confirmed_df,recovered_df,deaths_df):
@@ -564,7 +550,9 @@ st.markdown('_A Statistical look through the data, from the **Inception of this 
 st.sidebar.title('The  Shelf of Control')
 
 # st.sidebar.markdown('**Brief Overview**')
-st.sidebar.markdown('_Defaults are preset_')
+st.sidebar.markdown("<h6 style='text-align: left; color: dodgerblue;'><i>Default Inputs are preset</i></h6>",unsafe_allow_html=True)
+st.sidebar.markdown('***')
+# st.sidebar.markdown('_Defaults are preset_')
 
 
 total_numericals = covidAPI_data_total()
@@ -1191,12 +1179,14 @@ if st.checkbox('Info',False):
 
 st.sidebar.markdown('***')
 st.markdown('***')
-st.subheader('$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${}$~~~~~~~~~~~~~~~~~~~~~~~~~~~$'.format('End'))
+
+st.markdown("<h4 style='text-align: center; color: dodgerblue;'><b>End</b></h4>",unsafe_allow_html=True)
+# st.subheader('$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${}$~~~~~~~~~~~~~~~~~~~~~~~~~~~$'.format('End'))
 
 
 
 
-st.subheader('$~~~~~~~~~~~~$`Developed` _and_ `Deployed` _by_ $~~$**𝚛𝟶𝚑𝚊𝚗 𝚜𝚊𝚒 𝙽**')
+st.subheader('$~~~~~~~~~~~~$`Developed` _and_ `Deployed` _by_ $~~$**```𝚛𝟶𝚑𝚊𝚗 𝚜𝚊𝚒 𝙽```**')
 st.write("<p style='text-align: center;'><strong>V1.0.2- The Prophet Version</strong></p>",unsafe_allow_html=True)
 
 
