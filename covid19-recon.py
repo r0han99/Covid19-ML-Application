@@ -11,7 +11,7 @@ from plotly.subplots import make_subplots
 import plotly.express as px
 import re
 from datetime import date
-from datetime import datetime
+from datetime import datetime, timedelta
 import sys
 import time
 import pickle
@@ -371,6 +371,9 @@ def hikedfslice(y_list,typename):
 def prophet_subplots(pred_conf,pred_recov,pred_ded):
     fig = make_subplots(rows=1, cols=3)
 
+    # -------------------------------------------
+    #   Confirmed
+    # -------------------------------------------
     fig.add_trace(go.Scatter(x=pred_conf['ds'],
                     y=pred_conf['yhat'][:-daysinfuture],
                     name='Confirmed',
@@ -408,7 +411,8 @@ def prophet_subplots(pred_conf,pred_recov,pred_ded):
                         
 
                     ),row=1, col=1)
-
+    # -------------------------------------------
+    #   Recovered
     # -------------------------------------------
 
     fig.add_trace(go.Scatter(x=pred_recov['ds'],
@@ -448,6 +452,8 @@ def prophet_subplots(pred_conf,pred_recov,pred_ded):
                         
                     ),row=1, col=2)
 
+    # -------------------------------------------
+    #   Dead
     # -------------------------------------------
     fig.add_trace(go.Scatter(x=pred_ded['ds'],
                     y=pred_ded['yhat'][:-daysinfuture],
@@ -501,7 +507,7 @@ def prophet_subplots(pred_conf,pred_recov,pred_ded):
 
 
 @st.cache(persist=True)
-def prophet_prediction_engine(daysinfuture,Model_select):
+def prophet_prediction_engine(daysinfuture,Model_select,trans_conf):
 
     # Model Selection
     with open('./Model-Confirmed/{}.pkl'.format(Model_select), 'rb') as f:
@@ -516,17 +522,25 @@ def prophet_prediction_engine(daysinfuture,Model_select):
 
 
     # Genertor, Future dates in ds
-    future_conf = model_conf.make_future_dataframe(periods=daysinfuture)
-    future_recov = model_rec.make_future_dataframe(periods=daysinfuture)
-    future_ded = model_ded.make_future_dataframe(periods=daysinfuture)
+    start = '1/22/2020'
+    start_date = datetime.strptime(start, '%m/%d/%Y')
+    future_forcast_dates = []
+    for i in range(len(trans_conf)+daysinfuture):
+        future_forcast_dates.append((start_date + timedelta(days=i)).strftime('%Y-%m-%d'))
+    future = pd.DataFrame(pd.Series(future_forcast_dates[:],name='ds'))
+    
+    # future_conf = model_conf.make_future_dataframe(periods=daysinfuture)
+    # future_recov = model_rec.make_future_dataframe(periods=daysinfuture)
+    # future_ded = model_ded.make_future_dataframe(periods=daysinfuture)
+
 
     # predictions
     modelslist = [model_conf,model_rec,model_ded]
-    futuredateslist = [future_conf,future_recov,future_ded]
+    # futuredateslist = [future_conf,future_recov,future_ded]
     records = []
-    for model,future_dates in zip(modelslist,futuredateslist):
+    for model in  modelslist:
 
-        pred = model.predict(future_dates)
+        pred = model.predict(future)
         records.append(pred)
     
 
@@ -1113,11 +1127,15 @@ if st.checkbox('Knowledge',False):
 Model_select = st.sidebar.selectbox('Select a Country for Machine Learning Model Implementation ( Default : India )',['India','US', 'Brazil', 'Russia', 'Argentina', 'Colombia', 'Spain'],key='Prophet-Models')
 daysinfuture = st.sidebar.number_input('Enter Number of Periods(days) in the Future',10,100)
 
-# Model_select = st.multiselect('Select a Country for Machine Learning Model Implementation ( Default : India )',['US', 'India', 'Brazil', 'Russia', 'Argentina', 'Colombia', 'Spain'],default=['India'],key='Prophet-Models')
+
 
 
 #prophet-prediction-engine
-pred_conf,pred_recov,pred_ded = prophet_prediction_engine(daysinfuture,Model_select)
+
+alldates = confirmed_df.drop(['Province/State','Country/Region','Lat','Long'],axis=1).columns
+
+
+pred_conf,pred_recov,pred_ded = prophet_prediction_engine(daysinfuture,Model_select,alldates)
 
 # current
 current_date = trans_conf[trans_conf['Country/Region'] == Model_select].iloc[:,-1:].columns[0]
@@ -1125,16 +1143,18 @@ current_conf = trans_conf[trans_conf['Country/Region'] == Model_select].iloc[:,-
 current_recov = trans_recov[trans_recov['Country/Region'] == Model_select].iloc[:,-1:].values[0][0]
 current_death = trans_deaths[trans_deaths['Country/Region'] == Model_select].iloc[:,-1:].values[0][0]
 
+
 st.subheader("Prophet-Predictions for **{}**".format(Model_select))
-st.markdown("**Last Reported Status - **{} :-".format(datetime.strptime(current_date, '%m/%d/%y').strftime('%d, %B')))
+st.markdown("**Last Reported Status (``According to Data``) - **{} :-".format(datetime.strptime(current_date, '%m/%d/%y').strftime('%d, %B')))
 st.markdown('```{:,} Confirmed```, ```{:,} Recovered```, ```{:,} Deaths```'.format(current_conf,current_recov,current_death))
 st.markdown('***')
-date_conf = pred_conf['ds']
-futuredates = date_conf[-daysinfuture:]
+
+futuredates = pred_conf['ds'][-daysinfuture:]
+
 yhat_conf = pred_conf['yhat'][-daysinfuture:].astype('int64')
 yhat_recov = pred_recov['yhat'][-daysinfuture:].astype('int64')
 yhat_ded = pred_ded['yhat'][-daysinfuture:].astype('int64')
-if daysinfuture < 20:
+if daysinfuture <= 20:
     attr = st.beta_columns(4)
     attr[0].markdown('**Future**')
     attr[1].markdown('**Confirmed**')
