@@ -59,7 +59,10 @@ Note, Deployment on Heroku is taken-down as in it's `Under-maintenance` but it s
     - Conjunctive Time Series Visualisation of Both General Statistical Trend of the Selected Country along with the Trend of Predictions on the Same Graph,
     - Added Global Statistical Summaries (numerical) on the Sidebar at the top,
     - All the Numerical's are well formatted in an International System.
-     
+
+- **[5/11/2020] ~ V 1.0.2** _Retrain Cycle I, Gen-II_
+  - Retrained the models to incorporate the significant changes in the trend of reported cases for better predictions
+  - Added a ChangeLog of the Model Retrain Cycles for better comprehension. 
       
 ***
 
