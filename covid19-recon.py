@@ -1124,7 +1124,7 @@ if st.checkbox('Knowledge',False):
     st.markdown(Knowledge)
 
 
-Model_select = st.sidebar.selectbox('Select a Country for Machine Learning Model Implementation ( Default : India )',['India','US', 'Brazil', 'Russia', 'Argentina', 'Colombia', 'Spain'],key='Prophet-Models')
+Model_select = st.sidebar.selectbox('Select a Country for Machine Learning Model Implementation ( Default : India )',['India','US', 'Brazil', 'Russia', 'Argentina', 'Colombia', 'Spain','France'],key='Prophet-Models')
 daysinfuture = st.sidebar.number_input('Enter Number of Periods(days) in the Future',10,100)
 
 
@@ -1136,7 +1136,7 @@ expchangelog = st.sidebar.beta_expander(label='Model Changelog')
 expchangelog.markdown('Following is the elucidation of the **Timeline of Changes**, Updated with the **Trained Models** ( countries ) after a significant change observed in the Trend of Reported Cases. Each Generation (```Gen```) linked with a successive list of Countries which were apparently the most effected.')
 expchangelog.markdown('**ChangeLog**')
 expchangelog.markdown('**Gen-I**: ```Models``` - **Epoch** : ```17/10/2020```')
-expchangelog.code('India, Russia, US, Brazil, Russia, Argentina, Coloumbia, Spain')
+expchangelog.code('India, US, Brazil, Russia, Argentina, Coloumbia, Spain')
 expchangelog.markdown('**Gen-II**: ```Models``` - **Epoch** : ```5/11/2020```')
 expchangelog.code('US, India, Brazil, Russia, France, Spain, Argentina')
 
