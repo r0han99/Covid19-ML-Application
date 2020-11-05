@@ -26,6 +26,8 @@ def Model_complete_Genesis(confirmed_df,recovered_df,deaths_df):
     country_top_7.drop('index',axis=1,inplace=True)
     top7 = list(country_top_7[:7]['Country/Region'])
     
+    print('Top 7 Countries {}'.format(top7))
+    
     # preprocessing 
     confirmed = confirmed_df.drop(['Province/State','Lat','Long'],axis=1)
     recovered = recovered_df.drop(['Province/State','Lat','Long'],axis=1)
@@ -34,12 +36,26 @@ def Model_complete_Genesis(confirmed_df,recovered_df,deaths_df):
     # Model Genesis
     start = time.perf_counter()
     for countryname in top7:
+        print(countryname)
+        print()
         conf = confirmed[confirmed['Country/Region'] == countryname].drop('Country/Region',axis=1).T.reset_index()
         recov = recovered[recovered['Country/Region'] == countryname].drop('Country/Region',axis=1).T.reset_index()
         death = deaths[deaths['Country/Region'] == countryname].drop('Country/Region',axis=1).T.reset_index()
-        conf.columns = ['ds','y']
-        recov.columns = ['ds','y']
-        death.columns = ['ds','y']
+        if len(conf.columns) > 2 or len(recov.columns) > 2 or len(death.columns) > 2:
+            conf['y'] = conf.iloc[:,1:].sum(axis=1)
+            recov['y'] = recov.iloc[:,1:].sum(axis=1)
+            death['y'] = death.iloc[:,1:].sum(axis=1)
+            conf = conf.drop(conf.iloc[:,1:-1].columns,axis=1)
+            recov = recov.drop(recov.iloc[:,1:-1].columns,axis=1)
+            death = death.drop(death.iloc[:,1:-1].columns,axis=1)
+            conf.columns = ['ds','y']
+            recov.columns = ['ds','y']
+            death.columns = ['ds','y']
+        else:
+            conf.columns = ['ds','y']
+            recov.columns = ['ds','y']
+            death.columns = ['ds','y']
+        
         conf['ds'] = pd.to_datetime(conf['ds'])
         recov['ds'] = pd.to_datetime(recov['ds'])
         death['ds'] = pd.to_datetime(death['ds'])
@@ -53,25 +69,29 @@ def Model_complete_Genesis(confirmed_df,recovered_df,deaths_df):
         death_m.fit(death)
         
         # dumping       
-        if not os.path.exists('Model-Confirmed'):
-            os.makedirs('Model-Confirmed')
-        if not os.path.exists('Model-Recovered'):
-            os.makedirs('Model-Recovered')
-        if not os.path.exists('Model-Deaths'):
-            os.makedirs('Model-Deaths')  
+        if not os.path.exists('../Model-Confirmed'):
+            os.makedirs('../Model-Confirmed')
+        if not os.path.exists('../Model-Recovered'):
+            os.makedirs('../Model-Recovered')
+        if not os.path.exists('../Model-Deaths'):
+            os.makedirs('../Model-Deaths')  
         
-        with open('./Model-Confirmed/{}.pkl'.format(countryname),'wb') as f:
+        with open('../Model-Confirmed/{}.pkl'.format(countryname),'wb') as f:
                 pickle.dump(conf_m,f)
         
-        with open('./Model-Recovered/{}.pkl'.format(countryname),'wb') as f:
+        with open('../Model-Recovered/{}.pkl'.format(countryname),'wb') as f:
                 pickle.dump(recov_m,f)
                 
-        with open('./Model-Deaths/{}.pkl'.format(countryname),'wb') as f:
+        with open('../Model-Deaths/{}.pkl'.format(countryname),'wb') as f:
                 pickle.dump(death_m,f)
                 
         print('Done!')
         print('Elapsed Time {}s'.format((time.perf_counter() - start)))
         
+
+def model_evaluation():
+	pass
+
 
         
 

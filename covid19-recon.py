@@ -1128,6 +1128,29 @@ Model_select = st.sidebar.selectbox('Select a Country for Machine Learning Model
 daysinfuture = st.sidebar.number_input('Enter Number of Periods(days) in the Future',10,100)
 
 
+# Model Changelog 
+
+
+expchangelog = st.sidebar.beta_expander(label='Model Changelog')
+
+expchangelog.markdown('Following is the elucidation of the **Timeline of Changes**, Updated with the **Trained Models** ( countries ) after a significant change observed in the Trend of Reported Cases. Each Generation (```Gen```) linked with a successive list of Countries which were apparently the most effected.')
+expchangelog.markdown('**ChangeLog**')
+expchangelog.markdown('**Gen-I**: ```Models``` - **Epoch** : ```17/10/2020```')
+expchangelog.code('India, Russia, US, Brazil, Russia, Argentina, Coloumbia, Spain')
+expchangelog.markdown('**Gen-II**: ```Models``` - **Epoch** : ```5/11/2020```')
+expchangelog.code('US, India, Brazil, Russia, France, Spain, Argentina')
+
+
+
+
+if expchangelog.checkbox('Note',False):
+	expchangelog.markdown('_Note_, Each Changelog corresponds to a Change in the Top7 Critically Hit Countries Based on Which the Models were Generated.')
+
+
+# / Model Changelog
+
+
+
 
 
 #prophet-prediction-engine
