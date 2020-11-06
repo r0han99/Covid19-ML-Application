@@ -559,12 +559,19 @@ def prophet_prediction_engine(daysinfuture,Model_select,trans_conf):
 
 
 # THE FIRST PIE CHART DEPICTING THE GLOBAL STATUS OF ALL NUMERICALS 
-st.title('The COVID19 Reconnaissance & Forecasting Web Application')
-st.markdown('_A Statistical look through the data, from the **Inception of this unprecedented event** to a **Brief look into the Uncertain Future.**_')
+# st.title('The COVID19 Reconnaissance & Forecasting Web Application')
+# st.markdown('_A Statistical look through the data, from the **Inception of this unprecedented event** to a **Brief look into the Uncertain Future.**_')
+
+COVID19 = "<p style='text-align: center ; color: black; background-color:crimson; text-shadow: 2px 2px #ff0000; font-size: 60px;'><b>COVID19</b></p>"
+
+st.markdown("<h1 style='text-align:center;color:black;'>The {} Reconnaissance & Forecasting Web Application</h1>".format(COVID19),unsafe_allow_html=True)
+st.markdown("<h6 style='text-align: center ; color: black;'>A Statistical look through the data, from the<strong style='font-weight: bold;'> Inception of this unprecedented event</strong> to a <strong style='font-weight: bold;'>Brief look into the Uncertain Future.<strong style='font-weight: bold;'></h6>", unsafe_allow_html=True)
+
+st.markdown('')
 st.sidebar.title('The  Shelf of Control')
 
 # st.sidebar.markdown('**Brief Overview**')
-st.sidebar.markdown("<h6 style='text-align: left; color: dodgerblue;'><i>Default Inputs are preset</i></h6>",unsafe_allow_html=True)
+st.sidebar.markdown("<h6 style='text-align: left; color: dodgerblue; text-transform:lowercase;'><i><small>Default Inputs are preset</small></i></h6>",unsafe_allow_html=True)
 st.sidebar.markdown('***')
 # st.sidebar.markdown('_Defaults are preset_')
 
@@ -598,9 +605,8 @@ if st.sidebar.checkbox('Global-Stats',True):
 
     st.sidebar.write(table)
     st.sidebar.markdown('***')
-    
- 
-    st.image('./Illustration.jpg','source ~ discovermagazine')
+
+    st.image('./GraphicCover.jpg',width=700,caption='Illustration ~ Kieran Blakey')
 
     st.markdown('***')
     
