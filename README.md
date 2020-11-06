@@ -1,6 +1,7 @@
 # Covid19 Machine Learning ``&`` Data Analytics Application
 
-[<img width="847" alt="Screenshot 2020-09-28 at 11 33 47 PM" src="https://user-images.githubusercontent.com/45916202/94586075-6f47d900-029e-11eb-8970-507b155f0ea5.png">](https://bit.ly/3kYHCW5)
+<img width="956" alt="Screenshot 2020-11-06 at 9 29 28 AM" src="https://user-images.githubusercontent.com/45916202/98324722-08db7680-2013-11eb-93b5-0bfe58613045.png">
+
 
 
 This repository is the stronghold for [**Covid19-Reconnaissance and Forcasting Application**](https://bit.ly/3kYHCW5) which consists tons of Visualisations
