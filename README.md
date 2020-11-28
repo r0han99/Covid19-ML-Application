@@ -1,4 +1,4 @@
-# Covid19 Machine Learning ``&`` Data Analytics Application
+# Covid19 Machine Learning ``&`` Data Analytics Application [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/r0han99/covid19-ml-application/master/covid19-recon.py/+/)
 
 <img width="956" alt="Screenshot 2020-11-06 at 9 29 28 AM" src="https://user-images.githubusercontent.com/45916202/98324722-08db7680-2013-11eb-93b5-0bfe58613045.png">
 
