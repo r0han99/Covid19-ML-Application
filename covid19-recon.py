@@ -30,7 +30,7 @@ recovered_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/maste
 deaths_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
 aggregate_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/web-data/data/cases_country.csv'
 
-st.beta_set_page_config(page_title="Covid19-Recon-App",page_icon="./tablogo.png",layout="centered",initial_sidebar_state="auto",)
+st.set_page_config(page_title="Covid19-Recon-App",page_icon="./tablogo.png",layout="centered",initial_sidebar_state="auto",)
 
 
 def img_to_bytes(img_path):
