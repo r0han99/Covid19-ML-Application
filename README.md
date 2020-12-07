@@ -42,6 +42,9 @@ One might consider _Nuclear Warfare_ and a _Climatic catastrophe_ as the biggest
     
 Note, Deployment on Heroku is taken-down as in it's `Under-maintenance` but it still shows up Under Environments Section of this repository please ignore that. The Only Actively Maintained Deployment is the later. 
 
+- **[7/12/2020]** 
+  Deployment expired, Initially to generate requirements.txt programtically, I used Pigar which specifically tagged the versions used at that point of time. as of now, some of the modules are updated. so, removing the version tags for each module-name in the requirements.txt and rebooting the deployment installed the newest versions of the modules used in this application. problem resolved, deployment is active.
+
 ## Version TimeLine( ```Changelog``` )
 
 - **[30/9/2020] ~ V 1.0.1** _The Polynomial version_ 
