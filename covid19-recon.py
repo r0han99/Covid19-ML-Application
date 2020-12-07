@@ -407,7 +407,7 @@ def prophet_subplots(pred_conf,pred_recov,pred_ded):
                     y=pred_conf['yhat_lower'],
                     name='Lower-Threshold',
                     legendgroup="group0",
-                    marker_color='Gold',
+                    marker_color='black',
                         
 
                     ),row=1, col=1)
@@ -448,7 +448,7 @@ def prophet_subplots(pred_conf,pred_recov,pred_ded):
                     y=pred_recov['yhat_lower'],
                     name='Lower-Threshold',
                     legendgroup="group1",
-                    marker_color='Gold',
+                    marker_color='black',
                         
                     ),row=1, col=2)
 
@@ -488,7 +488,7 @@ def prophet_subplots(pred_conf,pred_recov,pred_ded):
                     y=pred_ded['yhat_lower'],
                     name='Lower-Threshold',
                     legendgroup="group2",
-                    marker_color='Gold',
+                    marker_color='black',
                         
                     ),row=1, col=3)
 
