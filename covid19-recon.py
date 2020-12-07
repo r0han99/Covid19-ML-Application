@@ -2,8 +2,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np 
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
+# from sklearn.preprocessing import PolynomialFeatures
+# from sklearn.linear_model import LinearRegression
 import datetime
 from covid import Covid
 import plotly.graph_objects as go
