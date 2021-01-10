@@ -68,6 +68,14 @@ One might consider _Nuclear Warfare_ and a _Climatic catastrophe_ as the biggest
 - **[5/11/2020] ~ V 1.0.2** _Retrain Cycle I, Gen-II_
   - Retrained the models to incorporate the significant changes in the trend of reported cases for better predictions
   - Added a ChangeLog of the Model Retrain Cycles for better comprehension. 
+  
+- **[11/1/2021] ~ V 1.0.2** _Bug Elimination_ 
+
+  - Remodeled TimeSeriesPlots, incorporating 2021's data and removed the Month slider
+  - US data acess from CovidAPI is deprecated temporarily
+  - Changed Artwork
+  - Removed Recovered Plot from the Frequency plots on observing the inconsistencies within the data
+  - TimeSeries subplot's now shows 3 new countries as default
       
 ***
 
