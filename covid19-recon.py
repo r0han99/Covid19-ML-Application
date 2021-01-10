@@ -18,7 +18,7 @@ import pickle
 from pathlib import Path
 import base64
 # from fbprophet import Prophet
-sys.tracebacklimit = 0
+# sys.tracebacklimit = 0
 
 
 
@@ -42,8 +42,6 @@ def img_to_bytes(img_path):
 @st.cache(persist=True)
 def covidAPI_data(CountryName):
    
-    
-
     while True:
         try:
             country = CountryName
@@ -52,6 +50,7 @@ def covidAPI_data(CountryName):
         except ValueError:
             
             continue
+        
         else:
             data = covid.get_status_by_country_name(country)
 
@@ -117,13 +116,17 @@ def preprocessing0(confirmed_df, recovered_df, deaths_df):
     summary.columns = ['Confirmed', 'Recovered', 'Deaths']
     summary['Active'] = summary['Confirmed'] - summary['Recovered'] - summary['Deaths']
     summary['Months'] = pd.to_datetime(summary.index)
+    summary['Month_Year'] = pd.to_datetime(summary['Months']).dt.strftime('%Y-%m-%d')
     summary['Months'] = summary['Months'].dt.month
+    
+
     return summary
 
 
-def TimeSeriesPlot(Slider_month,summary,theme,region='Global'):
+def TimeSeriesPlot(summary,theme,region='Global'):
 
-    Months = summary.index
+    # Months = summary.index
+    Months = summary['Month_Year']
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=Months,
@@ -151,7 +154,7 @@ def TimeSeriesPlot(Slider_month,summary,theme,region='Global'):
 
 
     fig.update_layout(
-        title='({}) Time Series Plot of the Situation, From the Origin to the Month ~ {} '.format(region,Slider_month),
+        title='Time Series Plot of {}'.format(region),
         xaxis_tickfont_size=14,
         template = theme,
         yaxis=dict(
@@ -187,6 +190,8 @@ def preprocessing1(CountryName,confirmed_df,recovered_df,deaths_df):
         country_summary['Active'] = country_summary['Confirmed'] - country_summary['Recovered'] - country_summary['Deaths']
         country_summary.index = pd.to_datetime(country_summary.index)
         country_summary['Months'] = country_summary.index
+        country_summary['Month_Year'] = pd.to_datetime(country_summary['Months']).dt.strftime('%Y-%m-%d')
+
         country_summary['Months_num'] = country_summary['Months'].dt.month
         country_summary['Months'] = country_summary['Months'].dt.month
         country_summary['Months'] = pd.to_datetime(country_summary['Months'])
@@ -606,7 +611,7 @@ if st.sidebar.checkbox('Global-Stats',True):
     st.sidebar.write(table)
     st.sidebar.markdown('***')
 
-    st.image('./GraphicCover.jpg',width=700,caption='Illustration ~ Kieran Blakey')
+    st.image('./covid.png',width=700,caption='Illustration ~ Kieran Blakey')
 
     st.markdown('***')
     
@@ -620,14 +625,15 @@ if st.sidebar.checkbox('Global-Stats',True):
         temp = []
         
         summary = preprocessing0(confirmed_df, recovered_df, deaths_df)
+        
 
-        Slider_month = st.sidebar.slider('Control the Time (Months)',1,int(summary['Months'].max()),key='iixx1')
+        # Slider_month = st.sidebar.slider('Control the Time (Months)',1,int(summary['Months'].max()),key='iixx1')
         
-        for i in range(1,Slider_month+1):
-            temp.append(summary[summary['Months'] == i])
+        # for i in range(1,Slider_month+1):
+        #     temp.append(summary[summary['Months'] == i])
         
-        final = pd.concat(temp)
-        fig = TimeSeriesPlot(Slider_month,final,theme)
+        # final = pd.concat(temp)
+        fig = TimeSeriesPlot(summary,theme)
         st.plotly_chart(fig)
         
         
@@ -661,11 +667,11 @@ if st.sidebar.checkbox('Global-Stats',True):
                         marker_color='red'
                         
                         ))
-        fig.add_trace(go.Bar(x=Months,
-                        y=y[1],
-                        name='Recovered',
-                        marker_color='dodgerblue'
-                        ))
+        # fig.add_trace(go.Bar(x=Months,
+        #                 y=y[1],
+        #                 name='Recovered',
+        #                 marker_color='dodgerblue'
+        #                 ))
         fig.add_trace(go.Scatter(x=Months,
                         y=y[2],
                         name='Deaths',
@@ -732,23 +738,26 @@ if st.checkbox('All Country List',False):
 CountryName = st.text_input('Enter the Country Name (Default:India) ','India')
 # /Country Input
 
-
-if CountryName == '':
-    raise Exception('Null Value!')
-
-
-elif re.search(r"\"",CountryName):
-    CountryName = re.sub(r"\"","",CountryName)
-    country_dict = covidAPI_data(CountryName)
-
-elif CountryName not in country_list:
-
-    raise Exception('Invalid Country Name (Check spellings),The input format should be a capitalized Name,\nSelect from the Country List provided if your are recurrently facing the same difficulty.')
+if not CountryName == 'US':
+    if CountryName == '':
+        raise Exception('Null Value!')
 
 
+    elif re.search(r"\"",CountryName):
+        CountryName = re.sub(r"\"","",CountryName)
+        country_dict = covidAPI_data(CountryName)
+
+    elif CountryName not in country_list:
+
+        raise Exception('Invalid Country Name (Check spellings),The input format should be a capitalized Name,\nSelect from the Country List provided if your are recurrently facing the same difficulty.')
+
+
+    else:
+
+        country_dict = covidAPI_data(CountryName)
 else:
 
-    country_dict = covidAPI_data(CountryName)
+    st.markdown('_US Data synopsis is temporarily deprecated by the CovidAPI due to inconsistency in record maintenance_')
 
 st.sidebar.markdown('***')
 st.sidebar.markdown('The ***`Control-Switches`***, will be activated only when you input a country name.')
@@ -763,68 +772,74 @@ present_date = date.today().strftime("%m/%d/%Y")
 st.sidebar.markdown("Selected Country is : **{}**".format(CountryName))
 st.sidebar.markdown('***')
 
-st.sidebar.subheader('Calculated Fatality and Recovery Rate Percentiles of : {}'.format(CountryName))
+if not CountryName == 'US':
+    st.sidebar.subheader('Calculated Fatality and Recovery Rate Percentiles of : {}'.format(CountryName))
 
-st.markdown("***")
+    st.markdown("***")
 
-# Mortality Rate Calc
-st.markdown("**Field for Mortality Rate and Recovery Rate, Percentiles**")
+    # Mortality Rate Calc
+    st.markdown("**Field for Mortality Rate and Recovery Rate, Percentiles**")
 
-if st.checkbox('Show',True):
-    summation_deaths = country_dict.get('deaths')
-    summation_Confirmed = country_dict.get('confirmed')
-    summation_recovered = country_dict.get('recovered')
-    mortality_rate = summation_deaths/summation_Confirmed
-    recovery_rate = summation_recovered/summation_Confirmed
-    # a Check box to See how mortality is calculated
-    st.markdown('**{}**, Fatality Rate as of Date (**{}**)  : **{:.2f}%**'.format(CountryName,present_date,mortality_rate*100))
-    st.markdown('**{}**, Recovery Rate as of Date (**{}**) : **{:.2f}%**'.format(CountryName,present_date,recovery_rate*100))
+    if st.checkbox('Show',True):
+        summation_deaths = country_dict.get('deaths')
+        summation_Confirmed = country_dict.get('confirmed')
+        summation_recovered = country_dict.get('recovered')
+        mortality_rate = summation_deaths/summation_Confirmed
+        recovery_rate = summation_recovered/summation_Confirmed
+        # a Check box to See how mortality is calculated
+        st.markdown('**{}**, Fatality Rate as of Date (**{}**)  : **{:.2f}%**'.format(CountryName,present_date,mortality_rate*100))
+        st.markdown('**{}**, Recovery Rate as of Date (**{}**) : **{:.2f}%**'.format(CountryName,present_date,recovery_rate*100))
 
-    if st.sidebar.checkbox('Info?',False):
-        st.sidebar.error('_**Mortality Rate**_ is the proportion of People who **Died** from the Disease to the Total Number of People Infected.')
-        st.sidebar.success('_**Recovery Rate**_ is the proportion of People who **Recovered** from the Diesease to the Total Number of People Infected.')
-                        
-st.markdown('***')
+        if st.sidebar.checkbox('Info?',False):
+            st.sidebar.error('_**Mortality Rate**_ is the proportion of People who **Died** from the Disease to the Total Number of People Infected.')
+            st.sidebar.success('_**Recovery Rate**_ is the proportion of People who **Recovered** from the Diesease to the Total Number of People Infected.')
+                            
+    st.markdown('***')
 
-st.sidebar.markdown('***')
+    st.sidebar.markdown('***')
 
-st.sidebar.subheader('Synopsis of {}'.format(CountryName))
+    st.sidebar.subheader('Synopsis of {}'.format(CountryName))
 
-CHART_TYPE0 = st.sidebar.selectbox('Visualization type',['Pie Chart','Bar Chart'], key='ix')
-
-
-st.markdown('**Field for Country Synopsis Plots ``&`` Time Series Plot**')
-
-if st.checkbox('Show Country Synopsis Chart','True',key='2903'):
-    st.markdown('A **'+CHART_TYPE0+'** _Visualization._')
-
-    if CHART_TYPE0 == 'Pie Chart':
-
-        labels = list(country_dict.keys())
-        values = list(country_dict.values())
-
-        colors = ['dodgerblue', 'crimson', 'lime', 'magenta']
-        fig = go.Figure(data=[go.Pie(labels=labels,title='Covid19 Situation decomposed into Percentiles ({})'.format(CountryName),titleposition='top left',values=values,pull=[0, 0.2,0, 0],hole=0.3)])
-        fig.update_traces(hoverinfo='label+percent+value', textfont_size=20,
-                        marker=dict(colors=colors, line=dict(color='#000000', width=2.5)))
-        st.plotly_chart(fig)
+    CHART_TYPE0 = st.sidebar.selectbox('Visualization type',['Pie Chart','Bar Chart'], key='ix')
 
 
-    elif CHART_TYPE0 == 'Bar Chart':
-        x = list(country_dict.keys())
-        y = list(country_dict.values())
+    st.markdown('**Field for Country Synopsis Plots ``&`` Time Series Plot**')
 
-        colors = ['lightslategray'] * 5
-        colors[2] = 'crimson'
+    if st.checkbox('Show Country Synopsis Chart','True',key='2903'):
+        st.markdown('A **'+CHART_TYPE0+'** _Visualization._')
 
-        
-        fig = go.Figure(data=[go.Bar(x=x, y=y,
-                    )])
+        if CHART_TYPE0 == 'Pie Chart':
 
-        fig.update_traces(marker_color=colors, marker_line_color='rgb(0,0,0)',
-                        marker_line_width=1.5, opacity=0.9)
-        fig.update_layout(template=theme,title_text='Covid19 Situation decomposed into Bars ({})'.format(CountryName))
-        st.plotly_chart(fig)
+            labels = list(country_dict.keys())
+            values = list(country_dict.values())
+
+            colors = ['dodgerblue', 'crimson', 'lime', 'magenta']
+            fig = go.Figure(data=[go.Pie(labels=labels,title='Covid19 Situation decomposed into Percentiles ({})'.format(CountryName),titleposition='top left',values=values,pull=[0, 0.2,0, 0],hole=0.3)])
+            fig.update_traces(hoverinfo='label+percent+value', textfont_size=20,
+                            marker=dict(colors=colors, line=dict(color='#000000', width=2.5)))
+            st.plotly_chart(fig)
+
+
+        elif CHART_TYPE0 == 'Bar Chart':
+            x = list(country_dict.keys())
+            y = list(country_dict.values())
+
+            colors = ['lightslategray'] * 5
+            colors[2] = 'crimson'
+
+            
+            fig = go.Figure(data=[go.Bar(x=x, y=y,
+                        )])
+
+            fig.update_traces(marker_color=colors, marker_line_color='rgb(0,0,0)',
+                            marker_line_width=1.5, opacity=0.9)
+            fig.update_layout(template=theme,title_text='Covid19 Situation decomposed into Bars ({})'.format(CountryName))
+            st.plotly_chart(fig)
+
+
+else:
+    st.markdown('***')
+    
 
 
 if st.checkbox('Frequency of Reported Cases in {}'.format(CountryName),True,key='frequency country plot'):
@@ -849,11 +864,11 @@ if st.checkbox('Frequency of Reported Cases in {}'.format(CountryName),True,key=
                         name='Confirmed',
                         marker_color='red'
                         ))
-        fig.add_trace(go.Bar(x=Months,
-                        y=trans_df[1],
-                        name='Recovered',
-                        marker_color='dodgerblue'
-                        ))
+        # fig.add_trace(go.Bar(x=Months,
+        #                 y=trans_df[1],
+        #                 name='Recovered',
+        #                 marker_color='dodgerblue'
+        #                 ))
         fig.add_trace(go.Scatter(x=Months,
                         y=trans_df[2],
                         name='Deaths',
@@ -907,19 +922,21 @@ st.sidebar.subheader("Time Series Plot of {}".format(CountryName))
 if st.checkbox('Show Time Series Chart',True):
 
     
-
     # st.write(country_summary)
+    
 
-    Slider_month = st.sidebar.slider('Control the Time (Months)',1,int(country_summary['Months_num'].max()),key='iixx123')
-            
+    # Slider_month = st.sidebar.select_slider('Control the Time (Months)',list(country_summary['Month_Year']),key='iixx123')
+    
+    # Slider_month = country_summary['Month_Year']
+    
+    # st.write('Slider Month {}'.format(Slider_month))
+    # temp0 = []
 
-    temp0 = []
+    # for i in range(1,Slider_month+1):
+    #     temp0.append(country_summary[country_summary['Month_Year'] == i])
 
-    for i in range(1,Slider_month+1):
-        temp0.append(country_summary[country_summary['Months_num'] == i])
-
-    country_concat = pd.concat(temp0)
-    fig0 = TimeSeriesPlot(Slider_month,country_concat,theme,region=CountryName)
+    # country_concat = pd.concat(temp0)
+    fig0 = TimeSeriesPlot(country_summary,theme,region=CountryName)
 
     st.markdown('**A Time Series** _Visualization._')
 
@@ -1018,7 +1035,7 @@ if typeofsubplot == 'Time Series':
     all_countries = list(confirmed_df['Country/Region'].unique())
 
     
-    choice = st.sidebar.multiselect('Type/Pick 3 Countries', all_countries,default=['Ecuador', 'Brazil', 'US'],key='2141256')
+    choice = st.sidebar.multiselect('Type/Pick 3 Countries', all_countries,default=['Ecuador', 'Italy', 'United Kingdom'],key='2141256')
     
 
     try:
@@ -1041,7 +1058,7 @@ if typeofsubplot == 'Time Series':
             st.error('Please Select 3 Countries & Make sure that you do not select the Same Country Name that you intitially did. If It still throws same the Error refresh the page, it might be a cache problem.')
 
     except KeyError:
-        st.error('Please Select 3 Countries or Refresh the Page if the Exception still persists.')
+        st.error("Please Select 3 Countries or Refresh the Page if the Exception still persists. or Selected Countries Data Might not be consisted to fit into the application's pipeline ")
 
 
 elif typeofsubplot == 'Box Plot of Summations':
