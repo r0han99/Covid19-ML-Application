@@ -1245,7 +1245,7 @@ if expchangelog.checkbox('Note',False):
 
 st.markdown('* Machine Learning Model (_Prophet_) Section of the Code is temporarily commented out based on the recent observations of inaccurate predictions.')
 st.markdown("* Initial Hypothesis for the Model's inaccurate predictions is believed to be the drastically changing patterns in the Country's data reflecting the reality. ")
-st.markdown("* The Prophet Model _isn't generalising well enough_ for the data which is now in a downward trend which was not the initial scenario which the Model Trained on.")
+st.markdown("* The Prophet Model _isn't generalising well enough_ for the data which is now in a downward trend, Initially it was a rapid upward projection on the TimeSeries on which the Model is trained.")
 
 
 st.sidebar.markdown('***')
@@ -1269,7 +1269,7 @@ if expander_appendix.checkbox('Display',False):
         st.image('./BlogCoverB.jpg',width=700)
     else:
         st.image('./BlogCoverL.jpg',width=700)
-    st.markdown("Here's my blog about this project elucidating everthing, I believe it to be  \n**_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/swlh/covid-19-data-analysis-from-the-inception-to-predicting-the-uncertain-future-through-machine-ef4c3f0371bc) If you like to read.")
+    st.markdown("Here's my blog about this project elucidating everthing. I validate this project as \n**_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/swlh/covid-19-data-analysis-from-the-inception-to-predicting-the-uncertain-future-through-machine-ef4c3f0371bc) If you like to read.")
 
 
 
@@ -1283,7 +1283,7 @@ expander0 = st.sidebar.beta_expander(label='GitHub')
 # expander0.markdown('[GitHub](https://github.com/r0han99/Covid19-PredictiveAnalysis) for Source Code')
 expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/Covid19-PredictiveAnalysis) <small>StrongHold for the Application | Oct 2020</small>'''.format(img_to_bytes("GitHub.png")), unsafe_allow_html=True)
 
-expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=64 height=64>](https://github.com/r0han99/) <small>My Cognitive-Intelligence</small>'''.format(img_to_bytes("cognitive-intel.png")), unsafe_allow_html=True)
+expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=64 height=64>](https://github.com/r0han99/) <small>The Database of My Knowledge</small>'''.format(img_to_bytes("cognitive-intel.png")), unsafe_allow_html=True)
 
 
 st.sidebar.markdown('***')
