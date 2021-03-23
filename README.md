@@ -76,8 +76,18 @@ One might consider _Nuclear Warfare_ and a _Climatic catastrophe_ as the biggest
   - Changed Artwork
   - Removed Recovered Plot from the Frequency plots on observing the inconsistencies within the data
   - TimeSeries subplot's now shows 3 new countries as default
-      
-***
+  
+- **[23/3/2021] ~ V1.0.3** *Segregated Dashboard*
+
+    - Front-End Updates
+
+        - Section based Titles are mentioned
+        - Plot colors are changed
+        - Streamlit's system based theme configuration 
+
+    - Changed paths to incorporate the changes in the repo 
+
+        
 
 <img width="1432" alt="Screenshot 2020-10-19 at 8 07 57 PM" src="https://user-images.githubusercontent.com/45916202/96466058-556b3780-1247-11eb-9798-c555db266ad0.png">
 

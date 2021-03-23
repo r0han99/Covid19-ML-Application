@@ -1162,7 +1162,7 @@ if apps == 'Statistical Analysis':
 
 
 
-    st.markdown('''<h2 style='font-family:poppins; text-align:center;'>Learning the Time-Series Data-Trend Using Prophet</h2>''',unsafe_allow_html=True)
+    st.markdown('''<h2 style='font-family:poppins; text-align:center;'>Forecasting the Time-Series Data-Trend Using Prophet</h2>''',unsafe_allow_html=True)
     st.markdown('***')
 
     st.sidebar.subheader('Predicting the Future - _Prophet_')
@@ -1287,7 +1287,7 @@ if apps == 'Statistical Analysis':
 
 
     st.subheader('$~~~~~~~~~~~~~~~~~~$`Developed` _and_ `Deployed` _by_ **```𝚛𝟶𝚑𝚊𝚗```**')
-    st.write("<p style='text-align: center;'><strong>V1.0.2- The Prophet Version</strong></p>",unsafe_allow_html=True)
+    st.write("<p style='text-align: center;'><strong>V1.0.3- The Prophet Version</strong></p>",unsafe_allow_html=True)
 
 
     st.markdown('***')
