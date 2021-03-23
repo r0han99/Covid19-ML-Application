@@ -4,6 +4,6 @@ numpy
 pandas
 plotly 
 scikit_learn
-streamlit
+streamlit == 0.79.0
 fbprophet 
 

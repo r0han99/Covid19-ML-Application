@@ -1,0 +1,5 @@
+****
+
+Data regarding the preconditions of a covid patient is held here.
+
+****
