@@ -111,6 +111,58 @@ def Data_load(confirmed_url,deaths_url,recovered_url,aggregate_url):
 
 
 @st.cache(persist=True)
+def choro_aggregate(agg_df):
+    attrs = ['Confirmed','Deaths','Recovered','Active']
+    choropleth = []
+    for attr in attrs:
+        choropleth.append(agg_df[['Country_Region', 'Lat','Long_','{}'.format(attr),'UID','ISO3']])
+
+    return choropleth
+
+
+def choroplethChart(data,attr,config):
+    total = data[attr].sum()
+    
+    palette = config['palette']
+    border = config['border']
+    title = config['title']
+    
+    fig = go.Figure(data=go.Choropleth(
+        locations = data['ISO3'],
+        z = data[attr],
+        text = data['Country_Region'],
+        colorscale = palette,
+        autocolorscale=False,
+        reversescale=True,
+        marker_line_color=border,
+        marker_line_width=1,
+      
+    ))
+
+    fig.update_layout(
+        title_text='{}, WorldWide {:,}'.format(attr,total),
+        title_font_family='poppins',
+        title_x=0.5,
+        title_font_color=title,
+        geo=dict(
+            showframe=False,
+            showcoastlines=False,
+            projection_type='kavrayskiy7'
+        ),
+        annotations = [dict(
+            x=0.55,
+            y=0.1,
+            xref='paper',
+            yref='paper',
+            text='',
+            showarrow = False,
+        )]
+    )
+
+    return fig
+    
+
+@st.cache(persist=True)
 def preprocessing0(confirmed_df, recovered_df, deaths_df):
     confirmed_summary = confirmed_df.drop(['Lat','Long','Province/State','Country/Region'],axis=1).sum()
     # confirmed_summary = confirmed_summary.sum()
@@ -596,33 +648,67 @@ if apps == 'Statistical Analysis':
     # caching.clear_cache()
 
     st.markdown('***')
-    st.markdown('''<h2 style='font-family:poppins; text-align:center;'>Real-Time Statistical Analysis & Prophet</h2>''',unsafe_allow_html=True)
+    st.markdown('''<h2 style='font-family:poppins; text-align:center; font-weight:bold;'>Real-Time Statistical Analysis & Prophet</h2>''',unsafe_allow_html=True)
+    st.markdown('***')
+
+    st.markdown('''<h2 style='font-family:poppins; text-align:center;'>Global</h2>''',unsafe_allow_html=True)
     st.markdown('***')
 
     total_numericals = covidAPI_data_total()
-    confirmed_df, deaths_df, recovered_df, _ = Data_load(confirmed_url,deaths_url,recovered_url,aggregate_url)
+    confirmed_df, deaths_df, recovered_df, agg_df = Data_load(confirmed_url,deaths_url,recovered_url,aggregate_url)
     plot_template = st.sidebar.selectbox('Default Plot Theme',['Light☀️','Dark🌑'],key='VizThemeTemplate')
+    
+    # Choropleth 
+    choropleth = choro_aggregate(agg_df)
+    choro_conf, choro_death, choro_recov, choro_active = choropleth
+    # chart cofigurations
+    r_col = {'palette':'Tealgrn','border':'black','title':'teal'}
+    c_col = {'palette':'OrRd','border':'black','title':'black'}
+    a_col = {'palette':'PuBu','border':'teal','title':'dodgerblue'}
+    d_col = {'palette':'RdGy','border':'firebrick','title':'crimson'}
 
+
+    # Universal Plot Theme
     if plot_template == 'Dark🌑':
         theme = 'plotly_dark'
     else:
         theme = 'plotly_white'
 
-    st.sidebar.markdown('***')
 
+    st.sidebar.markdown('***') # section break
 
     if st.sidebar.checkbox('World Status',True):
         
     
 
+        slot = st.empty()
+        
+        cols = st.beta_columns(4)
+        
+        attr = st.select_slider('Slide',['Active','Recovered','Confirmed','Deaths'], key='choropleth')
+        
+        if attr == 'Active':
+            fig = choroplethChart(choro_active,'Active',config=a_col)
+            slot.plotly_chart(fig,use_container_width=True)
+        elif attr == 'Confirmed':
+            fig = choroplethChart(choro_conf,'Confirmed',config=c_col)
+            slot.plotly_chart(fig,use_container_width=True)
+        elif attr == 'Recovered':
+            fig = choroplethChart(choro_recov,'Recovered',config=r_col)
+            slot.plotly_chart(fig,use_container_width=True)
+        elif attr == 'Deaths':
+            fig = choroplethChart(choro_death,'Deaths',config=d_col)
+            slot.plotly_chart(fig,use_container_width=True)
 
-        st.image('./assets/covid.png',width=700,caption='Illustration ~ Kieran Blakey')
+
+
+
+
 
         st.markdown('***')
 
          
-        st.markdown('''<h2 style='font-family:poppins; text-align:center;'>Global</h2>''',unsafe_allow_html=True)
-        st.markdown('***')
+        
 
         
         
@@ -1310,7 +1396,7 @@ if apps == 'Statistical Analysis':
 
     expander0 = st.sidebar.beta_expander(label='GitHub')
     expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/Covid19-PredictiveAnalysis) <small>Source-Code | Oct 2020</small>'''.format(img_to_bytes("./assets/GitHub.png")), unsafe_allow_html=True)
-    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/) <small>The Database of My Knowledge</small>'''.format(img_to_bytes("./assets/cognitive-intel.png")), unsafe_allow_html=True)
+    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/) <small>Other Works</small>'''.format(img_to_bytes("./assets/cognitive-intel.png")), unsafe_allow_html=True)
 
 
     st.sidebar.markdown('***')

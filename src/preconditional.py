@@ -90,7 +90,7 @@ def app():
 
     motive = '''Analysis of the preconditional traits of a patient and determining the efficiency of virus'''
     st.markdown('***')
-    st.markdown('''<h2 style='font-family:poppins; text-align:center;'>Pre-Conditional Prognosis</h2>''',unsafe_allow_html=True)
+    st.markdown('''<h2 style='font-family:poppins; text-align:center; font-weight:bold;'>Pre-Conditional Prognosis</h2>''',unsafe_allow_html=True)
     st.markdown('''<small style='font-size:14px; text-align:center; padding-left:30px;'>{}</small>'''.format(motive),unsafe_allow_html=True)
     st.markdown('***')
 
