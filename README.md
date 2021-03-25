@@ -1,6 +1,7 @@
 # Covid19 Machine Learning ``&`` Data Analytics Application [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/r0han99/covid19-ml-application/master/covid19-recon.py/+/)
 
-![banner](/Users/Shared/Relocated/Others/Code/Streamlit/covid19/Git/Covid19-ML-Application/banner.jpg)
+![banner](https://user-images.githubusercontent.com/45916202/112470734-02b32000-8d91-11eb-8f24-97fb8707b8fa.jpg)
+
 
 
 
@@ -83,8 +84,8 @@ _One might consider Nuclear Warfare and a climatic catastrophe as the biggest fa
 
         - Section based Titles are mentioned
         - Plot colors are changed
-        - Streamlit's system based theme configuration 
-- Changed paths to incorporate the changes in the repo 
+        - Streamlit's system based theme configuration  
+    - Changed paths to incorporate the changes in the repo 
 
 * **[25/3/2021]** ~ **V1.0.3** *Choropleth*
 
