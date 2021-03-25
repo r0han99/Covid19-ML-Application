@@ -147,7 +147,7 @@ def choroplethChart(data,attr,config):
         geo=dict(
             showframe=False,
             showcoastlines=False,
-            projection_type='kavrayskiy7'
+            projection_type='orthographic'
         ),
         annotations = [dict(
             x=0.55,
