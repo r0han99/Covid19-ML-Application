@@ -147,7 +147,7 @@ def choroplethChart(data,attr,config):
         geo=dict(
             showframe=False,
             showcoastlines=False,
-            projection_type='kavrayskiy7'
+            projection_type='equirectangular'
         ),
         annotations = [dict(
             x=0.55,
@@ -158,6 +158,8 @@ def choroplethChart(data,attr,config):
             showarrow = False,
         )]
     )
+    fig.update_geos(lataxis_showgrid=True, lonaxis_showgrid=True)
+    fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0})
 
     return fig
     
