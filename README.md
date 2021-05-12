@@ -14,16 +14,6 @@ and a Predictive Model which has the ability to forecast the number of cases in 
 
 ```A Time Series Plot From the Application ```
 
-## V1.0.2 - The Prophet Version
-
-<img width="1440" alt="ProphetPred" src="https://user-images.githubusercontent.com/45916202/96338478-0341df00-10ac-11eb-871f-5edbf0dbbb47.png">
-<img width="1440" alt="ProphetViz" src="https://user-images.githubusercontent.com/45916202/96338481-04730c00-10ac-11eb-8bef-c91491140dbd.png">
-
-- Swapped Facebook's Prophet Model for the Naive Polynomial Regression 
-- Added Summarized Global Stats on the sidebar
-- Changed Plot color schemes 
-
-
 
 
 
@@ -90,9 +80,15 @@ _One might consider Nuclear Warfare and a climatic catastrophe as the biggest fa
 * **[25/3/2021]** ~ **V1.0.3** *Choropleth*
 
     * Utilized Aggregate data to visualise a Choropleth Map
-
     * Banner is now replaced by Choropleth Map
 
+* **[12/5/2021]** ~ *De-Clutter + Re-Organisation*
+
+  * Changed Title into a Simpler one
+  * Redesigned Front-End
+  * Segregated Different Sections to many apps
+  * Country Flag Assets
+  * Dropped prophet & Constrasting Plots
         
 
   
