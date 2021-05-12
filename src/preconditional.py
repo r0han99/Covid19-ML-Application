@@ -77,58 +77,22 @@ def covidAPI_country_list():
     
     return countries_list
 
-def footer():
-    st.sidebar.markdown('***')
-    expander0 = st.sidebar.beta_expander(label='GitHub')
-    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/Covid19-PredictiveAnalysis) <small>Source-Code | Oct 2020</small>'''.format(img_to_bytes("./assets/GitHub.png")), unsafe_allow_html=True)
-    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/) <small>The Database of My Knowledge</small>'''.format(img_to_bytes("./assets/cognitive-intel.png")), unsafe_allow_html=True)
 
 
 
 
-def app():
+def precondition():
 
-    motive = '''Analysis of the preconditional traits of a patient and determining the efficiency of virus'''
+    motive = '''Analytical Categorization based on Historic Covid19 Patients preconditional Data'''
     st.markdown('***')
-    st.markdown('''<h2 style='font-family:poppins; text-align:center; font-weight:bold;'>Pre-Conditional Prognosis</h2>''',unsafe_allow_html=True)
-    st.markdown('''<small style='font-size:14px; text-align:center; padding-left:30px;'>{}</small>'''.format(motive),unsafe_allow_html=True)
+    st.markdown('''<h2 style='font-family:poppins; text-align:center; font-weight:normal;'>Pre-Conditional Prognosis</h2>''',unsafe_allow_html=True)
+    st.markdown('''<p style='font-size:14px; color:crimson; text-align:center;'>{}</p>'''.format(motive),unsafe_allow_html=True)
     st.markdown('***')
 
+    st.info('Data Preprocessing ⌛️, Neural Network Training ⏳, Algorithm for categorization⏳')
 
-
-    # World Status
-    # API Invocation
-    total_numericals = covidAPI_data_total()
-
-    if st.sidebar.checkbox('world stats',True):
-        st.sidebar.header('Global Statistics📈')
-    st.sidebar.markdown(' ') # section break
-
-    # Global Status
-    table='''
-
-        **Confirmed** -  ```{:,}```\n
-        **Recovered** -  ```{:,}```\n
-        **Deaths**$~~~~~$ - ```{:,}```\n
-        **Active**$~~~~~$ - ```{:,}```\n
-    '''.format(total_numericals['Total Confirmmed'],total_numericals['Total Active'],total_numericals['Total Deaths'],total_numericals['Total Recovered'])
-
-    st.sidebar.write(table)
-    st.sidebar.markdown('***')
-
-    # Preset for all the Plots
-    plot_template = st.sidebar.selectbox('Default Plot Theme',['Light☀️','Dark🌑'],key='VizThemeTemplate')
-
-    if plot_template == 'Dark🌑':
-        theme = 'plotly_dark'
-    else:
-        theme = 'plotly_white'
-
-    st.sidebar.markdown('***')
-
-
-    # footer-sidebar
-    footer()
+    
+    
    
 
     
