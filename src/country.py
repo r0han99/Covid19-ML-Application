@@ -19,16 +19,23 @@ def img_to_bytes(img_path):
     return encoded
 
 
+
+
+
 def countryViz(CountryName, MR, quantsum, freq, timeline):
 
 
-    
-    
-    st.sidebar.markdown('''<p>Selected Country is : <span style='font-style:italic; font-weight:bold; color:dodgerblue;'>{}<span>   <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></p>'''.format(CountryName, img_to_bytes("./assets/Countries/{}.png".format(CountryName.lower()))), unsafe_allow_html=True)
+    try: 
+        if not CountryName == 'US':
+            st.sidebar.markdown('''<p>Selected Country is : <span style='font-style:italic; font-weight:bold; color:dodgerblue;'>{}<span>   <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></p>'''.format(CountryName, img_to_bytes("./assets/Countries/{}.png".format(CountryName.lower()))), unsafe_allow_html=True)
+
+        else:
+            st.sidebar.markdown('''<p>Selected Country is : <span style='font-style:italic; font-weight:bold; color:dodgerblue;'>{}<span>   <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></p>'''.format(CountryName, img_to_bytes("./assets/Countries/united states.png".format(CountryName.lower()))), unsafe_allow_html=True)
+    except:
+        st.sidebar.markdown('''<p>Selected Country is : <span style='font-style:italic; font-weight:bold; color:dodgerblue;'>{}<span></p>'''.format(CountryName), unsafe_allow_html=True)
 
 
-
-    stats = st.sidebar.radio('Categories',['Mortality & Recovery', 'Quantified Summary', 'Daily Frequency', 'Timeline'], key='cateogories_country')
+    stats = st.sidebar.radio('Categories',['Daily Frequency', 'Mortality & Recovery', 'Quantified Summary', 'Timeline'], key='cateogories_country')
     st.sidebar.markdown('***')    
 
 
@@ -37,49 +44,59 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
 
 
             st.markdown('***')
-            st.markdown('''<h3 style='font-family:poppins; font-style:italic; text-align:center;'>Mortality Rate and Recovery Rate, Percentiles</h3>''',unsafe_allow_html=True)
-            st.markdown(' ')
-
+            st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Mortality Rate and Recovery Rate, Percentiles</h3>''',unsafe_allow_html=True)
+            st.markdown('<br>',unsafe_allow_html=True)
+        
 
 
             # ACCESS Mortality and Recovery 
 
-            present_date, mortality_rate, recovery_rate = MR.values()
+            present_date, mortality_rate, recovery_rate, mrchart = MR.values()
 
             # ACCESS Mortality and Recovery 
 
 
-            spaces = '~~~~~~~~~~~~~~'
-            st.markdown('${}$ **{}**, Recovery Rate as of Date (**{}**) : ```{:.2f}%```'.format(spaces,CountryName,present_date,recovery_rate*100))
-            st.markdown('${}$ **{}**, Fatality Rate as of Date (**{}**)  : ```{:.2f}%```'.format(spaces,CountryName,present_date,mortality_rate*100))
-
+            st.markdown('''<p style='text-align:center;'><b>{}</b>, Recovery Rate as of Date <span style='font-weight:bold; font-family:Montserrat; font-style:italic;'>({})</span> : <span style='color:limegreen; font-weight:bold;'>{:.2f}%</span></p>'''.format(CountryName,present_date,recovery_rate*100),unsafe_allow_html=True)
+            st.markdown('''<p style='text-align:center;'><b>{}</b>, Mortality Rate as of Date <span style='font-weight:bold; font-family:Montserrat; font-style:italic;'>({})</span> : <span style='color:crimson; font-weight:bold;'>{:.2f}%</span></p>'''.format(CountryName,present_date,mortality_rate*100),unsafe_allow_html=True)
+           
 
             st.success('_**Recovery Rate**_ is the proportion of people who **Recovered** from the `Diesease` to the Total Number of people infected.')
-            st.error('_**Mortality Rate**_ is the proportion of people who **Died** from the `Disease` to the Total Number of people infected.')
+            st.error('_**Mortality Rate**_ is the proportion of people who **Succumbed** to the `Disease` to the Total Number of people infected.')
             st.markdown('***')
+
+            st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Mortality Rate and Recovery Rate, Timeline</h3>''',unsafe_allow_html=True)
+            st.markdown(' ')
+
+            st.plotly_chart(mrchart)
+
+
     
     
     elif stats == 'Quantified Summary':
 
         st.markdown('***')
-        st.markdown('''<h3 style='font-family:poppins; font-style:italic; text-align:center;'>Quantified Summary - {} </h3>'''.format(CountryName),unsafe_allow_html=True)
+        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Quantified Summary - {} </h3>'''.format(CountryName),unsafe_allow_html=True)
         st.markdown(' ')
         CHART_TYPE0 = st.selectbox('Visualization type',['Pie Chart','Bar Chart'], key='ix')
 
-        if CHART_TYPE0 == 'Pie Chart':
-            fig = quantsum['Piechart']
-            st.plotly_chart(fig)
+        if not quantsum == None:
+
+            if CHART_TYPE0 == 'Pie Chart':
+                fig = quantsum['Piechart']
+                st.plotly_chart(fig)
+            else:
+                fig = quantsum['Barchart']
+                st.plotly_chart(fig)
+            
+            
         else:
-            fig = quantsum['Barchart']
-            st.plotly_chart(fig)
-        
-        st.markdown('***')
+            st.markdown('_United States Data visualisation is temporarily deprecated by the CovidAPI due to inconsistency in the record maintenance_')
 
 
     elif stats == 'Daily Frequency':
     
         st.markdown('***')
-        st.markdown('''<h3 style='font-family:poppins; font-style:italic; text-align:center;'>Quantified Daily Frequency of Cases - {} </h3>'''.format(CountryName),unsafe_allow_html=True)
+        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Quantified Daily Frequency of Cases - {} </h3>'''.format(CountryName),unsafe_allow_html=True)
         
 
         freqchart = freq['FreqChart']
@@ -92,13 +109,13 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
         if st.checkbox('Note',(country_raise==0)):
             st.markdown('If this Value is ever `zero`, that means there are same number of cases reported in the last two dates, So, there is no Net Increase in Cases. However, I feel the Value `Zero` is very unlikely, So I believe it to be either **Artificiality** in the Dataset or The Data is **Not Updated** yet.')
 
-        st.markdown('***')
+
     
     elif stats == 'Timeline':
         
         
         st.markdown('***')
-        st.markdown('''<h3 style='font-family:poppins; font-style:italic; text-align:center;'>Time Series Plot - {}</h3>'''.format(CountryName),unsafe_allow_html=True)
+        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Time Series Plot - {}</h3>'''.format(CountryName),unsafe_allow_html=True)
         
 
         # retrieve Chart 
@@ -113,5 +130,8 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
             intriguing_countries = ['Ecuador','Brazil','US','China','Canada','Spain']
             st.code(intriguing_countries)
 
-        st.markdown('***')
+
+        
+    
+
         

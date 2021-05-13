@@ -7,7 +7,9 @@ from streamlit import caching
 from src.preconditional import precondition
 from src.country import countryViz
 from src.world import world_data
+from src.vaccine import vaccineStats
 from src.about import about
+
 
 # Dataanalytics Dependencies 
 import pandas as pd
@@ -38,6 +40,8 @@ confirmed_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/maste
 recovered_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv'
 deaths_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
 aggregate_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/web-data/data/cases_country.csv'
+vaccinestats_url = 'https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.csv'
+vaccineloc_url = 'https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/locations.csv'
 
 st.set_page_config(page_title="Covid19-Recon-App",page_icon="./assets/tablogo.png",layout="centered",initial_sidebar_state="auto",)
 
@@ -102,17 +106,19 @@ def covidAPI_country_list():
     return countries_list
 
 @st.cache(persist=True)
-def Data_load(confirmed_url,deaths_url,recovered_url,aggregate_url):
+def Data_load(confirmed_url,deaths_url,recovered_url,aggregate_url, vaccinestats_url, vaccineloc_url):
     confirmed_df = pd.read_csv(confirmed_url)
     recovered_df = pd.read_csv(recovered_url)
     deaths_df = pd.read_csv(deaths_url)
     aggregate_df = pd.read_csv(aggregate_url)
+    vaccine_df = pd.read_csv(vaccinestats_url)
+    vaccloc_df = pd.read_csv(vaccineloc_url)
 
     confirmed_df = confirmed_df.replace(np.nan,'unregistered',regex=True)
     recovered_df = recovered_df.replace(np.nan,'unregistered',regex=True)
     deaths_df = deaths_df.replace(np.nan,'unregistered',regex=True)
 
-    return confirmed_df, deaths_df, recovered_df, aggregate_df
+    return confirmed_df, deaths_df, recovered_df, aggregate_df, vaccine_df, vaccloc_df
 
 
 @st.cache(persist=True)
@@ -247,9 +253,16 @@ def preprocessing1(CountryName,confirmed_df,recovered_df,deaths_df):
          11:'Nov',12:'Dec'}
     
     if len(CountryName) == 1 :
-        country_summary = confirmed_df[confirmed_df['Country/Region'] == CountryName[0]].drop(['Province/State','Country/Region','Lat','Long'],axis=1).T
-        country_summary['Recovered'] = recovered_df[recovered_df['Country/Region'] == CountryName[0]].drop(['Province/State','Country/Region','Lat','Long'],axis=1).T
-        country_summary['Deaths'] = deaths_df[deaths_df['Country/Region'] == CountryName[0]].drop(['Province/State','Country/Region','Lat','Long'],axis=1).T
+        try:
+            country_summary = confirmed_df[confirmed_df['Country/Region'] == CountryName[0]].drop(['Province/State','Country/Region','Lat','Long'],axis=1).T
+            country_summary['Recovered'] = recovered_df[recovered_df['Country/Region'] == CountryName[0]].drop(['Province/State','Country/Region','Lat','Long'],axis=1).T
+            country_summary['Deaths'] = deaths_df[deaths_df['Country/Region'] == CountryName[0]].drop(['Province/State','Country/Region','Lat','Long'],axis=1).T
+        except KeyError:
+            country_summary = confirmed_df[confirmed_df['Country/Region'] == CountryName[0]].drop(['Province/State','Country/Region'],axis=1).T
+            country_summary['Recovered'] = recovered_df[recovered_df['Country/Region'] == CountryName[0]].drop(['Province/State','Country/Region'],axis=1).T
+            country_summary['Deaths'] = deaths_df[deaths_df['Country/Region'] == CountryName[0]].drop(['Province/State','Country/Region'],axis=1).T
+            
+    
         country_summary.columns = ['Confirmed','Recovered','Deaths']
         country_summary['Active'] = country_summary['Confirmed'] - country_summary['Recovered'] - country_summary['Deaths']
         country_summary.index = pd.to_datetime(country_summary.index)
@@ -261,6 +274,7 @@ def preprocessing1(CountryName,confirmed_df,recovered_df,deaths_df):
         country_summary['Months'] = pd.to_datetime(country_summary['Months'])
         country_summary['Months'] = country_summary['Months_num'].map(month)
         return country_summary
+    
     
         
     
@@ -382,6 +396,27 @@ def Make_contrast_Box_plots(figobj,df_list,choice):
 
     return fig
 
+def mr_rate_timeline(country_summary, CountryName):
+
+    x = country_summary['Deaths']/country_summary['Confirmed']*100
+    r = country_summary['Recovered']/country_summary['Confirmed']*100
+
+
+    mr_chart = go.Figure()
+    mr_chart.add_trace(go.Scatter(x=x.index, y=x,
+                        mode='lines',
+                        name='Mortality',line=dict(color='red', width=2.5,
+                                ) ))
+    mr_chart.add_trace(go.Scatter(x=r.index, y=r,
+                        mode='lines',
+                        name='Recovery Rate',line=dict(color='gold', width=2.5,)))
+    mr_chart.update_layout(
+                    xaxis_title='Timeline',
+                    yaxis_title='Rate%')
+
+
+    return mr_chart
+
 
 
 @st.cache(persist=True)
@@ -442,9 +477,10 @@ def hikedfslice(y_list,typename):
 
 
 
-
 def footer():
     
+
+    st.markdown('***')
     st.subheader('$~~~~~~~~~~~~~~~~~~$`Developed` _and_ `Deployed` _by_ **```𝚛𝟶𝚑𝚊𝚗```**')
     # st.write("<p style='text-align: center;'><strong>V1.0.3- The Prophet Version</strong></p>",unsafe_allow_html=True)
 
@@ -454,12 +490,12 @@ def footer():
     if expander_appendix.checkbox('Display',False):
         st.markdown('***')
         st.image('./assets/BlogCoverB.jpg',width=700)
-        st.markdown("Here's my blog about this project elucidating everthing. I validate this project as \n**_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/swlh/covid-19-data-analysis-from-the-inception-to-predicting-the-uncertain-future-through-machine-ef4c3f0371bc) If you like to read.")
+        st.markdown("Here's my blog about this project elucidating everthing. I affirm this project as \n**_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/swlh/covid-19-data-analysis-from-the-inception-to-predicting-the-uncertain-future-through-machine-ef4c3f0371bc) If you like to read.")
 
 
     expander0 = st.sidebar.beta_expander(label='GitHub')
-    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/Covid19-PredictiveAnalysis) <small>Source-Code | Oct 2020</small>'''.format(img_to_bytes("./assets/GitHub.png")), unsafe_allow_html=True)
-    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/) <small>Other Works</small>'''.format(img_to_bytes("./assets/cognitive-intel.png")), unsafe_allow_html=True)
+    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/Covid19-PredictiveAnalysis) <span style='color:white; font-size:18px; font-style:italic;'>Source-Code | Oct 2020</span>'''.format(img_to_bytes("./assets/GitHub.png")), unsafe_allow_html=True)
+    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/) <span style='color:white; font-size:18px; font-style:italic;' >Other Works</span>'''.format(img_to_bytes("./assets/cognitive-intel.png")), unsafe_allow_html=True)
 
 
     st.sidebar.markdown('***')
@@ -476,8 +512,8 @@ def footer():
 # st.markdown('_A Statistical look through the data, from the **Inception of this unprecedented event** to a **Brief look into the Uncertain Future.**_')
 
 
-st.markdown("<h1 style='text-align:center;'><p style='font-size:55px; text-align:center; font-family:Golic One; font-weight:normal;'>The <span style='color:red;'>COVID19</span> Web Application</h1>",unsafe_allow_html=True)
-st.markdown("<h6 style='text-align: center ;'>A Statistical look through the data, from the<strong style='font-weight: bold;'> Inception of this unprecedented event</strong> to a <strong style='font-weight: bold;'>Brief look into the Uncertain Future.<strong style='font-weight: bold;'></h6>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center;'><p style='font-size:55px; text-align:center; font-family:Montserrat; font-weight:normal;'>The <span style='color:red;'>COVID19</span> Web Application<img src='data:image/png;base64,{}' class='img-fluid' width=62 height=62></h1>".format(img_to_bytes('./assets/world.png')),unsafe_allow_html=True)
+# st.markdown("<h6 style='text-align: center ;'>A Statistical look through the data, from the<strong style='font-weight: bold;'> Inception of this unprecedented event</strong> to a <strong style='font-weight: bold;'>Brief look into the Uncertain Future.<strong style='font-weight: bold;'></h6>", unsafe_allow_html=True)
 
 st.markdown('')
 st.sidebar.title('The Shelf of Control')
@@ -489,18 +525,23 @@ st.sidebar.markdown('***')
 
 # Data Fetch
 total_numericals = covidAPI_data_total()
-confirmed_df, deaths_df, recovered_df, agg_df = Data_load(confirmed_url,deaths_url,recovered_url,aggregate_url)
+confirmed_df, deaths_df, recovered_df, agg_df, vaccine_df, vaccloc_df = Data_load(confirmed_url,deaths_url,recovered_url,aggregate_url,vaccinestats_url, vaccineloc_url)
     
 
 last_date = confirmed_df.columns[-1]
 present_date = date.today().strftime("%m/%d/%Y")
 try: 
     day_diff = int(last_date.split('/')[1]) - int(present_date.split('/')[1])
-    if abs(day_diff) >= 5:
-        prompt = '''_Data Seems to be cached & Old ⚠️, ```Press C, Clear Cache then Reload the Page``` to fetch recent records of Data._'''
-        datevalidity.markdown(prompt)
+    
+    if abs(day_diff) >= 5:      
+        prompt = '''_Data Seems to be cached & Old ⚠️, ```Press C, Clear Cache then Reload the Page``` to fetch recent records of Data._'''  
+        warn = datevalidity.beta_expander('Old Data ⚠️')
+        warn.markdown(prompt)
     else:
-        datevalidity.markdown('_Data seems to be Fairly Recent✅, ```Press C, Clear Cache then Reload the Page``` to fetch newer records of Data._')
+        prompt = '''_Data stored in the cache is fairly recent, ```Press C, Clear Cache then Reload the Page``` to fetch recent records of Data._'''
+        warn = datevalidity.beta_expander('Fairly Recent Data in cache ✅')
+        warn.markdown(prompt)
+        
 except:
     day_diff = '~'
 
@@ -512,7 +553,7 @@ dropdown = st.sidebar.beta_expander('Dashboard',expanded=True)
 
 category = dropdown.selectbox('Category', ['Statistics', 'Machine Learning', 'About'], key='categories')
 if category == 'Statistics':
-    apps = dropdown.radio('Statistics',['Country-Wise', 'World'], key='Statistics')
+    apps = dropdown.radio('Statistics',['Country-Wise', 'World', 'Vaccinations'], key='Statistics')
 
 elif category == 'Machine Learning':
     apps = dropdown.radio('Machine Learning',['Precondition Based Prognosis'], key='Machine Learning')
@@ -640,7 +681,8 @@ elif apps == 'Country-Wise':
     if st.checkbox('All Country List',False):
         st.write('Copy a Country Name from the provided list.')
         st.write(country_list)
-        st.markdown("_why country name is important? the following figure shows a **brief** workflow of this Application, which is driven by an intial **Country Name Input**._")
+        st.markdown('***')
+        # st.markdown("_why country name is important? the following figure shows a **brief** workflow of this Application, which is driven by an intial **Country Name Input**._")
         # st.image('./assets/WorkFlow.png',width=750,caption='control flow')
         
 
@@ -678,7 +720,7 @@ elif apps == 'Country-Wise':
             country_dict = covidAPI_data(CountryName)
     else:
 
-        st.markdown('_US Data synopsis is temporarily deprecated by the CovidAPI due to inconsistency in record maintenance_')
+        st.markdown('_United States Data visualisation is temporarily deprecated by the CovidAPI due to inconsistency in record maintenance_')
 
  
 
@@ -697,37 +739,41 @@ elif apps == 'Country-Wise':
         mortality_rate = summation_deaths/summation_Confirmed
         recovery_rate = summation_recovered/summation_Confirmed
 
-
-        MR = {'Date': present_date, 'Mortality': mortality_rate, 'Recovery': recovery_rate}
-
+        mrchart = mr_rate_timeline(country_summary, CountryName)
 
 
+        MR = {'Date': present_date, 'Mortality': mortality_rate, 'Recovery': recovery_rate, 'MRchart':mrchart}
 
-    # QUANTIFIED SUMMARY
-    # pie Chart
-    labels = list(country_dict.keys())
-    values = list(country_dict.values())
-    colors = ['dodgerblue', 'crimson', 'lime', 'magenta']
-    pie_chart = go.Figure(data=[go.Pie(labels=labels,titleposition='top left',values=values,pull=[0, 0.2,0, 0],hole=0.3)])
-    pie_chart.update_traces(hoverinfo='label+percent+value', textfont_size=20,
-                    marker=dict(colors=colors, line=dict(color='#000000', width=2.5)))
-    
-    # Box Chart 
-    x = list(country_dict.keys())
-    y = list(country_dict.values())
 
-    colors = ['lightslategray'] * 5
-    colors[2] = 'crimson'
 
     
-    box_chart = go.Figure(data=[go.Bar(x=x, y=y,
-                )])
 
-    box_chart.update_traces(marker_color=colors, marker_line_color='rgb(0,0,0)',
-                    marker_line_width=1.5, opacity=0.9)
-    
-    
-    quantsum = {'Piechart':pie_chart, 'Barchart': box_chart}
+
+        # QUANTIFIED SUMMARY
+        # pie Chart
+        labels = list(country_dict.keys())
+        values = list(country_dict.values())
+        colors = ['dodgerblue', 'crimson', 'lime', 'magenta']
+        pie_chart = go.Figure(data=[go.Pie(labels=labels,titleposition='top left',values=values,pull=[0, 0.2,0, 0],hole=0.3)])
+        pie_chart.update_traces(hoverinfo='label+percent+value', textfont_size=20,
+                        marker=dict(colors=colors, line=dict(color='#000000', width=2.5)))
+        
+        # Box Chart 
+        x = list(country_dict.keys())
+        y = list(country_dict.values())
+
+        colors = ['lightslategray'] * 5
+        colors[2] = 'crimson'
+
+        
+        box_chart = go.Figure(data=[go.Bar(x=x, y=y,
+                    )])
+
+        box_chart.update_traces(marker_color=colors, marker_line_color='rgb(0,0,0)',
+                        marker_line_width=1.5, opacity=0.9)
+        
+        
+        quantsum = {'Piechart':pie_chart, 'Barchart': box_chart}
 
     
     
@@ -791,12 +837,31 @@ elif apps == 'Country-Wise':
     
     
     timeline = TimeSeriesPlot(country_summary)
-    
 
-    countryViz(CountryName, MR, quantsum, freq, timeline)
+
+
+
+    
+    if CountryName == 'US':
+        MR = None
+        quantsum = None
+        countryViz(CountryName, MR, quantsum, freq, timeline)
+    else:
+        countryViz(CountryName, MR, quantsum, freq, timeline)
+
+    
+    
+elif apps == 'Vaccinations':
+
+    # Vaccine Data
+    vaccine = {'Vaccine_df': vaccine_df, 'Vaccine_loc': vaccloc_df}
+    vaccineStats(vaccine)
+        
 
 elif apps == 'Precondition Based Prognosis':
     precondition()
+
+
 
 
 footer()

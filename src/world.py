@@ -25,7 +25,7 @@ def img_to_bytes(img_path):
 def world_data(choropleth, total_numericals, worldTime_dict): 
 
     st.markdown('***')
-    st.markdown('''<h3 style='font-family:poppins; text-align:center;'>The World's Data Visualised</h3>''',unsafe_allow_html=True)
+    st.markdown('''<h3 style='font-family:Montserrat; text-align:center;'>The World's Data Visualised</h3>''',unsafe_allow_html=True)
     st.markdown('***')
 
     titleslt = st.empty() # for title
@@ -60,7 +60,7 @@ def world_data(choropleth, total_numericals, worldTime_dict):
     
         cols = st.beta_columns(4)
         attr = st.selectbox('Category',['Active','Recovered','Confirmed','Deaths'], key='choropleth')
-        titleslt.markdown('''<h4 style='font-family:poppins; font-style:italic; text-align:center;'>Choropleth (World Map) - {}</h4>'''.format(attr),unsafe_allow_html=True)
+        titleslt.markdown('''<h4 style='font-family:Montserrat; font-style:italic; text-align:center;'>Choropleth (World Map) - {}</h4>'''.format(attr),unsafe_allow_html=True)
         
 
         if attr == 'Active':
@@ -76,7 +76,7 @@ def world_data(choropleth, total_numericals, worldTime_dict):
             fig = choropleth[attr]
             slot.plotly_chart(fig,use_container_width=True)
 
-        st.markdown('***')
+        
 
     elif viztype == 'Quantified Summary':
 
@@ -87,11 +87,11 @@ def world_data(choropleth, total_numericals, worldTime_dict):
 
         
         if Global_Chart_radio == 'Time Series':
-            chart_title.markdown('''<h3 style='font-family:poppins; font-style:italic; text-align:center;'>Time Series Plot</h3>''',unsafe_allow_html=True)
+            chart_title.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Time Series Plot</h3>''',unsafe_allow_html=True)
             chartslt.plotly_chart(worldTime_dict['Time Series'])
         else:
             
-            chart_title.markdown('''<h3 style='font-family:poppins; font-style:italic; text-align:center;'>Quantified Summary</h3>''',unsafe_allow_html=True)
+            chart_title.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Quantified Summary</h3>''',unsafe_allow_html=True)
             chartslt.plotly_chart(worldTime_dict['World-Pie'])
     
     else:
@@ -99,8 +99,8 @@ def world_data(choropleth, total_numericals, worldTime_dict):
         # frequency 
         freq_chart, information = worldTime_dict['Frequency']
 
-        st.markdown('***')
-        st.markdown('''<h3 style='font-family:poppins; font-style:italic; text-align:center;'>Frequency of reported Cases</h3>''',unsafe_allow_html=True)
+        
+        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Frequency of reported Cases</h3>''',unsafe_allow_html=True)
 
         st.plotly_chart(freq_chart)
         st.info(information)
