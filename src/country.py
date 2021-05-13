@@ -30,7 +30,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
             st.sidebar.markdown('''<p>Selected Country is : <span style='font-style:italic; font-weight:bold; color:dodgerblue;'>{}<span>   <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></p>'''.format(CountryName, img_to_bytes("./assets/Countries/{}.png".format(CountryName.lower()))), unsafe_allow_html=True)
 
         else:
-            st.sidebar.markdown('''<p>Selected Country is : <span style='font-style:italic; font-weight:bold; color:dodgerblue;'>{}<span>   <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></p>'''.format(CountryName, img_to_bytes("./assets/Countries/united states.png".format(CountryName.lower()))), unsafe_allow_html=True)
+            st.sidebar.markdown('''<p>Selected Country is : <span style='font-style:italic; font-weight:bold; color:dodgerblue;'>{}<span>   <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></p>'''.format(CountryName, img_to_bytes("./assets/Countries/united states.png")), unsafe_allow_html=True)
     except:
         st.sidebar.markdown('''<p>Selected Country is : <span style='font-style:italic; font-weight:bold; color:dodgerblue;'>{}<span></p>'''.format(CountryName), unsafe_allow_html=True)
 
