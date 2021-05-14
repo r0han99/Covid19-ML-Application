@@ -43,7 +43,19 @@ aggregate_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/web-d
 vaccinestats_url = 'https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.csv'
 vaccineloc_url = 'https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/locations.csv'
 
-st.set_page_config(page_title="Covid19-Recon-App",page_icon="./assets/tablogo.png",layout="centered",initial_sidebar_state="auto",)
+st.set_page_config(page_title="All About Covid19",page_icon="./assets/world.png",layout="centered",initial_sidebar_state="auto",)
+
+font_link = '''<head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: "Montserrat", sans-serif;
+}
+</style>
+</head>'''
+st.markdown("{}".format(font_link),unsafe_allow_html=True)
+
 
 
 def img_to_bytes(img_path):
@@ -313,22 +325,75 @@ def province_check_deaths(CountryName,deaths_df):
         return deaths_df
 
 @st.cache(persist=True)
-def RAISE_in_Cases(confirmed_df,CountryName='India'):
-    raise_cal = confirmed_df.copy(deep=True)
-    raise_cal = raise_cal.drop(['Province/State','Lat','Long'],axis=1)
-    raise_cal = raise_cal.drop(np.array(raise_cal.columns)[1:-2],axis=1)
-    raise_cal = raise_cal.set_index('Country/Region')
-    raise_cal['RAISE'] = np.abs(raise_cal[np.array(raise_cal.columns)[-2:][1]]- raise_cal[np.array(raise_cal.columns)[-2:][0]] )
-    net_increase = raise_cal['RAISE'].sum()
-    # try, catch
-    if len(raise_cal.loc[CountryName,:]) > 3:
-        country_raise = dict(raise_cal.loc[CountryName,:].sum())['RAISE']
+def RAISE_in_Cases(confirmed_df,recovered_df, deaths_df,CountryName='India'):
+    raise_conf = confirmed_df.copy(deep=True)
+    raise_recov = recovered_df.copy(deep=True)
+    raise_deaths = deaths_df.copy(deep=True)
     
+    raise_conf = raise_conf.drop(['Province/State','Lat','Long'],axis=1)
+    raise_recov = raise_recov.drop(['Province/State','Lat','Long'],axis=1)
+    raise_deaths = raise_deaths.drop(['Province/State','Lat','Long'],axis=1)
+    
+    raise_conf = raise_conf.drop(np.array(raise_conf.columns)[1:-2],axis=1)
+    raise_recov = raise_recov.drop(np.array(raise_recov.columns)[1:-2],axis=1)
+    raise_deaths = raise_deaths.drop(np.array(raise_deaths.columns)[1:-2],axis=1)
+    
+    raise_conf = raise_conf.set_index('Country/Region')
+    raise_recov = raise_recov.set_index('Country/Region')
+    raise_deaths = raise_deaths.set_index('Country/Region')
+    
+         
+    raise_conf['RAISE'] = raise_conf[np.array(raise_conf.columns)[-2:][1]] - raise_conf[np.array(raise_conf.columns)[-2:][0]]
+    raise_recov['RAISE'] = raise_recov[np.array(raise_recov.columns)[-2:][1]]- raise_recov[np.array(raise_recov.columns)[-2:][0]]
+    raise_deaths['RAISE'] = raise_deaths[np.array(raise_deaths.columns)[-2:][1]]- raise_deaths[np.array(raise_deaths.columns)[-2:][0]]
+    
+    Gconf_hike = raise_conf['RAISE'].sum()
+    Grecov_hike = raise_recov['RAISE'].sum()
+    Gdeaths_hike = raise_deaths['RAISE'].sum()
+    
+    if raise_deaths.loc[CountryName,:]['RAISE'].size > 1:
+        raise_deaths = raise_deaths.loc[CountryName,:].sum()
     else:
-        country_raise = dict(raise_cal.loc[CountryName,:])['RAISE']
+        raise_deaths = raise_deaths.loc[CountryName, :]
+    
+    if raise_recov.loc[CountryName, :]['RAISE'].size > 1:
+        raise_recov = raise_recov.loc[CountryName,:].sum()
+    else:
+        raise_recov = raise_recov.loc[CountryName, :]
+        
+    if raise_conf.loc[CountryName, :]['RAISE'].size > 1:
+        raise_conf = raise_conf.loc[CountryName,:].sum()
+    else:
+        raise_conf = raise_conf.loc[CountryName, :]
+    
+
+    if raise_conf['RAISE'] < 0:
+        conf_stat = 'negative'
+    else:
+        conf_stat = 'positive'
+        
+    if raise_recov['RAISE'] < 0:
+        recov_stat = 'negative'
+    else:
+        recov_stat = 'positive'
+        
+    if raise_deaths["RAISE"] < 0:
+        deaths_stat = 'negative'
+    else:
+        deaths_stat = 'positive'
+    
+    hike_status = {'confirmed': conf_stat, 'Recovered': recov_stat, 'Deaths':deaths_stat}
     
     
-    return net_increase,raise_cal.columns[:2],country_raise
+    conf_raise = np.abs(raise_conf['RAISE'])
+    recov_raise = np.abs(raise_recov['RAISE'])
+    deaths_raise = np.abs(raise_deaths['RAISE'])
+    
+    world_hike = (Gconf_hike, Grecov_hike, Gdeaths_hike)
+    country_hike = (conf_raise, recov_raise, deaths_raise)
+    
+    return world_hike, raise_conf.index[:-1], country_hike, hike_status
+
 
 
 
@@ -481,21 +546,24 @@ def footer():
     
 
     st.markdown('***')
-    st.subheader('$~~~~~~~~~~~~~~~~~~$`Developed` _and_ `Deployed` _by_ **```𝚛𝟶𝚑𝚊𝚗```**')
+    st.markdown('''> <p style='text-align:center;'><span style='font-weight:bold; text-align:center; font-size:20px; font-style:italic;'>Developed & Deployed By <span style='padding-right:5px;'></span><span style='font-size:20px;  font-weight:bold; color:limegreen; background-color:black;  border-radius: 2px; padding-left:5px; padding-right:5px;'> r0han</span></p>''', unsafe_allow_html=True)
+    
     # st.write("<p style='text-align: center;'><strong>V1.0.3- The Prophet Version</strong></p>",unsafe_allow_html=True)
 
 
+    # GITHUB
+
+    expander0 = st.sidebar.beta_expander(label='GitHub')
+    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/Covid19-PredictiveAnalysis) <span style='font-size:18px; font-style:italic;'>Source-Code | Oct 2020</span>'''.format(img_to_bytes("./assets/GitHub.png")), unsafe_allow_html=True)
+    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/) <span style='font-size:18px; font-style:italic;' >Other Works</span>'''.format(img_to_bytes("./assets/cognitive-intel.png")), unsafe_allow_html=True)
+
+    #BLog Post
 
     expander_appendix = st.sidebar.beta_expander(label='Blog Post')
     if expander_appendix.checkbox('Display',False):
         st.markdown('***')
         st.image('./assets/BlogCoverB.jpg',width=700)
         st.markdown("Here's my blog about this project elucidating everthing. I affirm this project as \n**_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/swlh/covid-19-data-analysis-from-the-inception-to-predicting-the-uncertain-future-through-machine-ef4c3f0371bc) If you like to read.")
-
-
-    expander0 = st.sidebar.beta_expander(label='GitHub')
-    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/Covid19-PredictiveAnalysis) <span style='color:white; font-size:18px; font-style:italic;'>Source-Code | Oct 2020</span>'''.format(img_to_bytes("./assets/GitHub.png")), unsafe_allow_html=True)
-    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/) <span style='color:white; font-size:18px; font-style:italic;' >Other Works</span>'''.format(img_to_bytes("./assets/cognitive-intel.png")), unsafe_allow_html=True)
 
 
     st.sidebar.markdown('***')
@@ -511,8 +579,7 @@ def footer():
 # st.title('The COVID19 Reconnaissance & Forecasting Web Application')
 # st.markdown('_A Statistical look through the data, from the **Inception of this unprecedented event** to a **Brief look into the Uncertain Future.**_')
 
-
-st.markdown("<h1 style='text-align:center;'><p style='font-size:55px; text-align:center; font-family:Montserrat; font-weight:normal;'>The <span style='color:red;'>COVID19</span> Web Application<img src='data:image/png;base64,{}' class='img-fluid' width=62 height=62></h1>".format(img_to_bytes('./assets/world.png')),unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center;'><p style='font-size:55px; text-align:center; font-family:Montserrat; font-weight:normal;'>The <span style='color:red; font-weight:bold;'>COVID19</span> Web Application<img src='data:image/png;base64,{}' class='img-fluid' width=62 height=62></h1>".format(img_to_bytes('./assets/world.png')),unsafe_allow_html=True)
 # st.markdown("<h6 style='text-align: center ;'>A Statistical look through the data, from the<strong style='font-weight: bold;'> Inception of this unprecedented event</strong> to a <strong style='font-weight: bold;'>Brief look into the Uncertain Future.<strong style='font-weight: bold;'></h6>", unsafe_allow_html=True)
 
 st.markdown('')
@@ -534,12 +601,12 @@ try:
     day_diff = int(last_date.split('/')[1]) - int(present_date.split('/')[1])
     
     if abs(day_diff) >= 5:      
-        prompt = '''_Data Seems to be cached & Old ⚠️, ```Press C, Clear Cache then Reload the Page``` to fetch recent records of Data._'''  
+        prompt = f'''_Data Seems to be cached & Old ⚠️ (about {day_diff} days.), ```Press C, Clear Cache then Reload the Page``` to fetch recent records of Data._'''  
         warn = datevalidity.beta_expander('Old Data ⚠️')
         warn.markdown(prompt)
     else:
-        prompt = '''_Data stored in the cache is fairly recent, ```Press C, Clear Cache then Reload the Page``` to fetch recent records of Data._'''
-        warn = datevalidity.beta_expander('Fairly Recent Data in cache ✅')
+        prompt = f'''_Data stored in the cache is fairly recent (about {day_diff} days.), ```Press C, Clear Cache then Reload the Page``` to fetch recent records of Data._'''
+        warn = datevalidity.beta_expander('Fairly Recent Data in the Cache ✅')
         warn.markdown(prompt)
         
 except:
@@ -644,14 +711,12 @@ if apps == 'World':
 
     )
     
-    net_increase,last2dates,_ = RAISE_in_Cases(confirmed_df)
-    info0 = '''
-                The Net Hike in Cases Between _Last Two Days_ 
-                **{}** `&` **{}** is : **{:,}**
-    '''.format(last2dates[0],last2dates[1],net_increase)
+    world_raise, last2dates, _, hike_status = RAISE_in_Cases(confirmed_df,recovered_df,deaths_df)
+    
+    
    
 
-    worldTime_dict = {'Time Series':TimeSeriesPlot(summary) ,'World-Pie': world_pie , 'Frequency': (fig,info0) }
+    worldTime_dict = {'Time Series':TimeSeriesPlot(summary) ,'World-Pie': world_pie , 'Frequency': (fig,last2dates, world_raise) }
 
 
     # Redirecting the recorded values to the actual app to render
@@ -666,7 +731,7 @@ elif apps == 'Country-Wise':
 
 
     st.markdown('***')
-    st.markdown('''<h3 style='font-family:poppins; text-align:center;'>Country-Wise Visualisation</h3>''',unsafe_allow_html=True)
+    st.markdown('''<h3 style='font-family:Montserrat; text-align:center;'>Country-Wise Visualisation</h3>''',unsafe_allow_html=True)
     
 
     
@@ -676,19 +741,20 @@ elif apps == 'Country-Wise':
 
     country_list = covidAPI_country_list()
 
-    # SEND country_list
-
-    if st.checkbox('All Country List',False):
-        st.write('Copy a Country Name from the provided list.')
-        st.write(country_list)
-        st.markdown('***')
-        # st.markdown("_why country name is important? the following figure shows a **brief** workflow of this Application, which is driven by an intial **Country Name Input**._")
-        # st.image('./assets/WorkFlow.png',width=750,caption='control flow')
-        
+    
 
 
     # Country Input 
     CountryName = st.text_input('Enter the Country Name (Default : India) ','India')
+
+    clist = st.beta_expander('Country List')
+    clist.write('Copy a Country Name from the provided list.')
+    clist.write(country_list)
+
+        # st.markdown("_why country name is important? the following figure shows a **brief** workflow of this Application, which is driven by an intial **Country Name Input**._")
+        # st.image('./assets/WorkFlow.png',width=750,caption='control flow')
+        
+    
     # /Country Input
 
 
@@ -718,11 +784,7 @@ elif apps == 'Country-Wise':
         else:
 
             country_dict = covidAPI_data(CountryName)
-    else:
-
-        st.markdown('_United States Data visualisation is temporarily deprecated by the CovidAPI due to inconsistency in record maintenance_')
-
- 
+   
 
 
     present_date = date.today().strftime("%m/%d/%Y")
@@ -753,8 +815,8 @@ elif apps == 'Country-Wise':
         # pie Chart
         labels = list(country_dict.keys())
         values = list(country_dict.values())
-        colors = ['dodgerblue', 'crimson', 'lime', 'magenta']
-        pie_chart = go.Figure(data=[go.Pie(labels=labels,titleposition='top left',values=values,pull=[0, 0.2,0, 0],hole=0.3)])
+        colors = ['gray', 'crimson', 'lime', 'dodgerblue']
+        pie_chart = go.Figure(data=[go.Pie(labels=labels,titleposition='top left',values=values,pull=[0, 0,0.12, 0],hole=0.3)])
         pie_chart.update_traces(hoverinfo='label+percent+value', textfont_size=20,
                         marker=dict(colors=colors, line=dict(color='#000000', width=2.5)))
         
@@ -802,12 +864,12 @@ elif apps == 'Country-Wise':
     fig.add_trace(go.Bar(x=Months,
                     y=trans_df[1],
                     name='Recovered',
-                    marker_color='dodgerblue'
+                    marker_color='royalblue'
                     ))
     fig.add_trace(go.Scatter(x=Months,
                     y=trans_df[2],
                     name='Deaths',
-                    marker_color='blueviolet',    
+                    marker_color='gold',    
                 
                     ))
 
@@ -830,9 +892,10 @@ elif apps == 'Country-Wise':
 
     )
     
+    _, last2dates, country_raise, hike_status = RAISE_in_Cases(confirmed_df,recovered_df,deaths_df, CountryName)
+    
 
-    net_increase,last2dates, country_raise = RAISE_in_Cases(confirmed_df,CountryName)
-    freq = {'FreqChart': fig, 'info' : (net_increase,last2dates, country_raise)}
+    freq = {'FreqChart': fig, 'info' : (last2dates, country_raise, hike_status)}
     
     
     

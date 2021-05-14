@@ -60,7 +60,7 @@ def world_data(choropleth, total_numericals, worldTime_dict):
     
         cols = st.beta_columns(4)
         attr = st.selectbox('Category',['Active','Recovered','Confirmed','Deaths'], key='choropleth')
-        titleslt.markdown('''<h4 style='font-family:Montserrat; font-style:italic; text-align:center;'>Choropleth (World Map) - {}</h4>'''.format(attr),unsafe_allow_html=True)
+        titleslt.markdown('''<h4 style='font-family:Montserrat; font-style:italic; text-align:center;'>Choropleth (World Map)</h4>''',unsafe_allow_html=True)
         
 
         if attr == 'Active':
@@ -97,12 +97,16 @@ def world_data(choropleth, total_numericals, worldTime_dict):
     else:
 
         # frequency 
-        freq_chart, information = worldTime_dict['Frequency']
+        freq_chart, last2dates ,world_raise = worldTime_dict['Frequency']
+        wconf_raise, wrecov_raise, wdeath_raise = world_raise
 
+
+        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Number of Cases Reported Daily</h3>''',unsafe_allow_html=True)
         
-        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Frequency of reported Cases</h3>''',unsafe_allow_html=True)
-
         st.plotly_chart(freq_chart)
-        st.info(information)
-
         
+        st.markdown('''<p style='font-family:Montserrat; font-weight:bold; font-size:25px; text-decoration:underline;'>Reported between the two dates, <span style='color:red; font-weight:bold;'>{} & {}</span></p>'''.format(last2dates[0], last2dates[1]),unsafe_allow_html=True)
+        
+        st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Confirmed Cases</span> Reported  - {:,}</p>'''.format(wconf_raise),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Recovered Cases</span> Reported  - {:,}</p>'''.format(wrecov_raise),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Deaths Cases</span> Reported  - {:,}</p>'''.format(wdeath_raise),unsafe_allow_html=True)

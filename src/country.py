@@ -69,6 +69,9 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
 
             st.plotly_chart(mrchart)
 
+        else: 
+            st.warning('_United States Data recording is temporarily deprecated by the CovidAPI due to inconsistency in the record maintenance._')
+
 
     
     
@@ -90,24 +93,44 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
             
             
         else:
-            st.markdown('_United States Data visualisation is temporarily deprecated by the CovidAPI due to inconsistency in the record maintenance_')
+            st.warning('_United States Data visualisation is temporarily deprecated by the CovidAPI due to inconsistency in the record maintenance_')
 
 
     elif stats == 'Daily Frequency':
     
         st.markdown('***')
-        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Quantified Daily Frequency of Cases - {} </h3>'''.format(CountryName),unsafe_allow_html=True)
+        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Number of Cases Reported Daily</h3>''',unsafe_allow_html=True)
         
 
         freqchart = freq['FreqChart']
         st.plotly_chart(freqchart)
 
 
-        net_increase, last2dates, country_raise = freq['info']
+        last2dates, country_raise, hike_status = freq['info']
+        cconf_raise, crecov_raise, cdeath_raise = country_raise
+        conf_status, recov_status, deaths_status = hike_status.values()
 
-        st.info('The Net Hike in Cases Between _Last Two Days_ in **{}** `&` **{}** in {} is : **{:,}**'.format(last2dates[0],last2dates[1],CountryName,country_raise))
-        if st.checkbox('Note',(country_raise==0)):
-            st.markdown('If this Value is ever `zero`, that means there are same number of cases reported in the last two dates, So, there is no Net Increase in Cases. However, I feel the Value `Zero` is very unlikely, So I believe it to be either **Artificiality** in the Dataset or The Data is **Not Updated** yet.')
+
+        st.markdown('''<p style='font-family:Montserrat; font-weight:bold; font-size:25px; text-decoration:underline;'>Reported between the two dates, <span style='color:red; font-weight:bold;'>{} & {}</span></p>'''.format(last2dates[0], last2dates[1]),unsafe_allow_html=True)
+        
+        if conf_status == 'positive':
+            st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Confirmed Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cconf_raise, img_to_bytes('./assets/hike/positive.png')),unsafe_allow_html=True)
+        elif conf_status == 'negative':
+            st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Confirmed Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cconf_raise, img_to_bytes('./assets/hike/negative.png')),unsafe_allow_html=True)
+
+        if recov_status == 'positive':
+            st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Recovered Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(crecov_raise, img_to_bytes('./assets/hike/positive_r.png')),unsafe_allow_html=True)
+        elif recov_status == 'negative':
+            st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Recovered Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(crecov_raise, img_to_bytes('./assets/hike/negative_r.png')),unsafe_allow_html=True)
+
+        if deaths_status == 'positive':
+                st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Deaths</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cdeath_raise, img_to_bytes('./assets/hike/positive.png')),unsafe_allow_html=True)
+        elif deaths_status == 'negative':
+            st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Deaths</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cdeath_raise, img_to_bytes('./assets/hike/negative.png')),unsafe_allow_html=True)
+
+
+        # if st.checkbox('Note',(country_raise==0)):
+        #     st.markdown('If this Value is ever `zero`, that means there are same number of cases reported in the last two dates, So, there is no Net Increase in Cases. However, I feel the Value `Zero` is very unlikely, So I believe it to be either **Artificiality** in the Dataset or The Data is **Not Updated** yet.')
 
 
     
