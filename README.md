@@ -1,23 +1,27 @@
 # Covid19 Machine Learning ``&`` Data Analytics Application [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/r0han99/covid19-ml-application/master/covid19-recon.py/+/)
 
-![banner](https://user-images.githubusercontent.com/45916202/112470734-02b32000-8d91-11eb-8f24-97fb8707b8fa.jpg)
+<img width="999" alt="Banner" src="https://user-images.githubusercontent.com/45916202/118280917-481ae080-b4ea-11eb-9cf5-0a9e0cc85aac.png">
 
 
 
 
-This repository is the stronghold for [**Covid19-Reconnaissance and Forcasting Application**](https://bit.ly/3kYHCW5) which consists tons of Visualisations
-and a Predictive Model which has the ability to forecast the number of cases in the near future.
+
+This repository is the stronghold for this _Application_ which have tons of Visualisations
+and Information about everything covid-19 related
+
+## Timeline of Number of Cases Daily Reported - _India_
+
+<img width="1404" alt="Freq" src="https://user-images.githubusercontent.com/45916202/118281161-903a0300-b4ea-11eb-803d-6656c034c501.png">
 
 
-<img width="1440" alt="Screenshot 2020-10-18 at 12 11 00 PM" src="https://user-images.githubusercontent.com/45916202/96360447-06d07700-113b-11eb-8077-b019dea25543.png">
+## Vaccine Administration - _India_
+
+<img width="1417" alt="Vaccs" src="https://user-images.githubusercontent.com/45916202/118281416-ce372700-b4ea-11eb-8f18-29cb4b901dae.png">
 
 
-```A Time Series Plot From the Application ```
 
 
-
-
-## Abstract
+## Blog Post - Abstract
 
 _One might consider Nuclear Warfare and a climatic catastrophe as the biggest failure that humanity could ever experience. However, People Failed to Acknowledge that any Novel infectious disease's emergence can wipe out a significant portion of human existence within no time as they did in the past. Despite the intense studies on the patterns of these epidemic outbreaks, when, where, and how these are triggered is out of comprehension. Severe respiratory disease was reported in Wuhan, Hubei province, China. As of 25 January 2020, at least 1,975 cases had been reported since the first patient was hospitalized on 12 December 2019. After the phylogenetic analysis of the complete viral genome, it was found to be closely related to SARS-like virus which is related to the family Coronaviridae and initially named it as SARS-CoV-2 then later bolted down to the name Covid19. This outbreak highlights the ongoing ability of viral spill-over from animals to cause severe disease in humans._
 
@@ -32,7 +36,7 @@ _One might consider Nuclear Warfare and a climatic catastrophe as the biggest fa
     Streamlit is used to create flawless Front-End Aesthetics and to hold all the front-end Integrated Data Visualisations and Machine Learning Implementation. The app is Deployed on Streamlit Share, because of an *Invitation to test*, offered by a Streamlit's community major, A cloud platform which is now in closed BETA.
     
 - **[7/12/2020]** 
-  Deployment expired, Initially to generate requirements.txt programtically, I used Pigar which specifically tagged the versions used at that point of time. as of now, some of the modules are updated. so, removing the version tags for each module-name in the requirements.txt and rebooting the deployment installed the newest versions of the modules used in this application. problem resolved, deployment is active.
+  Deployment expired, Initially to generate requirements.txt programtically, I used _Pigar Tool_ which specifically tagged the versions used at that point of time. as of now, some of the modules are updated. so, removing the version tags for each module-name in the requirements.txt and rebooting the deployment installed the newest versions of the modules used in this application. problem resolved, deployment is active.
   
   Note, Deployment on Heroku is taken-down as in it's `Under-maintenance` but it still shows up Under Environments Section of this repository please ignore that. The Only Actively Maintained Deployment is the later. 
 
@@ -89,11 +93,27 @@ _One might consider Nuclear Warfare and a climatic catastrophe as the biggest fa
   * Segregated Different Sections to many apps
   * Country Flag Assets
   * Dropped prophet & Constrasting Plots
-        
-
   
+* **[13/5/2021]** ~ *Vaccine Administration Radio-Page*
 
-<img width="1432" alt="Screenshot 2020-10-19 at 8 07 57 PM" src="https://user-images.githubusercontent.com/45916202/96466058-556b3780-1247-11eb-9798-c555db266ad0.png">
+  * Fixed bugs
+  * Mortality and Recovery Rate Timeline Chart
+  * All About Vaccinations   
+  * Vaccines and Manufacturers    
+  * Countrywise, percentage of Vaccines Administered ( Fully Vaccinated , One-Shot ( Partially ) Vaccinated )
+  * Cache Status Checking functionality
+
+* **[14/5/2021]** ~ *Re-Organisation Complete*
+
+   * Vaccine Page re-Organisation
+      * Vaccinations of the world
+          * Information about all the Vaccines available
+      * Vaccine Administration
+          * Percentage description of Vaccine Administration in Countries
+    * Fixed some front-end issues
+    * Default theme setup with config.toml
+
+***
 
 
 
