@@ -14,11 +14,11 @@ and Information about everything covid-19 related
 <img width="1404" alt="Freq" src="https://user-images.githubusercontent.com/45916202/118281161-903a0300-b4ea-11eb-803d-6656c034c501.png">
 
 
-## Vaccine Administration - _India_
+## Vaccine Administration - _United Kingdom_
 
-<img width="1417" alt="Vaccs" src="https://user-images.githubusercontent.com/45916202/118281416-ce372700-b4ea-11eb-8f18-29cb4b901dae.png">
+<img width="1438" alt="UK-Vacc" src="https://user-images.githubusercontent.com/45916202/118302555-fe3df480-b501-11eb-8ee9-a605de03e827.png">
 
-
+***
 
 
 ## Blog Post - Abstract
