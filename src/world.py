@@ -51,6 +51,9 @@ def world_data(choropleth, total_numericals, worldTime_dict):
 
     
     st.sidebar.write(table)
+    
+
+    
     st.sidebar.markdown('***')
 
 

@@ -95,11 +95,11 @@ def vaccineStats(vaccine):
 
     
         total = vaccine_df[vaccine_df['location'] == country]['total_vaccinations'][-1:].values[0]
-        full_vacc = vaccine_df[vaccine_df['location'] == country]['people_fully_vaccinated'][-1:].values[0]
+        full_vacc =  vaccine_df[vaccine_df['location'] == country]['people_fully_vaccinated'][-1:].values[0]
         oneshot = vaccine_df[vaccine_df['location'] == country]['people_vaccinated'][-1:].values[0]
         last_date = vaccine_df[vaccine_df['location'] == country]['date'][-1:].values[0]
-        
 
+        
 
         fully_vacc = (full_vacc/total)*100
         partially_vacc = (oneshot/total)*100

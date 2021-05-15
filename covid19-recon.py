@@ -101,9 +101,10 @@ def covidAPI_data_total():
     active_tot = int(covid.get_total_active_cases())
     recovered_tot = int(covid.get_total_recovered())
     confirmed_tot = int(covid.get_total_confirmed_cases())
+    deaths_tot = int(covid.get_total_deaths())
 
 
-    total_numericals = dict({'Total Recovered' : recovered_tot, 'Total Active' : active_tot,'Total Deaths' : abs((active_tot+recovered_tot) - confirmed_tot), 'Total Confirmmed': confirmed_tot,})
+    total_numericals = dict({'Total Recovered' : recovered_tot, 'Total Active' : active_tot,'Total Deaths' : deaths_tot, 'Total Confirmmed': confirmed_tot,})
 
     return total_numericals
 
