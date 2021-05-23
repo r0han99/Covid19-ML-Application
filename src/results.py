@@ -91,8 +91,11 @@ def criticality_likelihood_estimator(sample,data,icuNet,intubationNet):
     # st.code(features)
     # st.code(features.shape)
 
-    proba_icu = icuNet.predict(features.reshape(1,-1))[0][0]*100
-    proba_intube = intubationNet.predict(features.reshape(1,-1))[0][0]*100
+    proba_icu = icuNet.predict(features.reshape(1,-1))[0][0]
+    proba_intube = intubationNet.predict(features.reshape(1,-1))[0][0]
+
+    # st.code(proba_icu)
+    # st.code(proba_intube)
 
     probability = (proba_icu, proba_intube)
     # probability= (0,0)
@@ -355,7 +358,7 @@ def display_results(package):
         
         results.markdown('***')
         results.markdown(" > <span style='font-size:24px; font-weight:bold; font-style:italic;'>Neural Network's Likelihood Estimation </span>",unsafe_allow_html=True)
-        results.markdown('''* <span style='font-size:1px; '> *Based on your Pre-Conditions, the <b>Neural Network</b> will yeild a Numerical Estimation. This Number, represents the posibility of you requiring either Intubation or an ICU, If tested +ve for COVID19* </span>''', unsafe_allow_html=True)
+        results.markdown('''* <span style='font-size:1px; '> *Based on your Pre-Conditions, the <b>Neural Network</b> will yield a Numerical Estimation. This Number, represents the posibility of you requiring either Intubation or an ICU, If tested +ve for COVID19* </span>''', unsafe_allow_html=True)
 
         results.markdown("> ***Your Medical Conditions***")
         results.code(preconditions)
@@ -365,12 +368,15 @@ def display_results(package):
         probability = criticality_likelihood_estimator(package,data,icuNet,intubationNet)
 
         results.markdown(" > <span style='font-size:24px; font-weight:bold; font-style:italic;'>Probability</span>",unsafe_allow_html=True)
-        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}%</span>  ***chance to get Admitted to an ICU.***'''.format(probability[0]), unsafe_allow_html=True)
-        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}%</span>   ***chance for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
+        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}/1</span>  ***chance to get Admitted to an ICU.***'''.format(probability[0]), unsafe_allow_html=True)
+        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}/1</span>   ***chance for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
 
         results.markdown('***')
 
         # results.markdown(probability)
+        if results.checkbox('Note',True):
+            results.markdown("> _The Model Trained to yield this probability estimate is trained on Data related to ***Mexican Origin***, Though this numerical states the possibility in quantified terms, this whatsoever doesn't apply when we consider the complexity of Medical conditions._",unsafe_allow_html=True)
+
         results.markdown('<center style="font-weight:bold; font-style:italic;">End-Report</center>',unsafe_allow_html=True)
         
 
@@ -389,7 +395,7 @@ def display_results(package):
 
 
         results.markdown(" > <span style='font-size:24px; font-weight:bold; font-style:italic;'>Neural Network's Likelihood Estimation </span>",unsafe_allow_html=True)
-        results.markdown('''* <span style='font-size:1px; '> *Based on your Pre-Conditions, the <b>Neural Network</b> will yeild a Numerical Estimation. This Number, represents the posibility of you requiring either Intubation or an ICU, If tested +ve for COVID19* </span>''', unsafe_allow_html=True)
+        results.markdown('''* <span style='font-size:1px; '> *Based on your Pre-Conditions, the <b>Neural Network</b> will yield a Numerical Estimation. This Number, represents the posibility of you requiring either Intubation or an ICU, If tested +ve for COVID19* </span>''', unsafe_allow_html=True)
 
         results.markdown("> ***Your Medical Conditions***")
         results.code(preconditions)
@@ -399,8 +405,8 @@ def display_results(package):
         probability = criticality_likelihood_estimator(package,data,icuNet,intubationNet)
 
         results.markdown(" > <span style='font-size:24px; font-weight:bold; font-style:italic;'>Probability</span>",unsafe_allow_html=True)
-        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}%</span>  ***chance to get Admitted to an ICU.***'''.format(probability[0]), unsafe_allow_html=True)
-        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}%</span>   ***chance for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
+        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}/1</span>  ***chance to get Admitted to an ICU.***'''.format(probability[0]), unsafe_allow_html=True)
+        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}/1</span>   ***chance for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
 
         results.markdown('***')
 
