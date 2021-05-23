@@ -25,7 +25,7 @@ def img_to_bytes(img_path):
 def world_data(choropleth, total_numericals, worldTime_dict): 
 
     st.markdown('***')
-    st.markdown('''<h3 style='font-family:Montserrat; text-align:center;'>The World's Data Visualised</h3>''',unsafe_allow_html=True)
+    st.markdown('''<h3 style='font-family:Sora; text-align:center;'>The World's Data Visualised</h3>''',unsafe_allow_html=True)
     st.markdown('***')
 
     titleslt = st.empty() # for title
@@ -43,14 +43,14 @@ def world_data(choropleth, total_numericals, worldTime_dict):
     # Global Status
     table='''
 
-        *Confirmed* -  ```{:,}```\n
-        *Recovered* -  ```{:,}```\n
-        *Deaths*$~~~~~$ - ```{:,}```\n
-        *Active*$~~~~~~$ - ```{:,}```\n
+        *Confirmed* -  <span style='font-family:Sora; color:#2484F7;'>{:,}</span>\n
+        *Recovered* -  <span style='font-family:Sora; color:#2484F7;'>{:,}</span>\n
+        *Deaths*$~~~~~$ - <span style='font-family:Sora; color:#2484F7;'>{:,}</span>\n
+        *Active*$~~~~~~$ - <span style='font-family:Sora; color:#2484F7;'>{:,}</span>\n
     '''.format(total_numericals['Total Confirmmed'],total_numericals['Total Active'],total_numericals['Total Deaths'],total_numericals['Total Recovered'])
 
     
-    st.sidebar.write(table)
+    st.sidebar.markdown(table,  unsafe_allow_html=True)
     
 
     
@@ -63,7 +63,7 @@ def world_data(choropleth, total_numericals, worldTime_dict):
     
         cols = st.beta_columns(4)
         attr = st.selectbox('Category',['Active','Recovered','Confirmed','Deaths'], key='choropleth')
-        titleslt.markdown('''<h4 style='font-family:Montserrat; font-style:italic; text-align:center;'>Choropleth (World Map)</h4>''',unsafe_allow_html=True)
+        titleslt.markdown('''<h4 style='font-family:Sora;  text-align:center;'>Choropleth (World Map)</h4>''',unsafe_allow_html=True)
         
 
         if attr == 'Active':
@@ -90,11 +90,11 @@ def world_data(choropleth, total_numericals, worldTime_dict):
 
         
         if Global_Chart_radio == 'Time Series':
-            chart_title.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Time Series Plot</h3>''',unsafe_allow_html=True)
+            chart_title.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Time Series Plot</h3>''',unsafe_allow_html=True)
             chartslt.plotly_chart(worldTime_dict['Time Series'])
         else:
             
-            chart_title.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Quantified Summary</h3>''',unsafe_allow_html=True)
+            chart_title.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Quantified Summary</h3>''',unsafe_allow_html=True)
             chartslt.plotly_chart(worldTime_dict['World-Pie'])
     
     else:
@@ -104,12 +104,12 @@ def world_data(choropleth, total_numericals, worldTime_dict):
         wconf_raise, wrecov_raise, wdeath_raise = world_raise
 
 
-        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Number of Cases Reported Daily</h3>''',unsafe_allow_html=True)
+        st.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Number of Cases Reported Daily</h3>''',unsafe_allow_html=True)
         
         st.plotly_chart(freq_chart)
         
-        st.markdown('''<p style='font-family:Montserrat; font-weight:bold; font-size:25px; text-decoration:underline;'>Reported between the two dates, <span style='color:red; font-weight:bold;'>{} & {}</span></p>'''.format(last2dates[0], last2dates[1]),unsafe_allow_html=True)
+        st.markdown('''<p style='font-family:Sora; font-weight:bold; font-size:25px; text-decoration:underline;'>Reported between the two dates, <span style='color:red; font-weight:bold;'>{} & {}</span></p>'''.format(last2dates[0], last2dates[1]),unsafe_allow_html=True)
         
-        st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Confirmed Cases</span> Reported  - {:,}</p>'''.format(wconf_raise),unsafe_allow_html=True)
-        st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Recovered Cases</span> Reported  - {:,}</p>'''.format(wrecov_raise),unsafe_allow_html=True)
-        st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Deaths Cases</span> Reported  - {:,}</p>'''.format(wdeath_raise),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Confirmed Cases</span> Reported  - {:,}</p>'''.format(wconf_raise),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - {:,}</p>'''.format(wrecov_raise),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Deaths Cases</span> Reported  - {:,}</p>'''.format(wdeath_raise),unsafe_allow_html=True)

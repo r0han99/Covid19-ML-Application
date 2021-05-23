@@ -1,0 +1,25 @@
+,attribute,info,class
+0,id,identifier number,~
+1,sex,the sex of the patient.,"Female - 1, Male - 2"
+2,patient_type,the type of care received by the patient in the unit. It is called an outpatient if you returned home or it is called an inpatient if you were admitted to hospital.,"Outpatient - 1, Inpatient - 2"
+3,entry_date,the date of the patient's admission to the care unit.,~
+4,date_symptoms,the date on which the patient's symptoms began.,~
+5,date_died,the date the patient died.,“9999-99-99” stands for recovered
+6,intubed,if the patient required intubation.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+7,pneumonia,if the patient was diagnosed with pneumonia.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+8,age,the age of the patient.,~
+9,pregnancy,if the patient is pregnant.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+10,diabetes,if the patient has a diagnosis of diabetes.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+11,copd,if the patient has a diagnosis of COPD.,"COPD). (Yes - 1, No - 2, Data missing or NA - 97,98,99"
+12,asthma,if the patient has a diagnosis of asthma.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+13,inmsupr,if the patient has immunosuppression.,"weakened immune system). (Yes - 1, No - 2, Data missing or NA - 97,98,99"
+14,hypertension,if the patient has a diagnosis of hypertension.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+15,other_disease,if the patient has a diagnosis of other diseases.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+16,cardiovascular,if the patient has a diagnosis of cardiovascular disease.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+17,obesity,if the patient is diagnosed with obesity.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+18,renal_chronic,if the patient has a diagnosis of chronic kidney failure.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+19,tobacco,if the patient has a smoking habit.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+20,contact_other_covid,if the patient had contact with any other case diagnosed with SARS CoV-2,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+21,covid_res,"the result of the analysis of the sample reported by the laboratory of the National Network of Epidemiological Surveillance Laboratories (INDRE, LESP and LAVE). (Catalog of diagnostic results attached).","Positive - 1, Negative - 2, Awaiting Results - 3"
+22,icu,if the patient required to enter an Intensive Care Unit.,"Yes - 1, No - 2, Data missing or NA - 97,98,99"
+23,unique_cases,"Unique Cases which were sliced down from the root data using conditional masking,Critical - Covid - positive, intubed, dead, positive for pneumonia and was admitted to icu, Abnormal - Covid - Positive, no intubation, no ICU, no pneumonia, dead","Normal-1, Critical-2, Abnormal-3"

@@ -27,12 +27,12 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
 
     try: 
         if not CountryName == 'US':
-            st.sidebar.markdown('''<p>Selected Country is : <span style='font-style:italic; font-weight:bold; color:dodgerblue;'>{}<span>   <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></p>'''.format(CountryName, img_to_bytes("./assets/Countries/{}.png".format(CountryName.lower()))), unsafe_allow_html=True)
+            st.sidebar.markdown('''<p>Selected Country is : <span style=' font-weight:bold; color:#2484F7;'>{}<span>   <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></p>'''.format(CountryName, img_to_bytes("./assets/Countries/{}.png".format(CountryName.lower()))), unsafe_allow_html=True)
 
         else:
-            st.sidebar.markdown('''<p>Selected Country is : <span style='font-style:italic; font-weight:bold; color:dodgerblue;'>{}<span>   <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></p>'''.format(CountryName, img_to_bytes("./assets/Countries/united states.png")), unsafe_allow_html=True)
+            st.sidebar.markdown('''<p>Selected Country is : <span style=' font-weight:bold; color:#2484F7;'>{}<span>   <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></p>'''.format(CountryName, img_to_bytes("./assets/Countries/united states.png")), unsafe_allow_html=True)
     except:
-        st.sidebar.markdown('''<p>Selected Country is : <span style='font-style:italic; font-weight:bold; color:dodgerblue;'>{}<span></p>'''.format(CountryName), unsafe_allow_html=True)
+        st.sidebar.markdown('''<p>Selected Country is : <span style=' font-weight:bold; color:#2484F7;'>{}<span></p>'''.format(CountryName), unsafe_allow_html=True)
 
 
     stats = st.sidebar.radio('Categories',['Daily Frequency', 'Mortality & Recovery', 'Quantified Summary', 'Timeline'], key='cateogories_country')
@@ -44,7 +44,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
 
 
             st.markdown('***')
-            st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Mortality Rate and Recovery Rate, Percentiles</h3>''',unsafe_allow_html=True)
+            st.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Mortality Rate and Recovery Rate, Percentiles</h3>''',unsafe_allow_html=True)
             st.markdown('<br>',unsafe_allow_html=True)
         
 
@@ -56,18 +56,18 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
             # ACCESS Mortality and Recovery 
 
 
-            st.markdown('''<p style='text-align:center;'><b>{}</b>, Recovery Rate as of Date <span style='font-weight:bold; font-family:Montserrat; font-style:italic;'>({})</span> : <span style='color:limegreen; font-weight:bold;'>{:.2f}%</span></p>'''.format(CountryName,present_date,recovery_rate*100),unsafe_allow_html=True)
-            st.markdown('''<p style='text-align:center;'><b>{}</b>, Mortality Rate as of Date <span style='font-weight:bold; font-family:Montserrat; font-style:italic;'>({})</span> : <span style='color:crimson; font-weight:bold;'>{:.2f}%</span></p>'''.format(CountryName,present_date,mortality_rate*100),unsafe_allow_html=True)
+            st.markdown('''<p style='text-align:center;'><b>{}</b>, Recovery Rate as of Date <span style='font-weight:bold; font-family:Sora; '>({})</span> : <span style='color:limegreen; font-weight:bold;'>{:.2f}%</span></p>'''.format(CountryName,present_date,recovery_rate*100),unsafe_allow_html=True)
+            st.markdown('''<p style='text-align:center;'><b>{}</b>, Mortality Rate as of Date <span style='font-weight:bold; font-family:Sora; '>({})</span> : <span style='color:crimson; font-weight:bold;'>{:.2f}%</span></p>'''.format(CountryName,present_date,mortality_rate*100),unsafe_allow_html=True)
            
 
             st.success('_**Recovery Rate**_ is the proportion of people who **Recovered** from the `Diesease` to the Total Number of people infected.')
             st.error('_**Mortality Rate**_ is the proportion of people who **Succumbed** to the `Disease` to the Total Number of people infected.')
             st.markdown('***')
 
-            st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Mortality Rate and Recovery Rate, Timeline</h3>''',unsafe_allow_html=True)
+            st.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Mortality Rate and Recovery Rate, Timeline</h3>''',unsafe_allow_html=True)
             st.markdown(' ')
 
-            st.plotly_chart(mrchart)
+            st.plotly_chart(mrchart,use_container_width=True)
 
         else: 
             st.warning('_United States Data recording is temporarily deprecated by the CovidAPI due to inconsistency in the record maintenance._')
@@ -78,7 +78,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
     elif stats == 'Quantified Summary':
 
         st.markdown('***')
-        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Quantified Summary - {} </h3>'''.format(CountryName),unsafe_allow_html=True)
+        st.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Quantified Summary - {} </h3>'''.format(CountryName),unsafe_allow_html=True)
         st.markdown(' ')
         CHART_TYPE0 = st.selectbox('Visualization type',['Pie Chart','Bar Chart'], key='ix')
 
@@ -99,7 +99,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
     elif stats == 'Daily Frequency':
     
         st.markdown('***')
-        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Number of Cases Reported Daily</h3>''',unsafe_allow_html=True)
+        st.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Number of Cases Reported Daily</h3>''',unsafe_allow_html=True)
         
 
         freqchart = freq['FreqChart']
@@ -110,23 +110,29 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
         cconf_raise, crecov_raise, cdeath_raise = country_raise
         conf_status, recov_status, deaths_status = hike_status.values()
 
+        last2dates1 = datetime.datetime.strptime(last2dates[1], '%m/%d/%y').strftime('%d/%m/%Y')
+        last2dates0 = datetime.datetime.strptime(last2dates[0], '%m/%d/%y').strftime('%d/%m/%Y')
+        st.markdown('''<p style='font-family:Sora; font-weight:bold; font-size:25px;'>Reported between the two dates, <span style='color:#2484F7; font-weight:bold;'><br>{} <span style="color:black;">&</span> {}</span></p>'''.format(last2dates0,last2dates1),unsafe_allow_html=True)
 
-        st.markdown('''<p style='font-family:Montserrat; font-weight:bold; font-size:25px; text-decoration:underline;'>Reported between the two dates, <span style='color:red; font-weight:bold;'>{} & {}</span></p>'''.format(last2dates[0], last2dates[1]),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Confirmed Cases</span> Reported  - <span style='font-size:30px;'>{:,}</span> </span></p>'''.format(cconf_raise),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - <span style='font-size:30px;'>{:,}</span> </span></p>'''.format(crecov_raise),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Deaths</span> Reported  - <span style='font-size:30px;'>{:,}</span> </span></p>'''.format(cdeath_raise),unsafe_allow_html=True)
         
-        if conf_status == 'positive':
-            st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Confirmed Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cconf_raise, img_to_bytes('./assets/hike/positive.png')),unsafe_allow_html=True)
-        elif conf_status == 'negative':
-            st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Confirmed Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cconf_raise, img_to_bytes('./assets/hike/negative.png')),unsafe_allow_html=True)
+        
+        # if conf_status == 'positive':
+        #     st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Confirmed Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cconf_raise, img_to_bytes('./assets/hike/positive.png')),unsafe_allow_html=True)
+        # elif conf_status == 'negative':
+        #     st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Confirmed Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cconf_raise, img_to_bytes('./assets/hike/negative.png')),unsafe_allow_html=True)
 
-        if recov_status == 'positive':
-            st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Recovered Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(crecov_raise, img_to_bytes('./assets/hike/positive_r.png')),unsafe_allow_html=True)
-        elif recov_status == 'negative':
-            st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Recovered Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(crecov_raise, img_to_bytes('./assets/hike/negative_r.png')),unsafe_allow_html=True)
+        # if recov_status == 'positive':
+        #     st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(crecov_raise, img_to_bytes('./assets/hike/positive_r.png')),unsafe_allow_html=True)
+        # elif recov_status == 'negative':
+        #     st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(crecov_raise, img_to_bytes('./assets/hike/negative_r.png')),unsafe_allow_html=True)
 
-        if deaths_status == 'positive':
-                st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Deaths</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cdeath_raise, img_to_bytes('./assets/hike/positive.png')),unsafe_allow_html=True)
-        elif deaths_status == 'negative':
-            st.markdown('''> <p style='font-family:Montserrat; font-weight:bold; '><span style='font-style:italic;'>Deaths</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cdeath_raise, img_to_bytes('./assets/hike/negative.png')),unsafe_allow_html=True)
+        # if deaths_status == 'positive':
+        #         st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Deaths</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cdeath_raise, img_to_bytes('./assets/hike/positive.png')),unsafe_allow_html=True)
+        # elif deaths_status == 'negative':
+        #     st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Deaths</span> Reported  - {:,} <span> <img src='data:image/png;base64,{}' class='img-fluid' width=24 height=24></spam></p>'''.format(cdeath_raise, img_to_bytes('./assets/hike/negative.png')),unsafe_allow_html=True)
 
 
         # if st.checkbox('Note',(country_raise==0)):
@@ -138,7 +144,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
         
         
         st.markdown('***')
-        st.markdown('''<h3 style='font-family:Montserrat; font-style:italic; text-align:center;'>Time Series Plot - {}</h3>'''.format(CountryName),unsafe_allow_html=True)
+        st.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Time Series Plot - {}</h3>'''.format(CountryName),unsafe_allow_html=True)
         
 
         # retrieve Chart 

@@ -45,15 +45,8 @@ vaccineloc_url = 'https://raw.githubusercontent.com/owid/covid-19-data/master/pu
 
 st.set_page_config(page_title="All About Covid19",page_icon="./assets/world.png",layout="centered",initial_sidebar_state="auto",)
 
-font_link = '''<head>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
-<style>
-body {
-  font-family: "Montserrat", sans-serif;
-}
-</style>
-</head>'''
+font_link = '''<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap" rel="stylesheet">'''
 st.markdown("{}".format(font_link),unsafe_allow_html=True)
 
 
@@ -546,9 +539,6 @@ def hikedfslice(y_list,typename):
 def footer():
     
 
-    st.markdown('***')
-    st.markdown('''> <p style='text-align:center;'><span style='font-weight:bold; text-align:center; font-size:20px; font-style:italic;'>Developed & Deployed By <span style='padding-right:5px;'></span><span style='font-size:20px;  font-weight:bold; color:limegreen; background-color:black;  border-radius: 2px; padding-left:5px; padding-right:5px;'> r0han</span></p>''', unsafe_allow_html=True)
-    
     # st.write("<p style='text-align: center;'><strong>V1.0.3- The Prophet Version</strong></p>",unsafe_allow_html=True)
 
 
@@ -569,6 +559,10 @@ def footer():
 
     st.sidebar.markdown('***')
 
+    st.markdown('***')
+    st.sidebar.markdown('''> <p style='text-align:center;'><span style='font-weight:bold; text-align:center; font-size:20px; font-style:italic;'>Developed & Deployed By <span style='padding-right:5px;'></span><span style='font-size:20px;  font-weight:bold; color:limegreen; background-color:black;  border-radius: 2px; padding-left:5px; padding-right:5px;'> r0han</span></p>''', unsafe_allow_html=True)
+
+
     
         
 
@@ -580,7 +574,7 @@ def footer():
 # st.title('The COVID19 Reconnaissance & Forecasting Web Application')
 # st.markdown('_A Statistical look through the data, from the **Inception of this unprecedented event** to a **Brief look into the Uncertain Future.**_')
 
-st.markdown("<h1 style='text-align:center;'><p style='font-size:55px; text-align:center; font-family:Montserrat; font-weight:normal;'>The <span style='color:red; font-weight:bold;'>COVID19</span> Web Application<img src='data:image/png;base64,{}' class='img-fluid' width=62 height=62></h1>".format(img_to_bytes('./assets/world.png')),unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center;'><p style='font-size:55px; text-align:center; font-family:Sora; font-weight:normal;'>The <span style='color:red; font-weight:bold;'>COVID19</span> Web Application<img src='data:image/png;base64,{}' class='img-fluid' width=62 height=62></h1>".format(img_to_bytes('./assets/world.png')),unsafe_allow_html=True)
 # st.markdown("<h6 style='text-align: center ;'>A Statistical look through the data, from the<strong style='font-weight: bold;'> Inception of this unprecedented event</strong> to a <strong style='font-weight: bold;'>Brief look into the Uncertain Future.<strong style='font-weight: bold;'></h6>", unsafe_allow_html=True)
 
 st.markdown('')
@@ -601,7 +595,7 @@ present_date = date.today().strftime("%m/%d/%Y")
 try: 
     day_diff = int(last_date.split('/')[1]) - int(present_date.split('/')[1])
     
-    if abs(day_diff) >= 5:      
+    if abs(day_diff) >= 3:      
         prompt = f'''_Data Seems to be cached & Old ⚠️ (about {day_diff} days.), ```Press C, Clear Cache then Reload the Page``` to fetch recent records of Data._'''  
         warn = datevalidity.beta_expander('Old Data ⚠️')
         warn.markdown(prompt)
@@ -619,21 +613,21 @@ except:
 dropdown = st.sidebar.beta_expander('Dashboard',expanded=True)
 
 
-category = dropdown.selectbox('Category', ['Statistics', 'Machine Learning', 'About'], key='categories')
+category = dropdown.selectbox('Category', ['Statistics', 'Machine Learning'], key='categories')
 if category == 'Statistics':
-    apps = dropdown.radio('Statistics',['Country-Wise', 'World', 'Vaccinations'], key='Statistics')
+    apps = dropdown.radio('Statistics',['Country-Wise 🌎', 'World 🌍', 'Vaccinations 💉'], key='Statistics')
 
 elif category == 'Machine Learning':
-    apps = dropdown.radio('Machine Learning',['Precondition Based Prognosis'], key='Machine Learning')
+    apps = dropdown.radio('Machine Learning',['Know Your Prognosis 🧠'], key='Machine Learning')
 
-else: 
-    apps = 'about'
-    about()
+# else: 
+#     apps = 'about'
+#     about()
 
 st.sidebar.markdown('***')
 
 
-if apps == 'World':
+if apps == 'World 🌍':
     
     
     # Choropleth 
@@ -723,16 +717,16 @@ if apps == 'World':
     # Redirecting the recorded values to the actual app to render
     world_data(choropleth, total_numericals, worldTime_dict)
 
-
+    footer()
 
 
         
 
-elif apps == 'Country-Wise':
+elif apps == 'Country-Wise 🌎':
 
 
     st.markdown('***')
-    st.markdown('''<h3 style='font-family:Montserrat; text-align:center;'>Country-Wise Visualisation</h3>''',unsafe_allow_html=True)
+    st.markdown('''<h3 style='font-family:Sora; text-align:center;'>Country-Wise Visualisation</h3>''',unsafe_allow_html=True)
     
 
     
@@ -913,19 +907,22 @@ elif apps == 'Country-Wise':
     else:
         countryViz(CountryName, MR, quantsum, freq, timeline)
 
+    footer()
+
     
     
-elif apps == 'Vaccinations':
+elif apps == 'Vaccinations 💉':
 
     # Vaccine Data
     vaccine = {'Vaccine_df': vaccine_df, 'Vaccine_loc': vaccloc_df}
     vaccineStats(vaccine)
+
+    footer()
         
 
-elif apps == 'Precondition Based Prognosis':
+elif apps == 'Know Your Prognosis 🧠':
     precondition()
 
 
 
 
-footer()
