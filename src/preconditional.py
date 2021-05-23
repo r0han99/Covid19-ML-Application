@@ -7,7 +7,6 @@ from src.results import display_results
 
 # Data-analytics Dependencies
 import pandas as pd 
-import plotly.graph_objects as go
 import numpy as np
 from covid import Covid
 

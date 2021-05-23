@@ -4,9 +4,7 @@ from streamlit import caching
 
 # Data-analytics Dependencies
 import pandas as pd 
-# import plotly.graph_objects as go
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
 from covid import Covid
 
