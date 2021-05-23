@@ -26,8 +26,7 @@ and Information about everything covid-19 related
 
 * ***Preview (Default)*** 
 
-![report](https://user-images.githubusercontent.com/45916202/119262210-04b22780-bbf8-11eb-847d-077d52cce351.jpg)
-
+![report](https://user-images.githubusercontent.com/45916202/119263418-9ae84c80-bbfc-11eb-945f-78f11de1e8c7.jpg)
 
 
 
