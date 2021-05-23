@@ -366,7 +366,7 @@ def display_results(package):
 
         results.markdown(" > <span style='font-size:24px; font-weight:bold; font-style:italic;'>Probability</span>",unsafe_allow_html=True)
         results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}%</span>  ***chance to get Admitted to an ICU.***'''.format(probability[0]), unsafe_allow_html=True)
-        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}%</span>   ***chance to for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
+        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}%</span>   ***chance for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
 
         results.markdown('***')
 
@@ -400,7 +400,7 @@ def display_results(package):
 
         results.markdown(" > <span style='font-size:24px; font-weight:bold; font-style:italic;'>Probability</span>",unsafe_allow_html=True)
         results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}%</span>  ***chance to get Admitted to an ICU.***'''.format(probability[0]), unsafe_allow_html=True)
-        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}%</span>   ***chance to for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
+        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}%</span>   ***chance for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
 
         results.markdown('***')
 
