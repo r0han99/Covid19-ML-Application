@@ -337,7 +337,7 @@ def display_results(package):
         results.markdown('''> *People with same Medical Conditions as you* :  <span style='font-family:Sora; color:#2484F7;'>{} </span>'''.format(absolute_report['t_abs_precond_matches']), unsafe_allow_html=True)
         results.markdown('***')
         
-        results.markdown('''* <span style="font-weight:bold; font-style:italic; text-align:center;">What Happened with People with Sames Conditions as You? <br><br></span>''',unsafe_allow_html=True)
+        results.markdown('''* <span style="font-weight:bold; font-style:italic; text-align:center;">What Happened to the People with Sames Conditions as You? <br><br></span>''',unsafe_allow_html=True)
         
         cols = results.beta_columns(2)
         
