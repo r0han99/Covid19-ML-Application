@@ -375,7 +375,7 @@ def display_results(package):
 
         # results.markdown(probability)
         if results.checkbox('Note',True):
-            results.markdown("> _The Model Trained to yield this probability estimate is trained on Data related to ***Mexican Origin***, Though this numerical states the possibility in quantified terms, this whatsoever doesn't apply when we consider the complexity of Medical conditions._",unsafe_allow_html=True)
+            results.markdown("> _The Pre-trained Neural Network used to yield this probability estimate is trained on Data of patients related to ***Mexican Origin***; Though this numerical states the possibility in quantified terms, this whatsoever doesn't apply when we consider the complexity of Medical conditions._",unsafe_allow_html=True)
 
         results.markdown('<center style="font-weight:bold; font-style:italic;">End-Report</center>',unsafe_allow_html=True)
         
@@ -411,6 +411,12 @@ def display_results(package):
         results.markdown('***')
 
         # results.markdown(probability)
+        results.markdown('<center style="font-weight:bold; font-style:italic;">End-Report</center>',unsafe_allow_html=True)
+        
+        
+        if results.checkbox('Note',True):
+            results.markdown("> _The Pre-trained Neural Network used to yield this probability estimate is trained on Data of patients related to ***Mexican Origin***; Though this numerical states the possibility in quantified terms, this whatsoever doesn't apply when we consider the complexity of Medical conditions._",unsafe_allow_html=True)
+
         results.markdown('<center style="font-weight:bold; font-style:italic;">End-Report</center>',unsafe_allow_html=True)
         
 
