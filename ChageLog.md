@@ -84,3 +84,19 @@
             * Percentage description of Vaccine Administration in Countries
      * Fixed some front-end issues
      * Default theme setup with config.toml
+
+
+* **[23/5/2021]** ~ *Pre-Conditional Prognosis (DeepLearning)*
+
+  * Cleaned Data Using
+      * Knowledege based manual imputations
+      * Neural Network based imputation
+  * Trained Networks will now estimate the likelihood of people requiring an ICU and Intubation
+  * Front-End Changes
+      * Google's Newfont
+      * Added Secondary Theme Color to some elements in the dashboard
+  * Removed About page
+  * ChageLog.Md is Created
+  * tensorflow==2.5.0 >> requirements.txt
+
+***
