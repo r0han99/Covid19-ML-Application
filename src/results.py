@@ -37,6 +37,9 @@ def initialise_nets():
     path1 = './models/Nets/Agg-IcuNet.h5' # ICUNET
     path2 = './models/Nets/Agg-IntubationNet.h5' # INTUBATION NET
 
+    # path1 = './models/Nets/icuNet.h5' # ICUNET
+    # path2 = './models/Nets/intubationNet.h5' # INTUBATION NET
+
     net1 = load_model(path1)
     net2 = load_model(path2)
 
@@ -60,6 +63,8 @@ def age_pipe(age):
 
 def criticality_likelihood_estimator(sample,data,icuNet,intubationNet):
 
+    classes = ['Not required', 'Required']
+    
     '''
         * Data ( if present ), will be reorganised to fit the Networks Architecuture
         * Neural Networks are parameterised with the feature set;
@@ -91,11 +96,13 @@ def criticality_likelihood_estimator(sample,data,icuNet,intubationNet):
     # st.code(features)
     # st.code(features.shape)
 
-    proba_icu = icuNet.predict(features.reshape(1,-1))[0][0]
-    proba_intube = intubationNet.predict(features.reshape(1,-1))[0][0]
-
+    proba_icu = icuNet.predict_classes(features.reshape(1,-1))[0][0]
+    proba_intube = intubationNet.predict_classes(features.reshape(1,-1))[0][0]
+    
     # st.code(proba_icu)
     # st.code(proba_intube)
+    # st.code(classes[proba_icu])
+    # st.code(classes[proba_intube])
 
     probability = (proba_icu, proba_intube)
     # probability= (0,0)
@@ -368,8 +375,8 @@ def display_results(package):
         probability = criticality_likelihood_estimator(package,data,icuNet,intubationNet)
 
         results.markdown(" > <span style='font-size:24px; font-weight:bold; font-style:italic;'>Probability</span>",unsafe_allow_html=True)
-        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}/1</span>  ***chance to get Admitted to an ICU.***'''.format(probability[0]), unsafe_allow_html=True)
-        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}/1</span>   ***chance for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
+        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{}/1</span>  ***chance to get Admitted to an ICU.***'''.format(probability[0]), unsafe_allow_html=True)
+        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{}/1</span>   ***chance for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
 
         results.markdown('***')
 
@@ -405,8 +412,8 @@ def display_results(package):
         probability = criticality_likelihood_estimator(package,data,icuNet,intubationNet)
 
         results.markdown(" > <span style='font-size:24px; font-weight:bold; font-style:italic;'>Probability</span>",unsafe_allow_html=True)
-        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}/1</span>  ***chance to get Admitted to an ICU.***'''.format(probability[0]), unsafe_allow_html=True)
-        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{:.8f}/1</span>   ***chance for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
+        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{}/1</span>  ***chance to get Admitted to an ICU.***'''.format(probability[0]), unsafe_allow_html=True)
+        results.markdown('''> <span style='font-weight:bold; text-align:center; font-size:40px; color:#2484F7;'>{}/1</span>   ***chance for you to require an Intubation Setup.***'''.format(probability[1]), unsafe_allow_html=True)
 
         results.markdown('***')
 

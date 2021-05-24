@@ -51,9 +51,7 @@ and Information about everything covid-19 related
 
 * **[23/5/2021]** ~ *Pre-Conditional Prognosis (DeepLearning)*
 
-  * Cleaned Data Using
-      * Knowledege based manual imputations
-      * Neural Network based imputation
+  * Pre-processing
   * Trained Networks will now estimate the likelihood of people requiring an ICU and Intubation
   * Front-End Changes
       * Google's Newfont
@@ -63,7 +61,6 @@ and Information about everything covid-19 related
   * tensorflow==2.5.0 >> requirements.txt
 
 ***
-
 
 
 
