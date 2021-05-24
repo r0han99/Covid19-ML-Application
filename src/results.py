@@ -96,8 +96,8 @@ def criticality_likelihood_estimator(sample,data,icuNet,intubationNet):
     # st.code(features)
     # st.code(features.shape)
 
-    proba_icu = icuNet.predict_classes(features.reshape(1,-1))[0][0]
-    proba_intube = intubationNet.predict_classes(features.reshape(1,-1))[0][0]
+    proba_icu = icuNet.predict(features.reshape(1,-1))[0][0]
+    proba_intube = intubationNet.predict(features.reshape(1,-1))[0][0]
     
     # st.code(proba_icu)
     # st.code(proba_intube)
