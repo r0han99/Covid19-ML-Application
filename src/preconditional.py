@@ -106,7 +106,7 @@ def precondition():
 
     motive = '''Analytical Categorization based on records of COVID19 Patients & their Pre-conditions'''
     st.markdown('***')
-    st.markdown('''<h2 style='font-family:poppins; text-align:center; font-weight:normal;'>Pre-Conditional Prognosis</h2>''',unsafe_allow_html=True)
+    st.markdown('''<h2 style='font-family:sora; text-align:center; font-weight:normal;'>Pre-Conditional Prognosis</h2>''',unsafe_allow_html=True)
     st.markdown('''<p style='font-size:14px; color:#2484F7; text-align:center; font-style:italic;'>{}</p>'''.format(motive),unsafe_allow_html=True)
     st.markdown('***')
 
