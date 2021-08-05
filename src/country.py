@@ -70,7 +70,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
             st.plotly_chart(mrchart,use_container_width=True)
 
         else: 
-            st.warning('_United States Data recording is temporarily deprecated by the CovidAPI due to inconsistency in the record maintenance._')
+            st.warning('_United States data records are probably corrupted and temporarily deprecated by the Covid19API due to inconsistency in the record maintenance._')
 
 
     
