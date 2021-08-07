@@ -58,44 +58,84 @@ def img_to_bytes(img_path):
     return encoded
 
 
-@st.cache(persist=True)
-def covidAPI_data(CountryName):
+# @st.cache(persist=True)
+def covidAPI_data(confirmed_df,recovered_df,deaths_df,CountryName):
+
+
+    countconf = confirmed_df[confirmed_df['Country/Region'] == CountryName].iloc[:,-1:].values[0][0]
+    countrecov = recovered_df[recovered_df['Country/Region'] == CountryName].iloc[:,-1:].values[0][0]
+    countdeaths = deaths_df[deaths_df['Country/Region'] == CountryName].iloc[:,-1:].values[0][0]
+    
+    if countrecov == 0:
+        countactive = 0
+    else:
+        countactive = countconf - (countrecov+countdeaths)
+
+
+    # st.code(countconf)
+    # st.code(countrecov)
+    # st.code(countdeaths)
+    # st.code(countactive)
+
+    country_dict = {'confirmed':countconf, 'active':countactive, 'deaths':countdeaths, 'recovered':countrecov}
+
    
-    while True:
-        try:
-            country = CountryName
-            data = covid.get_status_by_country_name(country)
+    # while True:
+    #     try:
+    #         country = CountryName
+    #         data = covid.get_status_by_country_name(country)
 
-        except ValueError:
+    #     except ValueError:
             
-            continue
+    #         continue
         
-        else:
-            data = covid.get_status_by_country_name(country)
+    #     else:
+    #         data = covid.get_status_by_country_name(country)
 
-        break
+    #     break
 
-    country_dict = {
-        key : data[key]
-
-
-        for key in data.keys() & ("confirmed","active","deaths","recovered")
-    }
+    # country_dict = {
+    #     key : data[key]
 
 
-    key = list(country_dict.keys())
-    values = list(map(int,country_dict.values()))
+    #     for key in data.keys() & ("confirmed","active","deaths","recovered")
+    # }
+
+
+    # key = list(country_dict.keys())
+    # values = list(map(int,country_dict.values()))
 
     return country_dict
 
 @st.cache(persist=True)
-def covidAPI_data_total():
+def covidAPI_data_total(agg_df, confirmed_df, recovered_df, deaths_df):
+
+    
+    active_tot = covid.get_total_active_cases()
+    recovered_tot = covid.get_total_recovered()
+    confirmed_tot = covid.get_total_confirmed_cases()
+    deaths_tot = covid.get_total_deaths()
 
 
-    active_tot = int(covid.get_total_active_cases())
-    recovered_tot = int(covid.get_total_recovered())
-    confirmed_tot = int(covid.get_total_confirmed_cases())
-    deaths_tot = int(covid.get_total_deaths())
+    if active_tot == None or recovered_tot == None or recovered_tot == None or deaths_tot == None:
+
+        confirmed_tot = int(confirmed_df[confirmed_df.columns[-1:][0]].sum())
+        recovered_tot = int(recovered_df[recovered_df.columns[-1:][0]].sum())
+        deaths_tot = int(deaths_df[deaths_df.columns[-1:][0]].sum())
+        
+        if recovered_tot == 0:
+            active_tot = 0
+        else:
+            active_tot = confirmed_tot - (recovered_tot + deaths_tot)
+    
+
+
+    else:
+        active_tot = int(active_tot)
+        recovered_tot = int(recovered_tot)
+        confirmed_tot = int(confirmed_tot)
+        deaths_tot = int(deaths_tot)
+
 
 
     total_numericals = dict({'Total Recovered' : recovered_tot, 'Total Active' : active_tot,'Total Deaths' : deaths_tot, 'Total Confirmmed': confirmed_tot,})
@@ -586,10 +626,14 @@ datevalidity = st.sidebar.empty()
 
 st.sidebar.markdown('***')
 
-# Data Fetch
-total_numericals = covidAPI_data_total()
+
+
 confirmed_df, deaths_df, recovered_df, agg_df, vaccine_df, vaccloc_df = Data_load(confirmed_url,deaths_url,recovered_url,aggregate_url,vaccinestats_url, vaccineloc_url)
     
+# Data Fetch
+total_numericals = covidAPI_data_total(agg_df,confirmed_df,recovered_df,deaths_df)
+# st.write(total_numericals)
+
 
 last_date = confirmed_df.columns[-1]
 present_date = date.today().strftime("%m/%d/%Y")
@@ -770,7 +814,7 @@ elif apps == 'Country-Wise 🌎':
 
         elif re.search(r"\"",CountryName):
             CountryName = re.sub(r"\"","",CountryName)
-            country_dict = covidAPI_data(CountryName)
+            country_dict = covidAPI_data(confirmed_df,recovered_df,deaths_df,CountryName)
 
         elif CountryName not in country_list:
 
@@ -779,7 +823,7 @@ elif apps == 'Country-Wise 🌎':
 
         else:
 
-            country_dict = covidAPI_data(CountryName)
+            country_dict = covidAPI_data(confirmed_df,recovered_df,deaths_df,CountryName)
    
 
 
