@@ -56,12 +56,13 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
             # ACCESS Mortality and Recovery 
 
 
-            st.markdown('''<p style='text-align:center;'><b>{}</b>, Recovery Rate as of Date <span style='font-weight:bold; font-family:Sora; '>({})</span> : <span style='color:limegreen; font-weight:bold;'>{:.2f}%</span></p>'''.format(CountryName,present_date,recovery_rate*100),unsafe_allow_html=True)
+            st.markdown('''<p style='text-align:center;'><b>{}</b>, Recovery Rate as of Date <span style='font-weight:bold; font-family:Sora; '>(08/04/2021)</span> : <span style='color:limegreen; font-weight:bold;'>{:.2f}%</span></p>'''.format(CountryName,recovery_rate*100),unsafe_allow_html=True)
             st.markdown('''<p style='text-align:center;'><b>{}</b>, Mortality Rate as of Date <span style='font-weight:bold; font-family:Sora; '>({})</span> : <span style='color:crimson; font-weight:bold;'>{:.2f}%</span></p>'''.format(CountryName,present_date,mortality_rate*100),unsafe_allow_html=True)
            
 
             st.success('_**Recovery Rate**_ is the proportion of people who **Recovered** from the `Diesease` to the Total Number of people infected.')
             st.error('_**Mortality Rate**_ is the proportion of people who **Succumbed** to the `Disease` to the Total Number of people infected.')
+            st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)
             st.markdown('***')
 
             st.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Mortality Rate and Recovery Rate, Timeline</h3>''',unsafe_allow_html=True)
@@ -73,6 +74,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
             st.warning('_United States data records are probably corrupted and temporarily deprecated by the Covid19API due to inconsistency in the record maintenance._')
 
 
+        st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)
     
     
     elif stats == 'Quantified Summary':
@@ -140,7 +142,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
         # if st.checkbox('Note',(country_raise==0)):
         #     st.markdown('If this Value is ever `zero`, that means there are same number of cases reported in the last two dates, So, there is no Net Increase in Cases. However, I feel the Value `Zero` is very unlikely, So I believe it to be either **Artificiality** in the Dataset or The Data is **Not Updated** yet.')
 
-        
+        st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)
     
     elif stats == 'Timeline':
         
@@ -155,7 +157,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
 
 
         if st.checkbox('Intriguing?',False):
-            st.info('_I felt, the following list of countries had some **Intriguing patterns** in Time Series Plot, While the application was in the testing Phase.Why Intriguing you might ask, from the plot you can clearly see the contrast between people of different regions, reacting to the same contagion.Up Next in the Subplots Section you are enabled to choose any other 3 countries to contrast with the initial one._')
+            st.info('_I observed the following list of countries had some **Intriguing patterns** in the Time Series Plot. From the graph we can clearly see the contrast between people of different regions, reacting to the virus differntly._')
         
             # st.sidebar.markdown
             intriguing_countries = ['Ecuador','Brazil','US','China','Canada','Spain']
@@ -163,6 +165,6 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
 
 
         
-    st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)
+        st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)
 
         
