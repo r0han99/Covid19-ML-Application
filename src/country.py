@@ -95,6 +95,8 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
         else:
             st.warning('_United States Data visualisation is temporarily deprecated by the CovidAPI due to inconsistency in the record maintenance_')
 
+        st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)
+
 
     elif stats == 'Daily Frequency':
     
@@ -115,7 +117,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
         st.markdown('''<p style='font-family:Sora; font-weight:bold; font-size:25px;'>Reported between the two dates, <span style='color:#2484F7; font-weight:bold;'><br>{} <span style="color:black;">&</span> {}</span></p>'''.format(last2dates0,last2dates1),unsafe_allow_html=True)
 
         st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Confirmed Cases</span> Reported  - <span style='font-size:30px;'>{:,}</span> </span></p>'''.format(cconf_raise),unsafe_allow_html=True)
-        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - <span style='font-size:30px;'>{:,}</span> </span></p>'''.format(crecov_raise),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - <span style='font-size:30px;'>{:,}</span> </span><small style='font-size:15px;'><i>until 4th Aug,21</i></small></p>'''.format(crecov_raise),unsafe_allow_html=True)
         st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Deaths</span> Reported  - <span style='font-size:30px;'>{:,}</span> </span></p>'''.format(cdeath_raise),unsafe_allow_html=True)
         
         
@@ -138,7 +140,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
         # if st.checkbox('Note',(country_raise==0)):
         #     st.markdown('If this Value is ever `zero`, that means there are same number of cases reported in the last two dates, So, there is no Net Increase in Cases. However, I feel the Value `Zero` is very unlikely, So I believe it to be either **Artificiality** in the Dataset or The Data is **Not Updated** yet.')
 
-
+        
     
     elif stats == 'Timeline':
         
@@ -161,6 +163,6 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
 
 
         
-    
+    st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)
 
         

@@ -107,7 +107,7 @@ def covidAPI_data(confirmed_df,recovered_df,deaths_df,CountryName):
 
     return country_dict
 
-@st.cache(persist=True)
+@st.cache(persist=True,allow_output_mutation=True)
 def covidAPI_data_total(agg_df, confirmed_df, recovered_df, deaths_df):
 
     
@@ -574,6 +574,67 @@ def hikedfslice(y_list,typename):
 
 
 
+def fetchrecov(confirmed_df, recovered_df, deaths_df, purpose, CountryName=None):
+
+    if purpose == 'world':
+        wrecov = recovered_df.drop(['Lat','Long','Province/State','Country/Region'],axis=1).sum()['8/4/21']
+        wconf = confirmed_df.drop(['Lat','Long','Province/State','Country/Region'],axis=1).sum()['8/4/21']
+        wdeaths = deaths_df.drop(['Lat','Long','Province/State','Country/Region'],axis=1).sum()['8/4/21']
+
+
+        wactive = wconf - (wrecov+wdeaths)
+        return wrecov,wactive
+    
+    elif purpose == 'country':
+        if not CountryName == None:
+
+            crecov = recovered_df[recovered_df['Country/Region']==CountryName].loc[:,:'8/4/21']
+            cconf = confirmed_df[confirmed_df['Country/Region']==CountryName].loc[:,:'8/4/21']
+            cdeaths = deaths_df[deaths_df['Country/Region']==CountryName].loc[:,:'8/4/21']
+
+    
+            
+    
+            
+            if cconf.shape[0] > 1:
+                
+                cconf = cconf.sum(axis=0)['8/4/21']
+
+            else:
+
+                cconf = cconf['8/4/21'].values[0]
+            
+            if crecov.shape[0] > 1:
+                
+                crecov = crecov.sum(axis=0)['8/4/21']
+
+            else:
+                crecov = crecov['8/4/21'].values[0]
+
+            if cdeaths.shape[0] > 1:
+                
+                cdeaths = cdeaths.sum(axis=0)['8/4/21']
+            
+            else:
+                cdeaths = cdeaths['8/4/21'].values[0]
+
+
+           
+            # st.code('recov {:,}'.format(crecov))
+            # st.code('conf {:,}'.format(cconf))
+            # st.code('ded {:,}'.format(cdeaths))
+            
+            
+            cactive = cconf - (crecov+cdeaths)
+            
+            # st.code('active {:,}'.format(cactive))
+
+            return crecov,cactive
+
+        
+
+
+
 
 
 
@@ -585,23 +646,23 @@ def footer():
 
     # GITHUB
 
-    expander0 = st.sidebar.beta_expander(label='GitHub')
+    expander0 = st.sidebar.beta_expander(label='GitHub & Data Source')
     expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/Covid19-PredictiveAnalysis) <span style='font-size:18px; font-style:italic;'>Source-Code | Oct 2020</span>'''.format(img_to_bytes("./assets/GitHub.png")), unsafe_allow_html=True)
     expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/) <span style='font-size:18px; font-style:italic;' >Other Works</span>'''.format(img_to_bytes("./assets/cognitive-intel.png")), unsafe_allow_html=True)
+    expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/CSSEGISandData/COVID-19) <span style='font-size:18px; font-style:italic;' >Data Source</span>'''.format(img_to_bytes("./assets/database.png")), unsafe_allow_html=True)
+    
 
-    #BLog Post
-
-    expander_appendix = st.sidebar.beta_expander(label='Blog Post')
-    if expander_appendix.checkbox('Display',False):
-        st.markdown('***')
-        st.image('./assets/BlogCoverB.jpg',width=700)
-        st.markdown("Here's my blog about this project elucidating everthing. I affirm this project as \n**_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/swlh/covid-19-data-analysis-from-the-inception-to-predicting-the-uncertain-future-through-machine-ef4c3f0371bc) If you like to read.")
+    # expander_appendix = st.sidebar.beta_expander(label='Blog Post')
+    # if expander_appendix.checkbox('Display',False):
+    #     st.markdown('***')
+    #     st.image('./assets/BlogCoverB.jpg',width=700)
+    #     st.markdown("Here's my blog about this project elucidating everthing. I affirm this project as \n**_A Complex Analysis yet for a Layman_** \n ~ [``click-me``](https://medium.com/swlh/covid-19-data-analysis-from-the-inception-to-predicting-the-uncertain-future-through-machine-ef4c3f0371bc) If you like to read.")
 
 
     st.sidebar.markdown('***')
 
     st.markdown('***')
-    st.sidebar.markdown('''> <p style='text-align:center;'><span style='font-weight:bold; text-align:center; font-size:20px; font-style:italic;'>Developed & Deployed By <span style='padding-right:5px;'></span><span style='font-size:20px;  font-weight:bold; color:limegreen; background-color:black;  border-radius: 2px; padding-left:5px; padding-right:5px;'> r0han</span></p>''', unsafe_allow_html=True)
+    st.sidebar.markdown('''> <p><span style='font-weight:bold; font-size:20px; font-style:italic;'>Developed & Deployed By <span style='padding-right:5px;'></span><span style='font-size:20px;  font-weight:bold; color:crimson; border-radius: 2px; padding-right:5px;'>r0han</span></p>''', unsafe_allow_html=True)
 
 
     
@@ -624,15 +685,22 @@ st.sidebar.markdown('***')
 
 datevalidity = st.sidebar.empty()
 
-st.sidebar.markdown('***')
+
 
 
 
 confirmed_df, deaths_df, recovered_df, agg_df, vaccine_df, vaccloc_df = Data_load(confirmed_url,deaths_url,recovered_url,aggregate_url,vaccinestats_url, vaccineloc_url)
     
+recovered, active = fetchrecov(confirmed_df, recovered_df, deaths_df, purpose='world') 
+
+
 # Data Fetch
 total_numericals = covidAPI_data_total(agg_df,confirmed_df,recovered_df,deaths_df)
-# st.write(total_numericals)
+
+# replacing recovered and active for data recorded until aug 4th
+total_numericals['Total Recovered'] = recovered
+total_numericals['Total Active'] = active
+
 
 
 last_date = confirmed_df.columns[-1]
@@ -653,6 +721,15 @@ except:
     day_diff = '~'
 
 
+# Deprecation Notice
+deprecation = st.sidebar.beta_expander("Deprecation Notice ⚠️",True)
+
+notice = '''*In one week's time (from Aug 4th, 2021), we will no longer be maintaining ___recovered___ data globally. we have determined that this metric to generally be unreliable. Locations where we would normally have to perform maintenance to regain access to the ___recovery data___.*'''
+
+deprecation.markdown(notice)
+deprecation.markdown('| <small><i>CSSEGIS ( Johns Hopkins University )</i></small>',unsafe_allow_html=True)
+
+st.sidebar.markdown('***')
 
 # MULTIPLE DASHBOARDS
 dropdown = st.sidebar.beta_expander('Dashboard',expanded=True)
@@ -797,10 +874,10 @@ elif apps == 'Country-Wise 🌎':
     
     # /Country Input
 
-
+    
      # Data Manipulation 
     trans_conf = province_check_confirmed(CountryName, confirmed_df)
-    trans_recov = province_check_recovered(CountryName, recovered_df)
+    trans_recov = province_check_recovered(CountryName, recovered_df.loc[:,:'8/4/21'])
     trans_deaths = province_check_deaths(CountryName, deaths_df)
 
     country_summary = preprocessing1([CountryName],trans_conf,trans_recov,trans_deaths)
@@ -825,6 +902,11 @@ elif apps == 'Country-Wise 🌎':
 
             country_dict = covidAPI_data(confirmed_df,recovered_df,deaths_df,CountryName)
    
+
+    # replacing recovered and active for data recorded until aug 4th
+    recovered, active = fetchrecov(confirmed_df, recovered_df, deaths_df, purpose='country',CountryName=CountryName)
+    country_dict['recovered'] = recovered
+    country_dict['active']  = active
 
 
     present_date = date.today().strftime("%m/%d/%Y")
@@ -881,7 +963,7 @@ elif apps == 'Country-Wise 🌎':
     
 
     # FREQUENCY OF INFECTION REPORTS 
-    y = infectionrate_timeline(confirmed_df, recovered_df,deaths_df)
+    y = infectionrate_timeline(confirmed_df, recovered_df.loc[:,:'8/4/21'],deaths_df)
     y = hikedfslice(y,'not-global')
     trans_df = []
     for i,df in enumerate(y,0):
@@ -932,7 +1014,7 @@ elif apps == 'Country-Wise 🌎':
 
     )
     
-    _, last2dates, country_raise, hike_status = RAISE_in_Cases(confirmed_df,recovered_df,deaths_df, CountryName)
+    _, last2dates, country_raise, hike_status = RAISE_in_Cases(confirmed_df,recovered_df.loc[:,:'8/4/21'],deaths_df, CountryName)
     
 
     freq = {'FreqChart': fig, 'info' : (last2dates, country_raise, hike_status)}

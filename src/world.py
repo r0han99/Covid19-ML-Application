@@ -44,9 +44,9 @@ def world_data(choropleth, total_numericals, worldTime_dict):
     table='''
 
         *Confirmed* -  <span style='font-family:Sora; color:#2484F7;'>{:,}</span>\n
-        *Recovered* -  <span style='font-family:Sora; color:#2484F7;'>{:,}</span>\n
+        *Recovered* -  <span style='font-family:Sora; color:#2484F7;'>{:,} </span><small style='font-size:15px;'><i>until 4th Aug,21</i></small>\n
         *Deaths*$~~~~~$ - <span style='font-family:Sora; color:#2484F7;'>{:,}</span>\n
-        *Active*$~~~~~~$ - <span style='font-family:Sora; color:#2484F7;'>{:,}</span>\n
+        *Active*$~~~~~~$ - <span style='font-family:Sora; color:#2484F7;'>{:,}</span><small style='font-size:15px;'><i> until 4th Aug,21</i></small>\n
     '''.format(total_numericals['Total Confirmmed'],total_numericals['Total Active'],total_numericals['Total Deaths'],total_numericals['Total Recovered'])
 
     
@@ -62,7 +62,7 @@ def world_data(choropleth, total_numericals, worldTime_dict):
 
     
         cols = st.beta_columns(4)
-        attr = st.selectbox('Category',['Active','Recovered','Confirmed','Deaths'], key='choropleth')
+        attr = st.selectbox('Category',['Confirmed','Deaths'], key='choropleth')
         titleslt.markdown('''<h4 style='font-family:Sora;  text-align:center;'>Choropleth (World Map)</h4>''',unsafe_allow_html=True)
         
 
@@ -93,9 +93,12 @@ def world_data(choropleth, total_numericals, worldTime_dict):
             chart_title.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Time Series Plot</h3>''',unsafe_allow_html=True)
             chartslt.plotly_chart(worldTime_dict['Time Series'])
         else:
-            
-            chart_title.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Quantified Summary</h3>''',unsafe_allow_html=True)
+            st.markdown('''''',unsafe_allow_html=True)
+            chart_title.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Quantified Summary''',unsafe_allow_html=True)
             chartslt.plotly_chart(worldTime_dict['World-Pie'])
+
+            st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)
+        
     
     else:
 

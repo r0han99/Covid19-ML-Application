@@ -146,7 +146,7 @@ def precondition():
         st.markdown('***Preconditions***')
         cols = st.beta_columns(2)
 
-        sex = cols[0].selectbox('Gender',['Male','Female'],key='tobacco')
+        sex = cols[0].selectbox('Gender',['Male','Female'],key='sex')
         pregnancy = cols[1].selectbox('Pregnancy',['No','Yes'],key='pregnancy',help=help_info['pregnancy'])
 
         pneumonia = cols[0].selectbox('Pneumonia',['Yes','No'],key='pneumonia',help=help_info['pneumonia'])
