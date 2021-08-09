@@ -773,7 +773,7 @@ if apps == 'World 🌍':
     choroplot_dict = {'Active': choroplethChart(choro_active,'Active',config=a_col), 'Recovered': choroplethChart(choro_conf,'Confirmed',config=c_col), 'Recovered' : choroplethChart(choro_recov,'Recovered',config=r_col), 'Deaths': choroplethChart(choro_death,'Deaths',config=d_col) }
 
     # Data Creation
-    summary = preprocessing0(confirmed_df, recovered_df, deaths_df)
+    summary = preprocessing0(confirmed_df, recovered_df.loc[:,:'8/4/21'], deaths_df)
 
     
 
@@ -787,7 +787,7 @@ if apps == 'World 🌍':
 
     
     # Frequency of Global Cases 
-    y = infectionrate_timeline(confirmed_df,recovered_df,deaths_df)
+    y = infectionrate_timeline(confirmed_df,recovered_df.loc[:,:'8/4/21'],deaths_df)
     y = hikedfslice(y,'global')
     Months = y[0].index 
 
@@ -828,7 +828,7 @@ if apps == 'World 🌍':
 
     )
     
-    world_raise, last2dates, _, hike_status = RAISE_in_Cases(confirmed_df,recovered_df,deaths_df)
+    world_raise, last2dates, _, hike_status = RAISE_in_Cases(confirmed_df,recovered_df.loc[:,:'8/4/21'],deaths_df)
     
     
    

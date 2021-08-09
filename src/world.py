@@ -114,5 +114,7 @@ def world_data(choropleth, total_numericals, worldTime_dict):
         st.markdown('''<p style='font-family:Sora; font-weight:bold; font-size:25px; text-decoration:underline;'>Reported between the two dates, <span style='color:red; font-weight:bold;'>{} & {}</span></p>'''.format(last2dates[0], last2dates[1]),unsafe_allow_html=True)
         
         st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Confirmed Cases</span> Reported  - {:,}</p>'''.format(wconf_raise),unsafe_allow_html=True)
-        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - {:,}</p>'''.format(wrecov_raise),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - {:,}<small style='font-size:15px;'><i> until 4th Aug,21</i></small></p>'''.format(wrecov_raise),unsafe_allow_html=True)
         st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Deaths Cases</span> Reported  - {:,}</p>'''.format(wdeath_raise),unsafe_allow_html=True)
+
+        st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)
