@@ -794,12 +794,6 @@ if apps == 'World 🌍':
     
 
 
-    
-
-
-
-    
-
     # Global Pie
     colors = ['lime', 'royalblue', 'crimson', 'blueviolet']
     labels = list(total_numericals.keys())
