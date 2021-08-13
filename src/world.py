@@ -22,7 +22,7 @@ def img_to_bytes(img_path):
 
 
 
-def world_data(choropleth, total_numericals, worldTime_dict): 
+def world_data(choropleth, total_numericals, worldTime_dict, MR): 
 
     st.markdown('***')
     st.markdown('''<h3 style='font-family:Sora; text-align:center;'>The World's Data Visualised</h3>''',unsafe_allow_html=True)
@@ -33,7 +33,7 @@ def world_data(choropleth, total_numericals, worldTime_dict):
     slot = st.empty() # predefined slot for choropleth chart
 
 
-    viztype = st.sidebar.radio('Illustrations',['Choropleth (World Map)', 'Quantified Summary', 'Daily Reported Cases'], key='viztype')
+    viztype = st.sidebar.radio('Illustrations',['Choropleth (World Map)', 'Quantified Summary',"World's Mortality & Recovery",'Daily Reported Cases'], key='viztype')
 
     st.sidebar.markdown('***')
     st.sidebar.header('Global Statistics 📈')
@@ -44,9 +44,9 @@ def world_data(choropleth, total_numericals, worldTime_dict):
     table='''
 
         *Confirmed* -  <span style='font-family:Sora; color:#2484F7;'>{:,}</span>\n
-        *Recovered* -  <span style='font-family:Sora; color:#2484F7;'>{:,} </span><small style='font-size:15px;'><i>until 4th Aug,21</i></small>\n
+        *Recovered* -  <span style='font-family:Sora; color:#2484F7;'>{:,} </span><small style='font-size:15px;'><i>until 4th Aug, 21</i></small>\n
         *Deaths*$~~~~~$ - <span style='font-family:Sora; color:#2484F7;'>{:,}</span>\n
-        *Active*$~~~~~~$ - <span style='font-family:Sora; color:#2484F7;'>{:,}</span><small style='font-size:15px;'><i> until 4th Aug,21</i></small>\n
+        *Active*$~~~~~~$ - <span style='font-family:Sora; color:#2484F7;'>{:,}</span><small style='font-size:15px;'><i> until 4th Aug, 21</i></small>\n
     '''.format(total_numericals['Total Confirmmed'],total_numericals['Total Active'],total_numericals['Total Deaths'],total_numericals['Total Recovered'])
 
     
@@ -78,6 +78,36 @@ def world_data(choropleth, total_numericals, worldTime_dict):
         elif attr == 'Deaths':
             fig = choropleth[attr]
             slot.plotly_chart(fig,use_container_width=True)
+
+
+    elif viztype == "World's Mortality & Recovery":
+
+        
+        st.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Mortality Rate and Recovery Rate, Percentiles</h3>''',unsafe_allow_html=True)
+        st.markdown('<br>',unsafe_allow_html=True)
+    
+
+
+        # ACCESS Mortality and Recovery 
+
+        present_date, mortality_rate, recovery_rate, mrchart = MR.values()
+
+        # ACCESS Mortality and Recovery 
+
+
+        st.markdown('''<p style='text-align:center;'><b>{}'s</b> Recovery Rate : <span style='color:limegreen; font-weight:bold;'>{:.2f}%</span></span><small style='font-size:15px;'><i> until 4th Aug, 21</i></small></p>'''.format("World",recovery_rate*100),unsafe_allow_html=True)
+        st.markdown('''<p style='text-align:center;'><b>{}'s</b> Mortality Rate as of Date <span style='font-weight:bold; font-family:Sora; '>({})</span> : <span style='color:crimson; font-weight:bold;'>{:.2f}%</span></p>'''.format("World",present_date,mortality_rate*100),unsafe_allow_html=True)
+        
+        st.success('_**Recovery Rate**_ is the proportion of people who **Recovered** from the `diesease` to the total Number of people infected.')
+        st.error('_**Mortality Rate**_ is the proportion of people who **Succumbed** to the `disease` to the total Number of people infected.')
+        st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)
+        st.markdown('***')
+
+        st.markdown('''<h3 style='font-family:Sora;  text-align:center;'>Mortality Rate and Recovery Rate, Timeline</h3>''',unsafe_allow_html=True)
+        st.markdown(' ')
+
+        st.plotly_chart(mrchart,use_container_width=True)
+
 
         
 
@@ -114,7 +144,7 @@ def world_data(choropleth, total_numericals, worldTime_dict):
         st.markdown('''<p style='font-family:Sora; font-weight:bold; font-size:25px; text-decoration:underline;'>Reported between the two dates, <span style='color:red; font-weight:bold;'>{} & {}</span></p>'''.format(last2dates[0], last2dates[1]),unsafe_allow_html=True)
         
         st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Confirmed Cases</span> Reported  - {:,}</p>'''.format(wconf_raise),unsafe_allow_html=True)
-        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - {:,}<small style='font-size:15px;'><i> until 4th Aug,21</i></small></p>'''.format(wrecov_raise),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - {:,}<small style='font-size:15px;'><i> until 4th Aug, 21</i></small></p>'''.format(wrecov_raise),unsafe_allow_html=True)
         st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Deaths Cases</span> Reported  - {:,}</p>'''.format(wdeath_raise),unsafe_allow_html=True)
 
         st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)

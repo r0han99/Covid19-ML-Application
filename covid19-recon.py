@@ -496,11 +496,12 @@ def Make_contrast_Box_plots(figobj,df_list,choice):
 
     return fig
 
-def mr_rate_timeline(country_summary, CountryName):
+def mr_rate_timeline(country_summary,CountryName=None):
+
+    
 
     x = country_summary['Deaths']/country_summary['Confirmed']*100
     r = country_summary['Recovered']/country_summary['Confirmed']*100
-
 
     mr_chart = go.Figure()
     mr_chart.add_trace(go.Scatter(x=x.index, y=x,
@@ -516,6 +517,9 @@ def mr_rate_timeline(country_summary, CountryName):
 
 
     return mr_chart
+
+    
+
 
 
 
@@ -583,7 +587,7 @@ def fetchrecov(confirmed_df, recovered_df, deaths_df, purpose, CountryName=None)
 
 
         wactive = wconf - (wrecov+wdeaths)
-        return wrecov,wactive
+        return wrecov,wactive, wconf, wdeaths
     
     elif purpose == 'country':
         if not CountryName == None:
@@ -629,7 +633,7 @@ def fetchrecov(confirmed_df, recovered_df, deaths_df, purpose, CountryName=None)
             
             # st.code('active {:,}'.format(cactive))
 
-            return crecov,cactive
+            return crecov,cactive,cconf, cdeaths
 
         
 
@@ -691,7 +695,7 @@ datevalidity = st.sidebar.empty()
 
 confirmed_df, deaths_df, recovered_df, agg_df, vaccine_df, vaccloc_df = Data_load(confirmed_url,deaths_url,recovered_url,aggregate_url,vaccinestats_url, vaccineloc_url)
     
-recovered, active = fetchrecov(confirmed_df, recovered_df, deaths_df, purpose='world') 
+recovered, active, wconf, _ = fetchrecov(confirmed_df, recovered_df, deaths_df, purpose='world') 
 
 
 # Data Fetch
@@ -775,6 +779,25 @@ if apps == 'World 🌍':
     # Data Creation
     summary = preprocessing0(confirmed_df, recovered_df.loc[:,:'8/4/21'], deaths_df)
 
+    # date
+    present_date = date.today().strftime("%d/%m/%Y")
+
+
+    summation_deaths = total_numericals.get('Total Deaths')
+    summation_Confirmed = total_numericals.get('Total Confirmmed')
+    summation_recovered = total_numericals.get('Total Recovered')
+    mortality_rate = summation_deaths/summation_Confirmed
+    recovery_rate = summation_recovered/wconf
+
+    mrchart = mr_rate_timeline(summary, CountryName=None)
+    MR = {'Date': present_date, 'Mortality': mortality_rate, 'Recovery': recovery_rate, 'MRchart':mrchart}
+    
+
+
+    
+
+
+
     
 
     # Global Pie
@@ -837,7 +860,7 @@ if apps == 'World 🌍':
 
 
     # Redirecting the recorded values to the actual app to render
-    world_data(choropleth, total_numericals, worldTime_dict)
+    world_data(choropleth, total_numericals, worldTime_dict, MR)
 
     footer()
 
@@ -904,15 +927,15 @@ elif apps == 'Country-Wise 🌎':
    
 
     # replacing recovered and active for data recorded until aug 4th
-    recovered, active = fetchrecov(confirmed_df, recovered_df, deaths_df, purpose='country',CountryName=CountryName)
+    recovered, active, cconf, _ = fetchrecov(confirmed_df, recovered_df, deaths_df, purpose='country',CountryName=CountryName)
     country_dict['recovered'] = recovered
     country_dict['active']  = active
 
 
-    present_date = date.today().strftime("%m/%d/%Y")
+    present_date = date.today().strftime("%d/%m/%Y")
 
     
- 
+    
     
     # MORTALITY AND FATALITY 
     if not CountryName == 'US':
@@ -921,7 +944,7 @@ elif apps == 'Country-Wise 🌎':
         summation_Confirmed = country_dict.get('confirmed')
         summation_recovered = country_dict.get('recovered')
         mortality_rate = summation_deaths/summation_Confirmed
-        recovery_rate = summation_recovered/summation_Confirmed
+        recovery_rate = summation_recovered/cconf
 
         mrchart = mr_rate_timeline(country_summary, CountryName)
 
@@ -1022,7 +1045,6 @@ elif apps == 'Country-Wise 🌎':
     
     
     timeline = TimeSeriesPlot(country_summary)
-
 
 
 

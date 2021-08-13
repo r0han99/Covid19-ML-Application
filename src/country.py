@@ -56,12 +56,12 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
             # ACCESS Mortality and Recovery 
 
 
-            st.markdown('''<p style='text-align:center;'><b>{}</b>, Recovery Rate as of Date <span style='font-weight:bold; font-family:Sora; '>(08/04/2021)</span> : <span style='color:limegreen; font-weight:bold;'>{:.2f}%</span></p>'''.format(CountryName,recovery_rate*100),unsafe_allow_html=True)
+            st.markdown('''<p style='text-align:center;'><b>{}</b>, Recovery Rate : <span style='color:limegreen; font-weight:bold;'>{:.2f}%</span></span><small style='font-size:15px;'><i> until 4th Aug, 21</i></small></p>'''.format(CountryName,recovery_rate*100),unsafe_allow_html=True)
             st.markdown('''<p style='text-align:center;'><b>{}</b>, Mortality Rate as of Date <span style='font-weight:bold; font-family:Sora; '>({})</span> : <span style='color:crimson; font-weight:bold;'>{:.2f}%</span></p>'''.format(CountryName,present_date,mortality_rate*100),unsafe_allow_html=True)
            
 
-            st.success('_**Recovery Rate**_ is the proportion of people who **Recovered** from the `Diesease` to the Total Number of people infected.')
-            st.error('_**Mortality Rate**_ is the proportion of people who **Succumbed** to the `Disease` to the Total Number of people infected.')
+            st.success('_**Recovery Rate**_ is the proportion of people who **Recovered** from the `diesease` to the total Number of people infected.')
+            st.error('_**Mortality Rate**_ is the proportion of people who **Succumbed** to the `disease` to the total Number of people infected.')
             st.markdown("| <small style='font-size:15px;text-align:center;'><i>Recovered and Active Cases represent reports recorded until 4th Aug, 21 (read deprecation notice)</i></small></h3>",unsafe_allow_html=True)
             st.markdown('***')
 
@@ -119,7 +119,7 @@ def countryViz(CountryName, MR, quantsum, freq, timeline):
         st.markdown('''<p style='font-family:Sora; font-weight:bold; font-size:25px;'>Reported between the two dates, <span style='color:#2484F7; font-weight:bold;'><br>{} <span style="color:black;">&</span> {}</span></p>'''.format(last2dates0,last2dates1),unsafe_allow_html=True)
 
         st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Confirmed Cases</span> Reported  - <span style='font-size:30px;'>{:,}</span> </span></p>'''.format(cconf_raise),unsafe_allow_html=True)
-        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - <span style='font-size:30px;'>{:,}</span> </span><small style='font-size:15px;'><i>until 4th Aug,21</i></small></p>'''.format(crecov_raise),unsafe_allow_html=True)
+        st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Recovered Cases</span> Reported  - <span style='font-size:30px;'>{:,}</span> </span><small style='font-size:15px;'><i>until 4th Aug, 21</i></small></p>'''.format(crecov_raise),unsafe_allow_html=True)
         st.markdown('''> <p style='font-family:Sora; font-weight:bold; '><span style=''>Deaths</span> Reported  - <span style='font-size:30px;'>{:,}</span> </span></p>'''.format(cdeath_raise),unsafe_allow_html=True)
         
         
