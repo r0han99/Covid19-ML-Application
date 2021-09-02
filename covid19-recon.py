@@ -684,7 +684,7 @@ st.markdown("<h1 style='text-align:center;'><p style='font-size:55px; text-align
 # st.markdown("<h6 style='text-align: center ;'>A Statistical look through the data, from the<strong style='font-weight: bold;'> Inception of this unprecedented event</strong> to a <strong style='font-weight: bold;'>Brief look into the Uncertain Future.<strong style='font-weight: bold;'></h6>", unsafe_allow_html=True)
 
 st.markdown('')
-st.sidebar.title('The Shelf of Control')
+st.sidebar.title('The Shelf of Control 🎛️')
 st.sidebar.markdown('***')
 
 datevalidity = st.sidebar.empty()
@@ -708,17 +708,21 @@ total_numericals['Total Active'] = active
 
 
 last_date = confirmed_df.columns[-1]
+
+
 present_date = date.today().strftime("%m/%d/%Y")
 try: 
-    day_diff = int(last_date.split('/')[1]) - int(present_date.split('/')[1])
+    day_diff = abs(int(last_date.split('/')[1]) - int(present_date.split('/')[1]))
     
-    if abs(day_diff) >= 3:      
-        prompt = f'''_Data Seems to be cached & Old ⚠️ (about {day_diff} days.), ```Press C, Clear Cache then Reload the Page``` to fetch recent records of Data._'''  
+    
+    if abs(day_diff) >= 3:
+        
+        prompt = f'''_Data Seems to be cached & Old ⚠️ (about {day_diff}. days), ***```Press C, Clear Cache then Reload the Page```*** to fetch recent records of Data._'''  
         warn = datevalidity.beta_expander('Old Data ⚠️')
         warn.markdown(prompt)
     else:
-        prompt = f'''_Data stored in the cache is fairly recent (about {day_diff} days.), ```Press C, Clear Cache then Reload the Page``` to fetch recent records of Data._'''
-        warn = datevalidity.beta_expander('Fairly Recent Data in the Cache ✅')
+        prompt = f'''_Data stored in the cache is fairly recent ( Only {day_diff} day/days old), ***```Press C, Clear Cache then Reload the Page```*** to fetch recent records of Data._'''
+        warn = datevalidity.beta_expander('Fairly recent data in the cache ✅')
         warn.markdown(prompt)
         
 except:
