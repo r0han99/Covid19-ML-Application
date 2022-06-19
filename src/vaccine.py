@@ -62,14 +62,14 @@ def vaccineStats(vaccine):
         paths = vaccman['Paths']
         information = vaccman['Info']
 
-        first = st.beta_expander(VaccineList[0].capitalize(), expanded=True)
+        first = st.expander(VaccineList[0].capitalize(), expanded=True)
         first.image(paths[0],width=300)
         first.markdown('_{}_'.format(information[0]))
         
 
         expobjs = []
         for vaccine in VaccineList[1:]:
-            expobjs.append(st.beta_expander(vaccine.capitalize()))
+            expobjs.append(st.expander(vaccine.capitalize()))
        
         
         for obj, path, info in zip(expobjs,paths[1:],information[1:]): 

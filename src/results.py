@@ -334,7 +334,7 @@ def display_results(package):
     # Show results button 
 
     if not absolute_report == None:
-        results = st.beta_expander('Results 🧠', expanded=False)
+        results = st.expander('Results 🧠', expanded=False)
         # with results.form("Analytics"):
         results.markdown('***')
         agegroup = '''<span style='font-weight:bold; text-align:left; font-size:16px; font-family:Sora; color:#2484F7; padding-bottom:20px;'>Age : {}, <i>{}</i><span>'''.format(package['Age'],package['Sex'])
@@ -349,7 +349,7 @@ def display_results(package):
         
         results.markdown('''* <span style="font-weight:bold; font-style:italic; text-align:center;">What Happened to the People with Sames Conditions as You? <br><br></span>''',unsafe_allow_html=True)
         
-        cols = results.beta_columns(2)
+        cols = results.columns(2)
         
         status_fig = charts(absolute_report, chart_name='hospitalized')
         criticality_fig = charts(absolute_report, chart_name='ICU_Intubation')
@@ -388,7 +388,7 @@ def display_results(package):
         
 
     else:
-        results = st.beta_expander('Results 🧠', expanded=True)
+        results = st.expander('Results 🧠', expanded=True)
         
         results.markdown('***')
         agegroup = '''<span style='font-weight:bold; text-align:left; font-size:16px; font-family:Sora; color:#2484F7; padding-bottom:20px;'>Age : {}, <i>{}</i><span>'''.format(package['Age'],package['Sex'])
@@ -427,6 +427,6 @@ def display_results(package):
         results.markdown('<center style="font-weight:bold; font-style:italic;">End-Report</center>',unsafe_allow_html=True)
         
 
-        beta = st.beta_expander('Beta-Testing')
+        beta = st.expander('Beta-Testing')
         beta.warning('*The current pipeline is only constrained towards reporting `Absolute Matches` on Pre-Conditions; future versions, however, will include much more scrutiny towards finding records with partial matches while considering pre-conditions which are prominent to faciliate COVID19s potency*')
 

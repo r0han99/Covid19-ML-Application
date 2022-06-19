@@ -135,8 +135,8 @@ def precondition():
        'inmsupr', 'hypertension', 'cardiovascular', 'obesity', 'renal_chronic',
        'tobacco']
 
-    formexp = st.sidebar.beta_expander('Precondition survey',expanded=True)
-    container = st.beta_container()
+    formexp = st.sidebar.expander('Precondition survey',expanded=True)
+    container = st.container()
 
     with formexp.form("Form"):
         st.write("***Survey***")
@@ -144,7 +144,7 @@ def precondition():
         age = st.number_input('Age',min_value=10,max_value=100,step=1)
 
         st.markdown('***Preconditions***')
-        cols = st.beta_columns(2)
+        cols = st.columns(2)
 
         sex = cols[0].selectbox('Gender',['Male','Female'],key='sex')
         pregnancy = cols[1].selectbox('Pregnancy',['No','Yes'],key='pregnancy',help=help_info['pregnancy'])

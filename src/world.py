@@ -61,7 +61,7 @@ def world_data(choropleth, total_numericals, worldTime_dict, MR):
     if viztype == 'Choropleth (World Map)':
 
     
-        cols = st.beta_columns(4)
+        cols = st.columns(4)
         attr = st.selectbox('Category',['Confirmed','Deaths'], key='choropleth')
         titleslt.markdown('''<h4 style='font-family:Sora;  text-align:center;'>Choropleth (World Map)</h4>''',unsafe_allow_html=True)
         

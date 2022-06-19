@@ -650,13 +650,13 @@ def footer():
 
     # GITHUB
 
-    expander0 = st.sidebar.beta_expander(label='GitHub & Data Source')
+    expander0 = st.sidebar.expander(label='GitHub & Data Source')
     expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/Covid19-PredictiveAnalysis) <span style='font-size:18px; font-style:italic;'>Source-Code | Oct 2020</span>'''.format(img_to_bytes("./assets/GitHub.png")), unsafe_allow_html=True)
     expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/r0han99/) <span style='font-size:18px; font-style:italic;' >Other Works</span>'''.format(img_to_bytes("./assets/cognitive-intel.png")), unsafe_allow_html=True)
     expander0.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://github.com/CSSEGISandData/COVID-19) <span style='font-size:18px; font-style:italic;' >Data Source</span>'''.format(img_to_bytes("./assets/database.png")), unsafe_allow_html=True)
     
 
-    # expander_appendix = st.sidebar.beta_expander(label='Blog Post')
+    # expander_appendix = st.sidebar.expander(label='Blog Post')
     # if expander_appendix.checkbox('Display',False):
     #     st.markdown('***')
     #     st.image('./assets/BlogCoverB.jpg',width=700)
@@ -718,11 +718,11 @@ try:
     if abs(day_diff) >= 3:
         
         prompt = f'''_Data Seems to be cached & Old ⚠️ (about {day_diff}. days), ***```Press C, Clear Cache then Reload the Page```*** to fetch recent records of Data._'''  
-        warn = datevalidity.beta_expander('Old Data ⚠️')
+        warn = datevalidity.expander('Old Data ⚠️')
         warn.markdown(prompt)
     else:
         prompt = f'''_Data stored in the cache is fairly recent ( Only {day_diff} day/days old), ***```Press C, Clear Cache then Reload the Page```*** to fetch recent records of Data._'''
-        warn = datevalidity.beta_expander('Fairly recent data in the cache ✅')
+        warn = datevalidity.expander('Fairly recent data in the cache ✅')
         warn.markdown(prompt)
         
 except:
@@ -730,7 +730,7 @@ except:
 
 
 # Deprecation Notice
-deprecation = st.sidebar.beta_expander("Deprecation Notice ⚠️",True)
+deprecation = st.sidebar.expander("Deprecation Notice ⚠️",True)
 
 notice = '''*In one week's time (from Aug 4th, 2021), we will no longer be maintaining ___recovered___ data globally. we have determined that this metric to generally be unreliable. Locations where we would normally have to perform maintenance to regain access to the ___recovery data___.*'''
 
@@ -740,7 +740,7 @@ deprecation.markdown('| <small><i>CSSEGIS ( Johns Hopkins University )</i></smal
 st.sidebar.markdown('***')
 
 # MULTIPLE DASHBOARDS
-dropdown = st.sidebar.beta_expander('Dashboard',expanded=True)
+dropdown = st.sidebar.expander('Dashboard',expanded=True)
 
 
 category = dropdown.selectbox('Category', ['Statistics', 'Machine Learning'], key='categories')
@@ -885,7 +885,7 @@ elif apps == 'Country-Wise 🌎':
     # Country Input 
     CountryName = st.text_input('Enter the Country Name (Default : India) ','India')
 
-    clist = st.beta_expander('Country List')
+    clist = st.expander('Country List')
     clist.write('Copy a Country Name from the provided list.')
     clist.write(country_list)
 
