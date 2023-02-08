@@ -1,6 +1,6 @@
 # Application Front-End dependencies 
 import streamlit as st
-from streamlit import caching
+
 
 # results 
 from src.results import display_results

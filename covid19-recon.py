@@ -1,7 +1,7 @@
 
 # Application GUI dependencies 
 import streamlit as st
-from streamlit import caching
+# from streamlit import caching
 
 # Multiple App Access
 from src.preconditional import precondition
