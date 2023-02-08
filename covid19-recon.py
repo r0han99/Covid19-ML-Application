@@ -111,8 +111,10 @@ def covidAPI_data(confirmed_df,recovered_df,deaths_df,CountryName):
 def covidAPI_data_total(agg_df, confirmed_df, recovered_df, deaths_df):
 
     
-    active_tot = covid.get_total_active_cases()
-    recovered_tot = covid.get_total_recovered()
+    # active_tot = covid.get_total_active_cases()
+    # recovered_tot = covid.get_total_recovered()
+    active_tot = 0 # deprecated
+    recovered_tot = 0  # deprecated
     confirmed_tot = covid.get_total_confirmed_cases()
     deaths_tot = covid.get_total_deaths()
 
